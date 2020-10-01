@@ -17,10 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 // Route::get('/', function () {
 //    return view('welcome');
 // })->middleware('auth');
 
+=======
+//comments
+>>>>>>> feacher
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
