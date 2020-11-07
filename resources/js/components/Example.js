@@ -1,21 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default class Example {
+export default class Example extends React.Component {
     render() {
         return (
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-md-8">
-                        <div className="card">
-                            <div className="card-header">Example Component</div>
 
-                            <div className="card-body">I'm an example component!</div>
-                        </div>
+            <div>
+                <header className="header">
+
+                    <h1 className="site-title">
+                        < a href="./">クリ★スタ</a>
+                    </h1>
+                    {/*ナビゲーションバー*/}
+                    <div className="nav-wrapper">
+                        <nav className="header-nav">
+                            <div>
+                                <ul className="nav-list">
+                                    <li className="nav-item"><a href="#about">About</a></li>
+                                    <li className="nav-item"><a href="#blog">New</a></li>
+                                    <li className="nav-item"><a href="#blog">Access</a></li>
+                                </ul>
+                            </div>
+                        </nav>
                     </div>
-                </div>
+                </header>
             </div>
-        );
+        )
     }
 }
 
