@@ -22,8 +22,8 @@
 
         .search {
             font-family:"Font Awesome 5 Free";
-            font-weight:900;
-            
+            font-weight:400;
+
         }
     </style>
 </head>
