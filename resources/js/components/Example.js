@@ -6,24 +6,7 @@ export default class Example extends React.Component {
         return (
 
             <div>
-                <header className="header">
-
-                    <h1 className="site-title">
-                        < a href="./">クリ★スタ</a>
-                    </h1>
-                    {/*ナビゲーションバー*/}
-                    <div className="nav-wrapper">
-                        <nav className="header-nav">
-                            <div>
-                                <ul className="nav-list">
-                                    <li className="nav-item"><a href="#about">About</a></li>
-                                    <li className="nav-item"><a href="#blog">New</a></li>
-                                    <li className="nav-item"><a href="#blog">Access</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-                </header>
+                <input type="text" className="search" placeholder="&#xf002; 検索" ></input>
             </div>
         )
     }

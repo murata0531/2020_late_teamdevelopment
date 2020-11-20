@@ -19,12 +19,21 @@
         body {
             font-family: 'Nunito';
         }
+
+        .search {
+            font-family:"Font Awesome 5 Free";
+            font-weight:900;
+            
+        }
     </style>
 </head>
 
 <body class="antialiased">
     <div id="example"></div>
 
+    <div>
+        <input type="text" class="fas fa-elipsis-h" placeholder="&#xf640 検索" style="font-family:Arial,Font Awesome 5 Free;">
+    <div>
     <script src="{{asset('/js/app.js')}}"></script>
 </body>
 
