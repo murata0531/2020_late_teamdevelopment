@@ -32,16 +32,24 @@
                 
             }
             .side{
-                display: inline-block;
+                /* display: inline-block; */
+                display: flex;
             }
             /*ドロワーメニュー*/
             a.drawer-menu-a{
                 text-decoration: none;
                 color:#ffffff;
+                display: block;
+            }
+            a.drawer-menu-a:hover{
+                background-color: #4B8999;
             }
             .drawer-menu{
                 width: 18vw;
-                height:1080px;
+                height:100vw;
+                position: fixed;
+                top: 0px;
+                left: 0px;
                 background: #62ABB6;
                 list-style: none;
             }
@@ -49,17 +57,22 @@
                 margin-bottom: 30px;
                 padding-left: 25px;
             }
-            
             /*検索*/
-            .search-box{
+            .back-white{
+                background: #fff;
+                overflow-y: scroll;
+            }
+            .folder{
                 background: #CCE3E3;
                 position: fixed;
                 top: 0px;
+                left: 18vw;
+                border: solid #E0E0E0 1px;
             }
             .search-text{
-                margin: 30px 70px;
-                width: 24vw;
                 height: 40px;
+                width: 24vw;
+                margin: 30px 70px;
                 border: none;
                 border-radius:4px;
                 color: #00697A;
@@ -79,37 +92,50 @@
                 margin: 0 auto;
             }
             /*フォルダ一覧*/
-            .folder{
-                width: 24vw;
-                height:981px;
-                /* position: fixed;
-                top: 50px; */
-                position: fixed;
-                top: 100px;   
-                
-            }
-            .folder-list{
+            ul.folder-list{
                 list-style: none;
-                margin-left: 50px;
+                /* height: 100vw; */
+                display: block;
+                text-align: center;
             }
-            a.folder-a{
+            .folder-list li{
+                background: #E9F2F3;
+                margin-bottom: 10px;
+                height: 60px;
+            }
+            a.folder-a , .folder-icon,.fa-ellipsis-h{
                 text-decoration: none;
                 color: #00697A;
+                margin-bottom: 30px;
             }
-            .fa-folder{
-                color: #00697A;
-                
+            .folder-icon{
+                margin-right: 50px;
+            }
+            
+            .fa-ellipsis-h{
+                margin-left: 90px;
             }
             /*ファイル共有*/
             .file_sharing{
                 background: #E9F2F3;
-                width: 60vw;
+                width: 40vw;
+                height: 100px;
                 position: fixed;
-                top: 100px;
+                top: 0px;
+                left: 42vw;
+            }
+            .file_title{
+                margin-top: 25px;
+            }
+            
+            h5{
+                margin-left: 15px;
             }
             h6{
                 color: #8AA0A0;
                 font-weight: 450;
+                margin-top: 26px;
+                margin-left: 15px;
             }
     </style>
 </head>
