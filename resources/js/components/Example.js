@@ -58,7 +58,13 @@ export default class Example extends React.Component {
                     </ul>
                 </div>
                 <div className="main-contents">
-                    <div className="main-header"><p>メインヘッダー</p></div>
+                    <div className="main-header">
+                        <div className="my-header">
+                            <p>トーク</p>
+                            <p>グループ名</p>
+                        </div>
+                        <div className="account-settings"></div>
+                    </div>
                     <div className="main-item"><p>メインアイテム</p></div>
                 </div>
             </div>

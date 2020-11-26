@@ -58,8 +58,17 @@
             width:58vw;
             top:0px;
             position:absolute;
+            display:flex;
         }
 
+        .my-header {
+            width:60%;
+            background-color:red;
+        }
+        .account-settings {
+            width:40%;
+            background-color:blue;
+        }
         .main-item {
             background-color:yellow;
             height:calc(100vh - 80px);
@@ -161,6 +170,7 @@
         <ul>
             <li><a href="#"><i class="fas fa-home"></i><span>ホーム</span></a></li>
             <li><a href="#"><i class="fas fa-tasks"></i><span>タスク</span></a></li>
+            <li><a href="#"><i class="far fa-comment-alt"></i><span>トーク</span></a></li>
             <li><a href="#"><i class="fas fa-book-open"></i><span>ノート</span></a></li>
             <li><a href="#"><i class="far fa-folder"></i><span>ファイル共有</span></a></li>
             <li><a href="#"><i class="far fa-file-alt"></i><span>レポート</span></a></li>
