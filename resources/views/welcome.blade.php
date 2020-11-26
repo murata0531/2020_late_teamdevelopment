@@ -27,7 +27,7 @@
         .side-menu {
             width:18vw;
             height:100vh;
-            background-color:lime;
+            background-color:#CCE3E3;
          
         }
 
