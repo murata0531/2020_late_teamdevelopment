@@ -27,7 +27,7 @@
         .side-menu {
             width:18vw;
             height:100vh;
-            background-color:#CCE3E3;
+            background-color:lime;
          
         }
 
@@ -40,7 +40,7 @@
         .folder-menu {
             width:24vw;
             height:100vh;
-            background-color:blue;
+            background-color:#CCE3E3;
         
         }
         
@@ -52,7 +52,7 @@
 
         .main-header {
             background-color:green;
-            height:100px;
+            height:80px;
             width:58vw;
             top:0px;
             position:absolute;
@@ -60,9 +60,9 @@
 
         .main-item {
             background-color:yellow;
-            height:calc(100vh - 100px);
+            height:calc(100vh - 80px);
             width:58vw;
-            top:100px;
+            top:80px;
             position:absolute;
         }
         p {
@@ -88,7 +88,45 @@
         li {
             border:solid 1px white;
         }
-            
+
+        .search-text{
+            height: 40px;
+            width: calc(24vw - 80px);
+            margin: 20px 40px;
+            border: none;
+            border-radius:4px;
+            color: #00697A;
+            font-family: "Font Awesome 5 Free", 'Noto Sans JP', 'sans-serif';
+            font-weight: 600;
+        }
+
+        .folder-list > li {
+            height:80px;
+            width:100%;
+            display:flex;
+            align-items:center;
+        }
+
+        
+        .user-icon {
+            height:50px;
+            width:50px;
+            border:solid 1px black;
+            position:relative;
+            margin:15px;
+        }
+
+        .user-text {
+            position:relative;
+            height:50px;
+        }
+        .user-text > input {
+            height:35%;
+            position:relative;
+        }
+        .date {
+            left:;
+        }
     </style>
 </head>
 

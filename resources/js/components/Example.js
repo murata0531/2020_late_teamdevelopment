@@ -9,23 +9,49 @@ export default class Example extends React.Component {
                 <div className="folder-menu">
                     <input type="text" className="search-text" placeholder="&#xf002; キーワードを入力"></input>
                     <ul className="folder-list">
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
-                        <li><a href="" className="folder-a"><i class="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
+                        <li>
+                            <div className="user-icon"><i class="far fa-user"></i></div>
+                            <div className="user-text">
+                                <span>開発部長</span><span className="date">昨日</span><br></br>
+                                <input type="text" value="おはよう御座います"></input>              
+                            </div>              
+                        </li>
+                        <li>
+                            <div className="user-icon"><i class="far fa-user"></i></div>
+                            <div className="user-text">
+                                <span>開発部長</span><span className="date">昨日</span><br></br>
+                                <input type="text" value="おはよう御座います"></input>              
+                            </div>              
+                        </li>
+                        <li>
+                            <div className="user-icon"><i class="far fa-user"></i></div>
+                            <div className="user-text">
+                                <span>開発部長</span><span className="date">昨日</span><br></br>
+                                <input type="text" value="おはよう御座います"></input>              
+                            </div>              
+                        </li>
+                        <li>
+                            <div className="user-icon"><i class="far fa-user"></i></div>
+                            <div className="user-text">
+                                <span>開発部長</span><span className="date">昨日</span><br></br>
+                                <input type="text" value="おはよう御座います"></input>              
+                            </div>              
+                        </li>
+                        <li>
+                            <div className="user-icon"><i class="far fa-user"></i></div>
+                            <div className="user-text">
+                                <span>開発部長</span><span className="date">昨日</span><br></br>
+                                <input type="text" value="おはよう御座います"></input>              
+                            </div>              
+                        </li>
+                        <li>
+                            <div className="user-icon"><i class="far fa-user"></i></div>
+                            <div className="user-text">
+                                <span>開発部長</span><span className="date">昨日</span><br></br>
+                                <input type="text" value="おはよう御座います"></input>              
+                            </div>              
+                        </li>
+                        
                     </ul>
                 </div>
                 <div className="main-contents">
