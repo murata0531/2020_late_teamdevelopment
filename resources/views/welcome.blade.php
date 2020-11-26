@@ -41,6 +41,8 @@
             width:24vw;
             height:100vh;
             background-color:#CCE3E3;
+            overflow-y:scroll;
+            overflow-x:hidden;
         
         }
         
@@ -65,9 +67,7 @@
             top:80px;
             position:absolute;
         }
-        p {
-           text-align:center;
-        }
+        
         ul {
             list-style:none;
             padding:0;
@@ -122,10 +122,36 @@
         }
         .user-text > input {
             height:35%;
+            width:70%;
             position:relative;
         }
-        .date {
-            left:;
+    
+        .maru {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            flex-flow: column; 
+            vertical-align: top;
+            background-color:red;
+            position:relative;
+            left:10px;
+        }
+        /* 円の大きさ */
+        .size_normal{
+            width: 20px;
+            height: 20px;
+        }
+        /* 文字の大きさ */
+        .letter3 {
+            font-size: 20px;
+            line-height: 10px;
+        }
+        /* 円と文字の色 */
+        .pink1 {
+            color: black;
+            border: 2px solid white;
+            bakground-color:red;
         }
     </style>
 </head>

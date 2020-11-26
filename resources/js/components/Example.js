@@ -13,7 +13,10 @@ export default class Example extends React.Component {
                             <div className="user-icon"><i class="far fa-user"></i></div>
                             <div className="user-text">
                                 <span>開発部長</span><span className="date">昨日</span><br></br>
-                                <input type="text" value="おはよう御座います"></input>              
+                                <input type="text" value="おはよう御座います"></input> 
+                                <span className="maru size_normal pink1">
+                                    <span class="letter3">7</span>
+                                </span>             
                             </div>              
                         </li>
                         <li>
