@@ -74,11 +74,15 @@
             margin:0;
         }
         li a {
+            height:50px;
             width : 100%;
-            color:red;
+            color:white;
+            text-align:center;
+            font-size:30px;
         }
         a {
             display:block;
+            text-decoration:none;
         }
         li {
             border:solid 1px white;
@@ -89,7 +93,9 @@
 
 <body>
     <div class="side-menu">
-        <p>box2</p>
+        <ul>
+            <li><a href="#"><i class="fas fa-home"></i><span>ホーム</span></a></li>
+        </ul>
     </div>
     <div id="example"></div>
         <script src="{{asset('/js/app.js')}}"></script>
