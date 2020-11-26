@@ -62,11 +62,14 @@
 </head>
 
 <body>
-
+    <div class="box1">
+        <div class="box2">
+            <p>box2</p>
+        </div>
         <div id="example"></div>
             <script src="{{asset('/js/app.js')}}"></script>
         <div>
-    
+    </div>
 </body>
 
 </html>
