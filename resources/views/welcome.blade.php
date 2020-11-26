@@ -68,6 +68,21 @@
         p {
            text-align:center;
         }
+        ul {
+            list-style:none;
+            padding:0;
+            margin:0;
+        }
+        li a {
+            width : 100%;
+            color:red;
+        }
+        a {
+            display:block;
+        }
+        li {
+            border:solid 1px white;
+        }
             
     </style>
 </head>
