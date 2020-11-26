@@ -22,20 +22,25 @@
         }
 
         .box1 {
+            display:flex;
+            display:-webkit-box;
+            height:100vh;
+            width:100vw;
+            
         }
         .box2 {
             width:18vw;
             height:100vh;
             background-color:red;
-            position:absolute;
+         
+            
         }
 
         .box3 {
             width:24vw;
             height:100vh;
             background-color:blue;
-            position:absolute;
-            left:18vw;
+        
         }
         
         .box4 {
@@ -44,14 +49,13 @@
 
         .box5 {
             background-color:green;
-            height:190px;
-            position:absolute;
+            height:20px;
+            box-sizing:border-box;
         }
 
         .box6 {
             background-color:yellow;
-            height:calc(100vh - 190px);
-            position:absolute;
+            height:calc(100vh - 20px);
         }
             
     </style>
@@ -59,11 +63,9 @@
 
 <body>
 
-    <div  class="box1">
-    <div id="example"></div>
-        <script src="{{asset('/js/app.js')}}"></script>
-    <div>
-    <div>
+        <div id="example"></div>
+            <script src="{{asset('/js/app.js')}}"></script>
+        <div>
     
 </body>
 

@@ -5,7 +5,7 @@ export default class Example extends React.Component {
     render() {
         return (
 
-            <div>
+            <div className="box1">
                <div className="box2"><p>box2</p></div>
                <div className="box3">box3</div>
                 <div className="box4">
