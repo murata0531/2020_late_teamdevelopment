@@ -12,10 +12,12 @@ export default class Example extends React.Component {
                         <li>
                             <div className="user-icon"><i class="far fa-user"></i></div>
                             <div className="user-text">
-                                <span>開発部長</span><span className="date">昨日</span><br></br>
+                                <div className="user-message-info">
+                                    <span id="user-name">開発部長</span><span id="day">昨日</span>
+                                </div>
                                 <input type="text" value="おはよう御座います"></input> 
                                 <span className="maru size_normal pink1">
-                                    <span class="letter3">7</span>
+                                    <span className="letter3">7</span>
                                 </span>             
                             </div>              
                         </li>

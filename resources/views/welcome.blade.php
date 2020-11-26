@@ -165,6 +165,11 @@
             border: 2px solid red;
             bakground-color:red;
         }
+
+        .user-message-info {
+            display:flex;
+        }
+        
     </style>
 </head>
 
