@@ -27,7 +27,7 @@
         .side-menu {
             width:18vw;
             height:100vh;
-            background-color:red;
+            background-color:lime;
          
         }
 
@@ -77,12 +77,13 @@
             height:50px;
             width : 100%;
             color:white;
-            text-align:center;
+            text-align:left;
             font-size:30px;
         }
         a {
             display:block;
             text-decoration:none;
+            padding-left:20px;
         }
         li {
             border:solid 1px white;
@@ -95,6 +96,11 @@
     <div class="side-menu">
         <ul>
             <li><a href="#"><i class="fas fa-home"></i><span>ホーム</span></a></li>
+            <li><a href="#"><i class="fas fa-tasks"></i><span>タスク</span></a></li>
+            <li><a href="#"><i class="fas fa-book-open"></i><span>ノート</span></a></li>
+            <li><a href="#"><i class="far fa-folder"></i><span>ファイル共有</span></a></li>
+            <li><a href="#"><i class="far fa-file-alt"></i><span>レポート</span></a></li>
+
         </ul>
     </div>
     <div id="example"></div>
