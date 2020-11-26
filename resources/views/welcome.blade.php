@@ -16,21 +16,26 @@
 
 
     <style>
-        body {
+        html,body {
             display:flex;
             height:100vh;
             width:100vw;
             padding:0;
             margin:0 auto;
+            font-size:4vm;
         }
 
         .side-menu {
             width:18vw;
             height:100vh;
-            background-color:lime;
-         
+            background-color:#62ABB6;
         }
 
+        .side-menu > ul > li > a {
+            display:flex;
+            align-items:center;
+            
+        }
         .main-menu {
             display:flex;
             height:100vh;
@@ -43,6 +48,7 @@
             background-color:#CCE3E3;
             overflow-y:scroll;
             overflow-x:hidden;
+            border: solid #E0E0E0 1px;
         
         }
         
@@ -87,17 +93,13 @@
             width : 100%;
             color:white;
             text-align:left;
-            font-size:30px;
-        }
-        a {
+            font-size:100%;
             display:block;
             text-decoration:none;
             padding-left:20px;
+            /* border:solid 1px white; */
         }
-        li {
-            border:solid 1px white;
-        }
-
+      
         .search-text{
             height: 40px;
             width: calc(24vw - 80px);
@@ -110,6 +112,7 @@
         }
 
         .folder-list > li {
+            border:solid 1px white;
             height:80px;
             width:100%;
             display:flex;
