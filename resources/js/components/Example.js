@@ -5,13 +5,12 @@ export default class Example extends React.Component {
     render() {
         return (
 
-            <div className="box1">
-               <div className="box2"><p>box2</p></div>
-               <div className="box3">box3</div>
-                <div className="box4">
-                    <div className="box5">box5</div>
-                    <div className="box6">box6</div>
-                </div>
+            <div className="main-menu">
+               <div className="folder-menu"><p>フォルダメニュー</p></div>
+               <div className="main-contents">
+                    <div className="main-header"><p>メインヘッダー</p></div>
+                    <div className="main-item"><p>メインアイテム</p></div>
+               </div>
             </div>
         )
     }

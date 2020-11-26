@@ -16,60 +16,69 @@
 
 
     <style>
-        *{
-            margin: 0px;
-            padding: 0px;
-        }
-
-        .box1 {
+        body {
             display:flex;
-            display:-webkit-box;
             height:100vh;
             width:100vw;
-            
+            padding:0;
+            margin:0 auto;
         }
-        .box2 {
+
+        .side-menu {
             width:18vw;
             height:100vh;
             background-color:red;
          
-            
         }
 
-        .box3 {
+        .main-menu {
+            display:flex;
+            height:100vh;
+            width:calc(100vw - 18vw);
+        }
+
+        .folder-menu {
             width:24vw;
             height:100vh;
             background-color:blue;
         
         }
         
-        .box4 {
+        .main-contents {
             height:100vh;
+            width:58vw;
+            background-color:gray;
         }
 
-        .box5 {
+        .main-header {
             background-color:green;
-            height:20px;
-            box-sizing:border-box;
+            height:100px;
+            width:58vw;
+            top:0px;
+            position:absolute;
         }
 
-        .box6 {
+        .main-item {
             background-color:yellow;
-            height:calc(100vh - 20px);
+            height:calc(100vh - 100px);
+            width:58vw;
+            top:100px;
+            position:absolute;
+        }
+        p {
+           text-align:center;
         }
             
     </style>
 </head>
 
 <body>
-    <div class="box1">
-        <div class="box2">
-            <p>box2</p>
-        </div>
-        <div id="example"></div>
-            <script src="{{asset('/js/app.js')}}"></script>
-        <div>
+    <div class="side-menu">
+        <p>box2</p>
     </div>
+    <div id="example"></div>
+        <script src="{{asset('/js/app.js')}}"></script>
+    <div>
 </body>
 
 </html>
