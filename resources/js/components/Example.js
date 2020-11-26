@@ -7,7 +7,7 @@ export default class Example extends React.Component {
 
             <div className="main-menu">
                 <div className="folder-menu">
-                    <input type="text" className="search-text" placeholder="&#xf002; キーワードを入力"></input>
+                    <input type="text" className="search-text" placeholder=" &#xf002; キーワードを入力"></input>
                     <ul className="folder-list">
                         <li>
                             <div className="user-icon"><i class="far fa-user"></i></div>

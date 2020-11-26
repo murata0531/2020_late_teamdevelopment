@@ -153,13 +153,13 @@
         }
         /* 文字の大きさ */
         .letter3 {
-            font-size: 20px;
-            line-height: 10px;
+            font-size: 15px;
+            line-height: 7px;
         }
         /* 円と文字の色 */
         .pink1 {
             color: black;
-            border: 2px solid white;
+            border: 2px solid red;
             bakground-color:red;
         }
     </style>
