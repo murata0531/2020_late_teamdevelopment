@@ -46,9 +46,11 @@
             width:24vw;
             height:100vh;
             background-color:#CCE3E3;
+            color:#007a7a;
             overflow-y:scroll;
             overflow-x:hidden;
             border: solid #E0E0E0 1px;
+
         
         }
         
@@ -111,12 +113,19 @@
             font-weight: 600;
         }
 
+        /* .folder-list {
+            height:calc(100vh - 40px);
+            position:fixed;
+            top:80px;
+            overflow-x:scroll;
+        } */
         .folder-list > li {
             border:solid 1px white;
             height:80px;
             width:100%;
             display:flex;
             align-items:center;
+            background-color:#e9f2f3;
         }
 
         
@@ -166,10 +175,43 @@
             bakground-color:red;
         }
 
+        .my-header {
+            display:flex;
+            margin-left:0;
+            color:#8aa0a0;
+            background-color:#e9f2f3;
+        }
+
+        .my-header-title {
+            width:40%;
+            background-color:#e9f2f3;
+        }
+
+        .my-header-items {
+            width:60%;
+            background-color:#40px;
+        }
         .user-message-info {
             display:flex;
         }
-        
+
+        .messageLine {
+                overflow: auto;
+                border-right: 1px solid #555;
+                border-left: 1px solid #555;
+            }
+            ..opponent {
+                float: left;
+                line-height: 1.3em;
+            }
+            .opponent .message_box {
+                max-width: 100%;
+                font-size: 17px;
+                background: #fff;
+                border: 1px solid #999;
+                border-radius: 0px 30px 30px 30px;
+                margin-left: 50px;
+            }
     </style>
 </head>
 
