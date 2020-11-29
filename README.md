@@ -10,6 +10,8 @@ Laravel8 + React + firebase
 
 ___________________________________________________
 
+構築
+
 cp .env.example .env
 
 composer update
