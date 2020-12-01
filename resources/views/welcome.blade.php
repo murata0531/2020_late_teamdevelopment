@@ -144,10 +144,7 @@
             flex-flow:column;
         }
         .inner-circle > input {
-            height:20px;
-            width:70%;
-            position:relative;
-            top:50%;
+            
         }
     
         /* .maru {
@@ -181,6 +178,8 @@
             display:flex;
             width:100%;
             position:relative;
+            height:20px;
+            top:30%;
         }
         .circle{
                 width: 20px;
