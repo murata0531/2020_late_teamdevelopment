@@ -140,14 +140,16 @@
         .user-text {
             position:relative;
             height:50px;
+            display:flex;
+            flex-flow:column;
         }
-        .user-text > input {
+        /* .user-text > input {
             height:35%;
             width:70%;
             position:relative;
-        }
+        } */
     
-        .maru {
+        /* .maru {
             display: inline-flex;
             justify-content: center;
             align-items: center;
@@ -159,21 +161,35 @@
             left:10px;
         }
         /* 円の大きさ */
-        .size_normal{
+        /* .size_normal{
             width: 20px;
             height: 20px;
-        }
+        } */
         /* 文字の大きさ */
-        .letter3 {
+        /* .letter3 {
             font-size: 15px;
             line-height: 7px;
-        }
+        } */
         /* 円と文字の色 */
-        .pink1 {
+        /* .pink1 {
             color: black;
             border: 2px solid red;
             bakground-color:red;
+        } */ 
+        .inner-circle {
+            display:flex;
+            width:100%;
+            position:relative;
+            height:90%;
         }
+        .circle{
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: red;
+                text-align: center;
+                color:white;
+            }
 
         .my-header {
             display:flex;
@@ -193,6 +209,7 @@
         }
         .user-message-info {
             display:flex;
+            height:10%;
         }
 
         .messageLine {

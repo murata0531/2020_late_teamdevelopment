@@ -15,10 +15,10 @@ export default class Example extends React.Component {
                                 <div className="user-message-info">
                                     <span id="user-name">開発部長</span><span id="day">昨日</span>
                                 </div>
-                                <input type="text" value="おはよう御座います"></input> 
-                                <span className="maru size_normal pink1">
-                                    <span className="letter3">7</span>
-                                </span>             
+                                <div className="inner-circle">
+                                    <input type="text" value="おはよう御座います"></input> 
+                                    <p className="circle">7</p>
+                                </div>             
                             </div>              
                         </li>
                         <li>
