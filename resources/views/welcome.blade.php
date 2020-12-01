@@ -139,15 +139,16 @@
 
         .user-text {
             position:relative;
-            height:50px;
+            height:100%;
             display:flex;
             flex-flow:column;
         }
-        /* .user-text > input {
-            height:35%;
+        .inner-circle > input {
+            height:20px;
             width:70%;
             position:relative;
-        } */
+            top:50%;
+        }
     
         /* .maru {
             display: inline-flex;
@@ -180,7 +181,6 @@
             display:flex;
             width:100%;
             position:relative;
-            height:90%;
         }
         .circle{
                 width: 20px;
