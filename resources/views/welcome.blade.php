@@ -70,11 +70,15 @@
         }
 
         .my-header {
-            width:60%;
-            background-color:red;
+            width:70%;
+            display:flex;
+            margin-left:0;
+            color:#8aa0a0;
+            background-color:#e9f2f3;      
         }
+
         .account-settings {
-            width:40%;
+            width:30%;
             background-color:blue;
         }
         .main-item {
