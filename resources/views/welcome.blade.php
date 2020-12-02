@@ -190,13 +190,6 @@
                 color:white;
             }
 
-        .my-header {
-            display:flex;
-            margin-left:0;
-            color:#8aa0a0;
-            background-color:#e9f2f3;
-        }
-
         .my-header-title {
             width:40%;
             background-color:#e9f2f3;
