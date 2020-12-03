@@ -17,3 +17,6 @@ cp .env.example .env
 composer update
 
 npm install
+
+
+firebase apiキー各自取得
