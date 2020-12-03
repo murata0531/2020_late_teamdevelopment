@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends ConsoleKernel
 {
@@ -12,6 +13,11 @@ class Kernel extends ConsoleKernel
      *
      * @var array
      */
+
+    protected $middleware = [
+        \App\Http\Middleware\ForceHttps::class, // 追加
+    ];
+
     protected $commands = [
         //
     ];
