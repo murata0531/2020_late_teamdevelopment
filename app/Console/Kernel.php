@@ -14,9 +14,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
 
-    // protected $middleware = [
-    //     \App\Http\Middleware\ForceHttps::class, // 追加
-    // ];
+    protected $middleware = [
+        
+        \App\Http\Middleware\ForceHttps::class, // 追加
+    ];
 
     protected $commands = [
         //
