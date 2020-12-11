@@ -19,7 +19,10 @@
         html,body {
             margin:0;
             padding:0;
-            background-image:url("../images/")
+            background-image:url("{{ asset('images/arael-top.png') }}");
+            background-size:cover;
+            box-sizing: border-box;
+            height:100vh;
         }
 
         
@@ -49,7 +52,6 @@
 </head>
 
 <body>
-    
 </body>
 
 </html>
