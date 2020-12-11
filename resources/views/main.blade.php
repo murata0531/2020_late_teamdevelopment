@@ -25,33 +25,40 @@
             height:100vh;
         }
 
-        
+        .opacity-box {
+            background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            opacity: 0.5;
+            height:100vh;
+            width:100vw;
+            display:flex;
+            justify-content:center;
+        }
+
+        .box1 {
+            height:100vh;
+            width:50vw;
+            background-color:red;
+        }
+
+        .box2 {
+            height:100vh;
+            width:50vw;
+            background-color:blue;
+        }
     </style>
     
-    <!-- ここにアプリのscriptタグを貼り付けます。 -->
-
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
-        <!-- <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script> -->
-
-        <!-- TODO: Add SDKs for Firebase products that you want to use
-            https://firebase.google.com/docs/web/setup#available-libraries -->
-        <!-- <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
-
-        <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script> -->
-        <!-- <script> -->
-            <!-- // Your web app's Firebase configuration
-            var firebaseConfig = {
-                
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-            firebase.analytics(); -->
-        </script>
 </head>
 
 <body>
+
+    <div class="opacity-box">
+        <div class="box1">
+
+        </div>
+        <div class="box2">
+        </div>
+    </div>
 </body>
 
 </html>
