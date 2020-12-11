@@ -26,7 +26,7 @@
             font-family:'Noto Sans JP',sans-serif;
         }
 
-        img {
+        .arael-top {
             background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
             background: #FFFFFF 0% 0% no-repeat padding-box;
             position:absolute;
@@ -53,6 +53,8 @@
             height:30%;
             width:100%;
             display:flex;
+            /* justify-content:center; */
+            align-items:center;
         }
 
         .title {
@@ -72,13 +74,13 @@
         }
 
         #catch-copy {
-            position:relative;
-            top:20px;
+            top:50px;
             font-size:2vw;
             color:#62ABB6;
         }
         #tool {
-            font-size:1vw;
+            top:40px;
+            font-size:1.2vw;
             font: normal normal normal;
             letter-spacing: 0px;
             color: #83CECE;
@@ -100,13 +102,64 @@
         }
         .logo > img {
             position:relative;
-            height:60%;
+            top:20px;
+            height:75%;
             width:auto;
             background: transparent 0% 0% no-repeat padding-box;
             opacity:1;
             /* background: transparent url("{{ asset('images/ARAEL.png') }}") 0% 0% no-repeat padding-box; */
+        }
 
-            
+        .arael-shadow {
+            position:relative;
+            left:50%;
+            top:20px;
+            height:75%;
+            transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+            background: var(--unnamed-color-00da9f) 0% 0% no-repeat padding-box;
+            background: #00DA9F 0% 0% no-repeat padding-box;
+            opacity: 0.5;
+        }
+
+        .url-field {
+            position:absolute;
+            left:10%;
+            display:flex;
+            justify-content:space-around;
+            align-items:center;
+            height:10vh;
+            width:40vw;
+            background: var(--unnamed-color-62abb6) 0% 0% no-repeat padding-box;
+            background: #62ABB6 0% 0% no-repeat padding-box;
+            border-radius: 10px;
+            opacity: 1;
+            font-size:1.2vw;
+        }
+
+        .url-field > p {
+            color: var(--unnamed-color-ffffff);
+            text-align: center;
+            letter-spacing: 4px;
+            color: #FFFFFF;
+            opacity: 1;
+        }
+        .url-field > input {
+            position:relative;
+            height:40%;
+            width:40%;
+            background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border-radius: 4px;
+            opacity: 1;
+        }
+
+        .url-field > select {
+            position:relative;
+            height:50%;
+            width:20%;
+            background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            opacity: 1;
         }
 
     </style>
@@ -115,7 +168,7 @@
 
 <body>
 
-    <img src="{{ asset('images/arael-top.png') }}">
+    <img src="{{ asset('images/arael-top-back.png') }}" class="arael-top">
     <div class="opacity-box">
         <div class="box1">
             <div class="title">
@@ -125,9 +178,17 @@
             </div>
             <div class="logo">
                 <img src="{{ asset('images/ARAEL.png') }}">
+                <div class="arael-shadow"></div>
             </div>
         </div>
         <div class="box2">
+            <div class="url-field">
+                <p>https://</p>
+                <input type="text">
+                <select>
+                    <option>arael.ne.jp</option>
+                </select>
+            </div>
         </div>
     </div>
 </body>
