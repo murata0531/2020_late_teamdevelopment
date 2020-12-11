@@ -52,7 +52,6 @@
         .box2 {
             height:30%;
             width:100%;
-            background-color:blue;
             display:flex;
         }
 
@@ -95,9 +94,21 @@
         }
         .logo {
             width:50%;
-            background: transparent url("{{ asset('images/arael.png') }}") 0% 0% no-repeat padding-box;
-            opacity: 1;
+            display:flex;
+            align-items:center;
+
         }
+        .logo > img {
+            position:relative;
+            height:60%;
+            width:auto;
+            background: transparent 0% 0% no-repeat padding-box;
+            opacity:1;
+            /* background: transparent url("{{ asset('images/ARAEL.png') }}") 0% 0% no-repeat padding-box; */
+
+            
+        }
+
     </style>
     
 </head>
@@ -113,7 +124,7 @@
                 <p id="title-text">ARAEL</p>
             </div>
             <div class="logo">
-
+                <img src="{{ asset('images/ARAEL.png') }}">
             </div>
         </div>
         <div class="box2">
