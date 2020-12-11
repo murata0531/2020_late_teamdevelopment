@@ -24,6 +24,7 @@
             box-sizing: border-box;
             height:100vh;
             font-family:'Noto Sans JP',sans-serif;
+            overflow-y:hidden;
         }
 
         .arael-top {
@@ -43,14 +44,14 @@
         }
 
         .box1 {
-            height:70%;
+            height:60%;
             width:100%;
             display:flex;
             justify-content:center;
         }
 
         .box2 {
-            height:30%;
+            height:40%;
             width:100%;
             display:flex;
             /* justify-content:center; */
@@ -70,7 +71,7 @@
             position:relative;
             mix-blend-mode: normal;
             opacity: 1;
-            left:20%;
+            left:15%;
         }
 
         #catch-copy {
@@ -122,10 +123,9 @@
         }
 
         .url-field {
-            position:absolute;
-            left:10%;
+            position:relative;
+            left:7%;
             display:flex;
-            justify-content:space-around;
             align-items:center;
             height:10vh;
             width:40vw;
@@ -137,6 +137,8 @@
         }
 
         .url-field > p {
+            position:relative;
+            left:10%;
             color: var(--unnamed-color-ffffff);
             text-align: center;
             letter-spacing: 4px;
@@ -145,8 +147,9 @@
         }
         .url-field > input {
             position:relative;
+            left:15%;
             height:40%;
-            width:40%;
+            width:30%;
             background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
             background: #FFFFFF 0% 0% no-repeat padding-box;
             border-radius: 4px;
@@ -155,10 +158,54 @@
 
         .url-field > select {
             position:relative;
-            height:50%;
+            left:20%;
+            height:40%;
             width:20%;
             background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
             background: #FFFFFF 0% 0% no-repeat padding-box;
+            opacity: 1;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .signin {
+            position:relative;
+            height:10vh;
+            width:14vw;
+            left:10%;
+            background: var(--unnamed-color-00da9f) 0% 0% no-repeat padding-box;
+            background: #00DA9F 0% 0% no-repeat padding-box;
+            border-radius: 10px;
+            opacity: 0.5;
+        }
+
+        .signin > p {
+            color: var(--unnamed-color-ffffff);
+            text-align: center;
+            letter-spacing: 4.8px;
+            color: #FFFFFF;
+            font-size:1.2vw;
+            opacity: 1;
+        }
+
+        .company {
+            position:relative;
+            height:10vh;
+            width:20vw;
+            left:12%;
+            background: var(--unnamed-color-4b8999) 0% 0% no-repeat padding-box;
+            background: #4B8999 0% 0% no-repeat padding-box;
+            border-radius: 10px;
+            opacity: 0.5;
+        }
+
+        .company > p {
+            color: var(--unnamed-color-ffffff);
+            text-align: center;
+            letter-spacing: 4.8px;
+            color: #FFFFFF;
+            font-size:1.2vw;
             opacity: 1;
         }
 
@@ -189,6 +236,9 @@
                     <option>arael.ne.jp</option>
                 </select>
             </div>
+            <button class="signin"><p>サインイン</p></button>
+            <button class="company"><p>企業管理ページへ</p></button>
+
         </div>
     </div>
 </body>
