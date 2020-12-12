@@ -71,16 +71,16 @@
             position:relative;
             mix-blend-mode: normal;
             opacity: 1;
-            left:15%;
+            left:20%;
         }
 
         #catch-copy {
-            top:50px;
+            top:100px;
             font-size:2vw;
             color:#62ABB6;
         }
         #tool {
-            top:40px;
+            top:90px;
             font-size:1.2vw;
             font: normal normal normal;
             letter-spacing: 0px;
@@ -112,7 +112,7 @@
         .logo-area > img {
             position:relative;
             top:10vh;
-            height:50vh;
+            height:60vh;
             width:auto;
             background: transparent 0% 0% no-repeat padding-box;
             z-index:1;
@@ -122,10 +122,10 @@
 
         .arael-shadow {
             position:absolute;
-            top:20vh;
-            left:25vh;
-            height:33vh;
-            width:33vh;
+            top:21vh;
+            left:30vh;
+            height:42vh;
+            width:42vh;
             transform: rotate(45deg);
             opacity: 0.5;
             background: #00DA9F 0% 0% no-repeat padding-box;
@@ -133,7 +133,8 @@
 
         .url-field {
             position:relative;
-            left:7%;
+            top:10%;
+            left:10%;
             display:flex;
             align-items:center;
             height:10vh;
@@ -147,7 +148,7 @@
 
         .url-field > p {
             position:relative;
-            left:10%;
+            left:15%;
             color: var(--unnamed-color-ffffff);
             text-align: center;
             letter-spacing: 4px;
@@ -180,9 +181,10 @@
 
         .signin {
             position:relative;
+            top:10%;
             height:10vh;
-            width:14vw;
-            left:10%;
+            width:17vw;
+            left:13%;
             background: var(--unnamed-color-00da9f) 0% 0% no-repeat padding-box;
             background: #00DA9F 0% 0% no-repeat padding-box;
             border-radius: 10px;
@@ -200,9 +202,10 @@
 
         .company {
             position:relative;
+            top:10%;
             height:10vh;
             width:20vw;
-            left:12%;
+            left:15%;
             background: var(--unnamed-color-4b8999) 0% 0% no-repeat padding-box;
             background: #4B8999 0% 0% no-repeat padding-box;
             border-radius: 10px;
