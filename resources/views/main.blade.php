@@ -96,30 +96,39 @@
             text-shadow: 0px 0px 7vw #3da6a6;
         }
         .logo {
+            position:relative;
             width:50%;
+            height:100%;
             display:flex;
             align-items:center;
 
         }
-        .logo > img {
+
+        .logo-area {
             position:relative;
-            top:20px;
-            height:75%;
+            height:100%;
+            width:100%;
+        }
+        .logo-area > img {
+            position:relative;
+            top:10vh;
+            height:50vh;
             width:auto;
             background: transparent 0% 0% no-repeat padding-box;
+            z-index:1;
             opacity:1;
             /* background: transparent url("{{ asset('images/ARAEL.png') }}") 0% 0% no-repeat padding-box; */
         }
 
         .arael-shadow {
-            position:relative;
-            left:50%;
-            top:20px;
-            height:75%;
-            transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-            background: var(--unnamed-color-00da9f) 0% 0% no-repeat padding-box;
-            background: #00DA9F 0% 0% no-repeat padding-box;
+            position:absolute;
+            top:20vh;
+            left:25vh;
+            height:33vh;
+            width:33vh;
+            transform: rotate(45deg);
             opacity: 0.5;
+            background: #00DA9F 0% 0% no-repeat padding-box;
         }
 
         .url-field {
@@ -224,8 +233,11 @@
                 <p id="title-text">ARAEL</p>
             </div>
             <div class="logo">
-                <img src="{{ asset('images/ARAEL.png') }}">
-                <div class="arael-shadow"></div>
+                <div class="logo-area">
+                    <img src="{{ asset('images/ARAEL.png') }}">
+                    <div class="arael-shadow">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="box2">
