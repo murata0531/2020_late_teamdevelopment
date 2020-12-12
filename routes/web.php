@@ -13,16 +13,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/test', function($user){
-    return $user;
+
+Route::domain('localhost')->group(function(){
+    Route::get('/main', function () {
+        return view('main');
+    });
 });
+
+
+Route::domain('{x}.localhost')->group(function(){
+    Route::get('/', function($user){
+        return $user;
+    });
+});
+
+
+
+// Route::group(
+//     array("domain" => "abc.laravel.localhost"),
+//     function() {
+//         dd("b");
+//     }
+// );
+
+// Route::group(
+//     array("domain" => "{account}.laravel.localhost"),
+//     function() {
+//         dd("a");
+//     }
+// );
+
+
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/main', function () {
-    return view('main');
-});
+
 
 // Route::get('/', function () {
 //    return view('welcome');

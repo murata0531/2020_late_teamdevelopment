@@ -33,8 +33,44 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
+    public function map()
+    {
+        $this->mapApiRoutes();
+
+        $this->mapWebRoutes();
+
+        $this->mapUserRoutes();
+        //
+    }
+
+    protected function mapWebRoutes()
+    {
+        Route::middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/web.php'));
+    }
+
+    protected function mapApiRoutes()
+    {
+        Route::domain('api.localhost:8080')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
+    }
+
+    protected function mapUserRoutes()
+    {
+        Route::domain('{user}.'.config('const.app_domain'))
+            ->middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/user.php'));
+    }
+
     public function boot()
     {
+
+        
         $this->configureRateLimiting();
 
         $this->routes(function () {
@@ -47,6 +83,8 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });
+
+        
     }
 
     /**

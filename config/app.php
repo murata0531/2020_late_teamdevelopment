@@ -228,5 +228,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+    // [
+    // 'main' => env('MAIN_DOMAIN', '127.0.0.1'),
+    // 'survey' => env('SURVEY_DOMAIN', 'localhost'),
+    // ],
 
 ];
