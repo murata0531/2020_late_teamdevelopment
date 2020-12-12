@@ -14,6 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+function map()
+{
+    $this->mapApiRoutes();
+
+    $this->mapWebRoutes();
+
+    $this->mapUserRoutes();
+}
+
+function mapUserRoutes()
+{
+    Route::domain('{user}.'.config('const.app_domain'))
+        ->middleware('web')
+        ->namespace($this->namespace)
+        ->group(base_path('routes/user.php'));
+}
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
