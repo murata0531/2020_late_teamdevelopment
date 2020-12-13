@@ -131,6 +131,11 @@
             background: #00DA9F 0% 0% no-repeat padding-box;
         }
 
+        form {
+            display:flex;
+            position:relative;
+            top:10%;
+        }
         .url-field {
             position:relative;
             top:10%;
@@ -160,7 +165,7 @@
             left:15%;
             height:40%;
             width:30%;
-            background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+            text-align:center;
             background: #FFFFFF 0% 0% no-repeat padding-box;
             border-radius: 4px;
             opacity: 1;
@@ -186,19 +191,28 @@
             width:17vw;
             left:13%;
             background: var(--unnamed-color-00da9f) 0% 0% no-repeat padding-box;
-            background: #00DA9F 0% 0% no-repeat padding-box;
+            /* background: #00DA9F 0% 0% no-repeat padding-box; */
+            background-color:rgba(0, 218, 159, 0.5);
             border-radius: 10px;
-            opacity: 0.5;
+            opacity: 1;
+
+            text-align: center;
+            letter-spacing: 4.8px;
+            color: rgba(255,255,255,1);
+            font-size:1.2vw;
+            cursor:pointer;
+            cursor:hand;
+            font-size:1.2vw;
         }
 
-        .signin > p {
+        /* .signin > p {
             color: var(--unnamed-color-ffffff);
             text-align: center;
             letter-spacing: 4.8px;
             color: #FFFFFF;
             font-size:1.2vw;
             opacity: 1;
-        }
+        } */
 
         .company {
             position:relative;
@@ -210,6 +224,8 @@
             background: #4B8999 0% 0% no-repeat padding-box;
             border-radius: 10px;
             opacity: 0.5;
+            cursor:pointer;
+            cursor:hand;
         }
 
         .company > p {
@@ -244,6 +260,8 @@
             </div>
         </div>
         <div class="box2">
+
+            <form>
             <div class="url-field">
                 <p>https://</p>
                 <input type="text">
@@ -251,7 +269,8 @@
                     <option>arael.ne.jp</option>
                 </select>
             </div>
-            <button class="signin"><p>サインイン</p></button>
+            <input type="submit" value="サインイン" class="signin">
+            </form>
             <button class="company"><p>企業管理ページへ</p></button>
 
         </div>
