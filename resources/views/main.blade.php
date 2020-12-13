@@ -261,15 +261,15 @@
         </div>
         <div class="box2">
 
-            <form>
-            <div class="url-field">
-                <p>https://</p>
-                <input type="text">
-                <select>
-                    <option>arael.ne.jp</option>
-                </select>
-            </div>
-            <input type="submit" value="サインイン" class="signin">
+            <form action="" method="POST">
+                <div class="url-field">
+                    <p>https://</p>
+                    <input type="text" name="text">
+                    <select name="domain">
+                        <option>arael.ne.jp</option>
+                    </select>
+                </div>
+                <input type="submit" value="サインイン" class="signin">
             </form>
             <button class="company"><p>企業管理ページへ</p></button>
 
