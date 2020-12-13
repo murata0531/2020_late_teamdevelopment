@@ -10,6 +10,6 @@ class TopController extends Controller
 
         $text = $request['text'];
 
-        return redirect('/main', 302, [], true);
+        return redirect('/user/1');
     }
 }

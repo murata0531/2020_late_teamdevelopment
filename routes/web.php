@@ -26,6 +26,10 @@ Route::domain('localhost')->group(function(){
     Route::get('/main', function () {
         return view('main');
     });
+
+    Route::get('/user/{z}',function ($user) {
+        return $user;
+    });
 });
 
 
