@@ -9,5 +9,7 @@ class TopController extends Controller
     public function post(Request $request){
 
         $text = $request['text'];
+
+        return redirect('/main', 302, [], true);
     }
 }

@@ -261,10 +261,11 @@
         </div>
         <div class="box2">
 
-            <form action="" method="POST">
+            <form action="{{ route('top') }}" method="POST">
+                @csrf
                 <div class="url-field">
                     <p>https://</p>
-                    <input type="text" name="text" require>
+                    <input type="text" name="text" required>
                     <select name="domain">
                         <option>arael.ne.jp</option>
                     </select>

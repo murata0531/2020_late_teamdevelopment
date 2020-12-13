@@ -13,17 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::domain('{x}.localhost')->group(function(){
+    Route::get('/user', function($user){
+        return $user;
+    });
+});
+
+Route::post('/top',[App\Http\Controllers\TopController::class, 'post'])->name('top');
+
 
 Route::domain('localhost')->group(function(){
     Route::get('/main', function () {
         return view('main');
-    });
-});
-
-
-Route::domain('{x}.localhost')->group(function(){
-    Route::get('/', function($user){
-        return $user;
     });
 });
 
