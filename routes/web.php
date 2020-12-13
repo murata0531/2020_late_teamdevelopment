@@ -27,7 +27,7 @@ Route::domain('localhost')->group(function(){
         return view('main');
     });
 
-    Route::get('/user/{z}',function ($user) {
+    Route::get('/company/{url}',function ($user) {
         return $user;
     });
 });
