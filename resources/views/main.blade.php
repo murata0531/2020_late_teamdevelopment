@@ -264,7 +264,7 @@
             <form action="" method="POST">
                 <div class="url-field">
                     <p>https://</p>
-                    <input type="text" name="text">
+                    <input type="text" name="text" require>
                     <select name="domain">
                         <option>arael.ne.jp</option>
                     </select>
