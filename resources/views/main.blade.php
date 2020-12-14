@@ -228,19 +228,28 @@
             cursor:hand;
         }
 
-        .company > p {
+        .company > a > p {
             color: var(--unnamed-color-ffffff);
             text-align: center;
             letter-spacing: 4.8px;
             color: #FFFFFF;
             font-size:1.2vw;
             opacity: 1;
+            position:relative;
+            width:100%;
+            height:100%;
         }
 
-        .company > p > a {
+        .company > a {
             text-decoration:none;
             color:rgba(255,255,255,1);
-        }
+            position:relative;
+            height:100%;
+            width:100%;
+            text-align:center;
+            letter-spacing: 4.8px;
+            font-size:1.2vw;
+        } 
 
     </style>
     
@@ -276,7 +285,7 @@
                 </div>
                 <input type="submit" value="サインイン" class="signin">
             </form>
-            <button class="company"><p><a id="target">企業管理ページへ</a></p></button></a>
+            <button class="company"><a id="target">企業管理ページへ</a></button>
             
         </div>
     </div>
