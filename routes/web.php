@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::domain('{x}.localhost')->group(function(){
     Route::get('/', function($user){
-        return $user;
+        return view('userlogin',compact('user'));
     });
 });
 
