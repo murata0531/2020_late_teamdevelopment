@@ -93,7 +93,7 @@
             letter-spacing: 1.5vw;
             color: var(--unnamed-color-ffffff);
             color: white;
-            text-shadow: 0px 0px 7vw #3da6a6;
+            text-shadow: 1px 5px 1vw #3da6a6;
         }
         .logo {
             position:relative;
