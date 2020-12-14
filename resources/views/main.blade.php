@@ -237,6 +237,11 @@
             opacity: 1;
         }
 
+        .company > p > a {
+            text-decoration:none;
+            color:rgba(255,255,255,1);
+        }
+
     </style>
     
 </head>
@@ -260,22 +265,33 @@
             </div>
         </div>
         <div class="box2">
-
             <form action="{{ route('top') }}" method="POST">
                 @csrf
                 <div class="url-field">
                     <p>https://</p>
-                    <input type="text" name="text" required>
+                    <input type="text" id="text" required onchange="change1();">
                     <select name="domain">
                         <option>arael.ne.jp</option>
                     </select>
                 </div>
                 <input type="submit" value="サインイン" class="signin">
             </form>
-            <button class="company"><p>企業管理ページへ</p></button>
-
+            <button class="company"><p><a id="target">企業管理ページへ</a></p></button></a>
+            
         </div>
     </div>
+
+    <script>
+
+const target = document.getElementById("target");
+
+            function change1(){
+                const text = document.getElementById('text').value;
+                
+                target.href = "http://" + text + ".localhost:8000/";
+                alert(target.href);
+            }
+    </script>
 </body>
 
 </html>
