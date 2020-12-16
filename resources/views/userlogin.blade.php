@@ -20,5 +20,8 @@
 
     </head>
     <body>
+
+        <p>こんにちは、{{ $user }}</p>
+        
     </body>
 </html>
