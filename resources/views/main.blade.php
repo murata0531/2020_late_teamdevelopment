@@ -225,7 +225,7 @@
                 cursor:hand;
             }
 
-            .company > a > p {
+            /* .company > a > p {
                 color: var(--unnamed-color-ffffff);
                 text-align: center;
                 letter-spacing: 4.8px;
@@ -235,7 +235,7 @@
                 position:relative;
                 width:100%;
                 height:100%;
-            }
+            } */
 
             .company > a {
                 text-decoration:none;
