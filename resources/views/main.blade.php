@@ -271,8 +271,10 @@
                 </div>
             </div>
             <div class="box2">
-                <form action="{{ route('top') }}" method="POST">
+                <form>
                     @csrf
+
+                    <input type="hidden">
                     <div class="url-field">
                         <p>https://</p>
                         <input type="text" id="text" required onchange="change1();">
@@ -280,9 +282,9 @@
                             <option>arael.ne.jp</option>
                         </select>
                     </div>
-                    <input type="submit" value="サインイン" class="signin">
+                    <button type="button" class="signin"><a id="target">サインイン</a></button>
                 </form>
-                <button class="company"><a id="target">企業管理ページへ</a></button>
+                <button class="company"><a>企業管理ページへ</a></button>
                 
             </div>
         </div>
