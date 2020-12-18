@@ -273,8 +273,6 @@
             <div class="box2">
                 <form>
                     @csrf
-
-                    <input type="hidden">
                     <div class="url-field">
                         <p>https://</p>
                         <input type="text" id="text" required onchange="change1();">
