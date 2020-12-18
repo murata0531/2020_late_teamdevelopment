@@ -121,8 +121,8 @@
                 position:absolute;
                 top:21vh;
                 left:30vh;
-                height:42vh;
-                width:42vh;
+                height:40vh;
+                width:40vh;
                 transform: rotate(45deg);
                 opacity: 0.5;
                 background: #00DA9F 0% 0% no-repeat padding-box;
@@ -237,7 +237,7 @@
                 height:100%;
             } */
 
-            .company > a {
+             a {
                 text-decoration:none;
                 color:rgba(255,255,255,1);
                 position:relative;
