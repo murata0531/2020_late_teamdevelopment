@@ -25,8 +25,7 @@
             }
 
             .arael-top {
-                background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-                background: #FFFFFF 0% 0% no-repeat padding-box;
+                background-color:white;
                 position:absolute;
                 height:100vh;
                 width:100vw;
@@ -189,7 +188,7 @@
                 left:13%;
                 background: var(--unnamed-color-00da9f) 0% 0% no-repeat padding-box;
                 /* background: #00DA9F 0% 0% no-repeat padding-box; */
-                background-color:rgba(0, 218, 159, 0.5);
+                background-color:rgba(0, 218, 159, 1);
                 border-radius: 10px;
                 opacity: 1;
 
@@ -220,7 +219,7 @@
                 background: var(--unnamed-color-4b8999) 0% 0% no-repeat padding-box;
                 background: #4B8999 0% 0% no-repeat padding-box;
                 border-radius: 10px;
-                opacity: 0.5;
+                opacity: 1;
                 cursor:pointer;
                 cursor:hand;
             }

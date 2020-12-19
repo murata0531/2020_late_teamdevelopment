@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::domain('{x}.localhost')->group(function(){
+Route::domain('{account}.localhost')->group(function(){
     Route::get('/', function($user){
         return view('userlogin',compact('user'));
     });
