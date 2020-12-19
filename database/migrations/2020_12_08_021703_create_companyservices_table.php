@@ -15,7 +15,7 @@ class CreateCompanyservicesTable extends Migration
     {
         Schema::create('companyservices', function (Blueprint $table) {
             $table->id();
-            $table->integer('companyr_id')->unique();
+            $table->integer('company_id')->unique();
             $table->tinyInteger('task')->default(1);
             $table->tinyInteger('talk')->default(1);
             $table->tinyInteger('note')->default(1);
