@@ -15,6 +15,9 @@ class CreateNamingsTable extends Migration
     {
         Schema::create('namings', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->unique();
+            $table->integer('opponent_id')->unique();
+            $table->string('talk_name');
             $table->timestamps();
         });
     }
