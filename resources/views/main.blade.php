@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>arael</title>
 
@@ -20,24 +20,26 @@
                 /* background-image:url("{{ asset('images/arael-top.png') }}"); */
                 background-size:cover;
                 box-sizing: border-box;
-                height:100vh;
+                height:100%;
+                width:100%;
                 font-family:'Noto Sans JP',sans-serif;
-                overflow-y:hidden;
+                overflow:hidden;
             }
 
             .arael-top {
                 background-color:white;
                 position:absolute;
-                height:100vh;
-                width:100vw;
+                height:100%;
+                width:100%;
                 opacity:0.4;
             }
             .opacity-box {
                 position:absolute;
-                height:100vh;
-                width:100vw;
+                height:100%;
+                width:100%;
                 display:flex;
                 flex-flow: column;
+                overflow:hidden;
             }
 
             .box1 {
@@ -64,7 +66,7 @@
                 opacity:1;
             }
 
-            #catch-copy, #tool,#title-text {
+            #catch-copy, #tool, #title-text {
                 position:relative;
                 mix-blend-mode: normal;
                 opacity: 1;
@@ -72,12 +74,12 @@
             }
 
             #catch-copy {
-                top:100px;
+                top:20%;
                 font-size:2vw;
                 color:#62ABB6;
             }
             #tool {
-                top:90px;
+                top:20%;
                 font-size:1.2vw;
                 font: normal normal normal;
                 letter-spacing: 0px;
@@ -85,6 +87,7 @@
             }
             
             #title-text {
+                top:20%;
                 font-size:5vw;
                 font: normal normal normal;
                 letter-spacing: 1.5vw;
@@ -98,7 +101,6 @@
                 height:100%;
                 display:flex;
                 align-items:center;
-
             }
 
             .logo-area {
@@ -294,7 +296,7 @@
             function change1(){
                 const text = document.getElementById('text').value;
                 
-                target.href = "http://" + text + ".localhost:8000/";
+                target.href = "https://" + text + ".b1e785077ff1.ngrok.io";
                 alert(target.href);
             }
             
