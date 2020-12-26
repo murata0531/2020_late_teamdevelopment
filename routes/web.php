@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::domain('{account}.b1e785077ff1.ngrok.io')->group(function(){
+Route::domain('{account}.localhost')->group(function(){
     Route::get('/', function($user){
         return view('userlogin',compact('user'));
     });
@@ -22,7 +22,7 @@ Route::domain('{account}.b1e785077ff1.ngrok.io')->group(function(){
 Route::post('/top',[App\Http\Controllers\TopController::class, 'post'])->name('top');
 
 
-Route::domain('b1e785077ff1.ngrok.io')->group(function(){
+Route::domain('localhost')->group(function(){
     Route::get('/main', function () {
         return view('main');
     });
