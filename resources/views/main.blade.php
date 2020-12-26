@@ -296,7 +296,7 @@
             function change1(){
                 const text = document.getElementById('text').value;
                 
-                target.href = "https://" + text + ".b1e785077ff1.ngrok.io";
+                target.href = "https://" + text + ".localhost:8000";
                 alert(target.href);
             }
             
