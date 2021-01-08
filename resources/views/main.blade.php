@@ -296,7 +296,7 @@
             function change1(){
                 const text = document.getElementById('text').value;
                 
-                target.href = "https://" + text + ".localhost:8000";
+                target.href = "http://" + text + ".localhost:8000/";
                 alert(target.href);
             }
             
