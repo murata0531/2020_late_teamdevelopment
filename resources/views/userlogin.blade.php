@@ -41,6 +41,7 @@
                 overflow:hidden;
                 justify-content:center;
                 align-items:center;
+                opacity:0.5;
             }
 
             .box {
@@ -49,8 +50,7 @@
                 width:60vw;
                 display:flex;
                 justify-content:center;
-                background-color:black;
-                opacity:0.5;
+                background-color:#7C7C7C;
                 flex-direction: column;
             }
 
@@ -58,7 +58,11 @@
                 position:relative;
                 height:20%;
                 width:100%;
-                background-color:red;
+                display:flex;
+                justify-content:center;
+                align-items:center;
+                color:rgba(255,255,255,1);
+                font-size:2em;
             }
 
             .login-form {
@@ -66,6 +70,8 @@
                 height:60%;
                 width:100%;
                 background-color:blue;
+                display:flex;
+                flex-direction: column;
             }
 
             .toregister {
@@ -98,7 +104,7 @@
                     </div>
                     <div class="invalid-pass"></div>
 
-                    <input type="submit" value="サインイン"></input>
+                    <div class="signin"><input type="submit" value="サインイン"></input></div>
                 </form>
 
                 <div class="toregister"></div>
