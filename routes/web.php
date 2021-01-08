@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+//ユーザアクセス
 Route::domain('{account}.localhost')->group(function(){
+
     Route::get('/', function($user){
         return view('userlogin',compact('user'));
     });
@@ -22,7 +25,9 @@ Route::domain('{account}.localhost')->group(function(){
 Route::post('/top',[App\Http\Controllers\TopController::class, 'post'])->name('top');
 
 
+//通常アクセス
 Route::domain('localhost')->group(function(){
+    
     Route::get('/main', function () {
         return view('main');
     });
