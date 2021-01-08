@@ -173,7 +173,7 @@
             a {
                 font-size:1vw;
                 color:white;
-                text-decolation:none;
+                text-decoration:none;
             }
         </style>
         
