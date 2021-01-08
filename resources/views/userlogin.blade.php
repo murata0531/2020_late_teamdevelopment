@@ -10,7 +10,6 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet">
-        <link rel="manifest" href="/manifest.json">
         <!-- Styles -->
 
         <style>
@@ -24,6 +23,7 @@
                 width:100%;
                 font-family:'Noto Sans JP',sans-serif;
                 overflow:hidden;
+                color:white;
             }
 
             .arael-top {
@@ -51,6 +51,28 @@
                 justify-content:center;
                 background-color:black;
                 opacity:0.5;
+                flex-direction: column;
+            }
+
+            .title {
+                position:relative;
+                height:20%;
+                width:100%;
+                background-color:red;
+            }
+
+            .login-form {
+                position:relative;
+                height:60%;
+                width:100%;
+                background-color:blue;
+            }
+
+            .toregister {
+                position:relative;
+                height:20%;
+                width:100%;
+                background-color:green;
             }
 
         </style>
@@ -62,6 +84,24 @@
         <img src="{{ asset('images/arael-top-back.png') }}" class="arael-top">
         <div class="opacity-box">
             <div class="box">
+                <div class="title">ユーザサインイン</div>
+                <form method="post" class="login-form">
+                @csrf
+                    <div class="mail">
+                        <div class="mail-text"><i class="far fa-envelope"></i>メールアドレス</div>
+                        <div class="mail-address"><input type="email" placeholder="example@example.com"></input></div>
+                    </div>
+                    <div class="invalid-mail"></div>
+                    <div class="pass">
+                        <div class="pass-text"><i class="fas fa-lock"></i>パスワード</div>
+                        <div class="password"><input type="password" placeholder="aaa"></input></div>
+                    </div>
+                    <div class="invalid-pass"></div>
+
+                    <input type="submit" value="サインイン"></input>
+                </form>
+
+                <div class="toregister"></div>
             </div>
         </div>
 
