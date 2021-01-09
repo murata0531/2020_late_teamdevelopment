@@ -44,13 +44,13 @@ class RegisterController extends Controller
     public function __construct()
     {
         // $this->middleware('guest');
-        $this->middleware('guest:admin');
+        $this->middleware('guest:company');
 
     }
 
     protected function guard()
     {
-        return Auth::guard('admin');
+        return Auth::guard('company');
     }
 
     public function showRegistrationForm()
