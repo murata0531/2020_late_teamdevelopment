@@ -190,14 +190,30 @@
                 @csrf
                     <div class="mail">
                         <div class="mail-text"><i class="far fa-envelope"></i>　メールアドレス</div>
-                        <div class="mail-address"><input type="email" placeholder="example@example.com"></input></div>
+                        <div class="mail-address">
+                            <input type="email" class="@error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="example@example.com"></input>
+                        </div>
                     </div>
-                    <div class="invalid-mail"></div>
+                    <div class="invalid-mail">
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    </div>
                     <div class="pass">
                         <div class="pass-text"><i class="fas fa-lock"></i>　パスワード　　</div>
-                        <div class="password"><input type="password" placeholder="aaa"></input></div>
+                        <div class="password">
+                            <input type="password" class="@error('pass') is-invalid @enderror" name="pass" id="pass" placeholder="8文字以上で入力してください"></input>
+                        </div>
                     </div>
-                    <div class="invalid-pass"></div>
+                    <div class="invalid-pass">
+                    @error('pass')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    </div>
 
                     <div class="signin"><input type="submit" value="サインイン"></input></div>
                 </form>
