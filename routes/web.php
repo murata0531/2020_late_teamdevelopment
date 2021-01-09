@@ -59,8 +59,11 @@ Route::domain('localhost')->group(function(){
 
 Route::prefix('company')->namespace('Company')->name('company.')->group(function(){
     // Auth::routes();
-    Route::get('login', [App\Http\Controllers\Company\Auth\LoginController::class, 'login'])->name('login');
+    Route::post('login', [App\Http\Controllers\Company\Auth\LoginController::class, 'login'])->name('login');
+    Route::post('logout',[App\Http\Controllers\Company\Auth\LoginController::class,'logout'])->name('logout');
+    Route::post('register',[App\Http\Controllers\Company\Auth\RegisterController::class,'register'])->name('register');
 
+    Route::get('/home',[App\Http\Controllers\Company\HomeController::class,'index'])->name('company_home');
 });
 
 //企業管理者認証
