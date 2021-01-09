@@ -23,23 +23,24 @@ Route::domain('{account}.localhost')->group(function(){
 });
 
 //ユーザログイン認証
-Route::namespace('user')->prefix('user')->name('user.')->group(function () {
+// Route::namespace('user')->prefix('user')->name('user.')->group(function () {
 
-    // ログイン認証関連
-    Auth::routes([
-        'register' => true,
-        'reset'    => false,
-        'verify'   => false
-    ]);
+//     // ログイン認証関連
+//     Auth::routes([
+//         'register' => true,
+//         'reset'    => false,
+//         'verify'   => false
+//     ]);
 
-    // ログイン認証後
-    Route::middleware('auth:user')->group(function () {
+//     // ログイン認証後
+//     Route::middleware('auth:user')->group(function () {
 
-        // TOPページ
-        Route::resource('home', 'HomeController', ['only' => 'index']);
+//         // TOPページ
+//         Route::resource('home', 'HomeController', ['only' => 'index']);
 
-    });
-});
+//     });
+// });
+
 Route::post('/top',[App\Http\Controllers\TopController::class, 'post'])->name('top');
 
 
@@ -56,25 +57,31 @@ Route::domain('localhost')->group(function(){
 });
 
 
-//企業管理者認証
-Route::namespace('admin')->prefix('admin')->name('admin.')->group(function () {
-
-    // ログイン認証関連
-    Auth::routes([
-        'register' => true,
-        'reset'    => false,
-        'verify'   => false
-    ]);
-
-    // ログイン認証後
-    Route::middleware('auth:admin')->group(function () {
-
-        // TOPページ
-        Route::resource('home', 'HomeController', ['only' => 'index']);
-
-    });
+Route::prefix('company')->namespace('Company')->name('company.')->group(function(){
+    // Auth::routes();
+    Route::get('login', [App\Http\Controllers\Company\Auth\LoginController::class, 'login'])->name('login');
 
 });
+
+//企業管理者認証
+// Route::namespace('admin')->prefix('admin')->name('admin.')->group(function () {
+
+//     // ログイン認証関連
+//     Auth::routes([
+//         'register' => true,
+//         'reset'    => false,
+//         'verify'   => false
+//     ]);
+
+//     // ログイン認証後
+//     Route::middleware('auth:admin')->group(function () {
+
+//         // TOPページ
+//         Route::resource('home', 'HomeController', ['only' => 'index']);
+
+//     });
+
+// });
 
 // Route::group(
 //     array("domain" => "abc.laravel.localhost"),
@@ -103,6 +110,5 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
