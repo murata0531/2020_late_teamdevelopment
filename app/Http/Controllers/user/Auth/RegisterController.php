@@ -41,7 +41,19 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        // $this->middleware('guest');
+        $this->middleware('guest:user');
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('user');
+    }
+
+    // 新規登録画面
+    public function showRegistrationForm()
+    {
+        return view('user.auth.register');
     }
 
     /**
