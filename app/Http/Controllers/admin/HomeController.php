@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth:admin');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +20,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.home');
+
     }
 
     /**

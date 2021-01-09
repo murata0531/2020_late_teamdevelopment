@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Auth;
 
 class HomeController extends Controller
 {
@@ -12,7 +13,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth:user');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +21,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+        $user = \Auth::user();
+        return view('user.home',compact('user'));
     }
 
     /**
