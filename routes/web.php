@@ -17,8 +17,12 @@ use Illuminate\Support\Facades\Route;
 //ユーザアクセス
 Route::domain('{account}.localhost')->group(function(){
 
-    Route::get('/', function($user){
+    Route::get('/userlogin', function($user){
         return view('userlogin',compact('user'));
+    });
+
+    Route::get('/userregister', function($user){
+        return view('userregister',compact('user'));
     });
 });
 

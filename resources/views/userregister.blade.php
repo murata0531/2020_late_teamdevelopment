@@ -225,7 +225,7 @@
                         <p>ARAELの新しい仲間ですか？</p>
                         <hr>
                     </div>
-                    <a href="/userregister">アカウントをお持ちでない方はこちらへ</a>
+                    <a href="">アカウントをお持ちでない方はこちらへ</a>
                 </div>
             </div>
         </div>
