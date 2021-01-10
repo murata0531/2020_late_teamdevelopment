@@ -187,7 +187,7 @@
             <div class="box">
                 <div class="title">ユーザサインイン</div>
 
-                <form method="post" class="login-form" action="{{ route('company.login')}}" enctype="multipart/form-data">
+                <form method="post" class="login-form" action="/user/login" enctype="multipart/form-data">
                 @csrf
                     <div class="mail">
                         <div class="mail-text"><i class="far fa-envelope"></i>　メールアドレス</div>

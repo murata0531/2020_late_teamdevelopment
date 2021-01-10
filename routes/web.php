@@ -28,7 +28,7 @@ Route::prefix('user')->namespace('User')->name('user.')->group(function(){
     Route::post('login', [App\Http\Controllers\User\Auth\LoginController::class, 'login']);
     Route::post('logout',[App\Http\Controllers\User\Auth\LoginController::class,'logout'])->name('logout');
     Route::post('register',[App\Http\Controllers\User\Auth\RegisterController::class,'register']);
-    Route::get('register',[App\Http\Controllers\User\Auth\LoginController::class,'showLoginForm'])->name('login');
+    Route::get('login',[App\Http\Controllers\User\Auth\LoginController::class,'showLoginForm'])->name('login');
     Route::get('register',[App\Http\Controllers\User\Auth\RegisterController::class,'showRegistrationForm'])->name('register');
 
 
@@ -45,13 +45,13 @@ Route::post('/top',[App\Http\Controllers\TopController::class, 'post'])->name('t
 //通常アクセス
 Route::domain('localhost')->group(function(){
     
-    Route::get('/main', function () {
+    Route::get('/', function () {
         return view('main');
     });
 
-    Route::get('/company/{url}',function ($user) {
-        return $user;
-    });
+    // Route::get('/company/{url}',function ($user) {
+    //     return $user;
+    // });
 });
 
 
@@ -61,7 +61,7 @@ Route::prefix('company')->namespace('Company')->name('company.')->group(function
     Route::post('login', [App\Http\Controllers\Company\Auth\LoginController::class, 'login']);
     Route::post('logout',[App\Http\Controllers\Company\Auth\LoginController::class,'logout'])->name('logout');
     Route::post('register',[App\Http\Controllers\Company\Auth\RegisterController::class,'register']);
-    Route::get('register',[App\Http\Controllers\Company\Auth\LoginController::class,'showLoginForm'])->name('login');
+    Route::get('login',[App\Http\Controllers\Company\Auth\LoginController::class,'showLoginForm'])->name('login');
     Route::get('register',[App\Http\Controllers\Company\Auth\RegisterController::class,'showRegistrationForm'])->name('register');
 
 
@@ -108,9 +108,9 @@ Route::prefix('company')->namespace('Company')->name('company.')->group(function
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 // Route::get('/', function () {

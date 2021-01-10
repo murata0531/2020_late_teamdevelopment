@@ -78,7 +78,7 @@ return [
 
         'company' => [
             'driver' => 'eloquent',
-            'model' => App\Company::class,
+            'model' => App\Models\Company::class,
         ],
 
         // 'users' => [
