@@ -14,10 +14,10 @@ class Company extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'company_name', 'company_email', 'company_password','url',
+        'company_name', 'email', 'password','url',
     ];
 
     protected $hidden = [
-        'company_password', 'remember_token',
+        'password', 'remember_token',
     ];
 }

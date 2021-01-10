@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Company;
 
 class LoginController extends Controller
 {
@@ -29,7 +30,7 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = RouteServiceProvider::COMPANY_HOME;
+    protected $redirectTo = 'company/home';
 
 
     /**
@@ -52,6 +53,25 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('company.auth.login');
+    }
+
+    public function login (Request $request)
+    {
+        // $email = $request->company_email;
+        // $password = $request->company_password;
+        // dd($email . $password);
+    
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::guard('company')->attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('dashboard');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     public function logout(Request $request)
