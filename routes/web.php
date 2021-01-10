@@ -23,21 +23,21 @@ Route::domain('{account}.localhost')->group(function(){
 });
 
 //ユーザログイン認証
-Route::prefix('user')->namespace('User')->name('user.')->group(function(){
-    // Auth::routes();
-    Route::post('login', [App\Http\Controllers\User\Auth\LoginController::class, 'login']);
-    Route::post('logout',[App\Http\Controllers\User\Auth\LoginController::class,'logout'])->name('logout');
-    Route::post('register',[App\Http\Controllers\User\Auth\RegisterController::class,'register']);
-    Route::get('login',[App\Http\Controllers\User\Auth\LoginController::class,'showLoginForm'])->name('login');
-    Route::get('register',[App\Http\Controllers\User\Auth\RegisterController::class,'showRegistrationForm'])->name('register');
+// Route::prefix('user')->namespace('User')->name('user.')->group(function(){
+//     // Auth::routes();
+//     Route::post('login', [App\Http\Controllers\User\Auth\LoginController::class, 'login']);
+//     Route::post('logout',[App\Http\Controllers\User\Auth\LoginController::class,'logout'])->name('logout');
+//     Route::post('register',[App\Http\Controllers\User\Auth\RegisterController::class,'register']);
+//     Route::get('login',[App\Http\Controllers\User\Auth\LoginController::class,'showLoginForm'])->name('login');
+//     Route::get('register',[App\Http\Controllers\User\Auth\RegisterController::class,'showRegistrationForm'])->name('register');
 
 
-    //ログイン認証後
-    Route::middleware('auth:user')->group(function () {
-        Route::get('/home',[App\Http\Controllers\Company\HomeController::class,'index'])->name('user_home');
-    });
+//     //ログイン認証後
+//     Route::middleware('auth:user')->group(function () {
+//         Route::get('/home',[App\Http\Controllers\Company\HomeController::class,'index'])->name('user_home');
+//     });
     
-});
+// });
 
 Route::post('/top',[App\Http\Controllers\TopController::class, 'post'])->name('top');
 

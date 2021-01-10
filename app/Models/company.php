@@ -8,7 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class company extends Authenticatable
+class Company extends Authenticatable
 {
     use HasFactory;
     use Notifiable;

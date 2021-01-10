@@ -43,9 +43,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('guest');
         $this->middleware('guest:company');
-
     }
 
     protected function guard()
@@ -55,7 +53,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('company.auth.register');
+        return view('admin.auth.register');
     }
 
     /**

@@ -26,13 +26,10 @@ class RedirectIfAuthenticated
     // }
 
     public function handle($request, Closure $next, $guard = null)
-    {
-        if (Auth::guard($guard)->check() && $guard === 'user') {
-            return redirect(RouteServiceProvider::HOME);
-        } elseif (Auth::guard($guard)->check() && $guard === 'company') {
-            return redirect(RouteServiceProvider::COMPANY_HOME);
-        }
+{
+    if (Auth::guard()->check()) return redirect(RouteServiceProvider::HOME);
+    if (Auth::guard('company')->check()) return redirect(RouteServiceProvider::COMPANY_HOME);
 
-        return $next($request);
-    }
+    return $next($request);
+}
 }
