@@ -28,7 +28,7 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::COMPANY_HOME;
 
 
     /**
@@ -38,8 +38,31 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('guest')->except('logout');
-        $this->middleware('guest')->except('logout');
+        // $this->middleware('guest');
+        $this->middleware('guest:company')->except('logout');
+
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('company');
+    }
+
+    public function showLoginForm()
+    {
+        return view('company.auth.login');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('company')->logout();
+
+        return $this->loggedOut($request);
+    }
+
+    public function loggedOut(Request $request)
+    {
+        return redirect(route('company.login'));
     }
     
   

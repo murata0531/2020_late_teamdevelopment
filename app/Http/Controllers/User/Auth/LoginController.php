@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\User\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,9 +37,10 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:user')->except('logout');
     }
 
+    // Guardの認証方法を指定
     protected function guard()
     {
         return Auth::guard('user');
@@ -51,17 +52,17 @@ class LoginController extends Controller
         return view('user.auth.login');
     }
 
-     // ログアウト処理
-     public function logout(Request $request)
-     {
+    // ログアウト処理
+    public function logout(Request $request)
+    {
         Auth::guard('user')->logout();
- 
+
         return $this->loggedOut($request);
-     }
- 
-     // ログアウトした時のリダイレクト先
-     public function loggedOut(Request $request)
-     {
+    }
+
+    // ログアウトした時のリダイレクト先
+    public function loggedOut(Request $request)
+    {
         return redirect(route('user.login'));
-     }
+    }
 }

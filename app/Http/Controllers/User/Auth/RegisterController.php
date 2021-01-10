@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -45,16 +45,18 @@ class RegisterController extends Controller
         $this->middleware('guest:user');
     }
 
-    protected function guard()
-    {
-        return Auth::guard('user');
-    }
-
-    // 新規登録画面
-    public function showRegistrationForm()
-    {
-        return view('user.auth.register');
-    }
+     // Guardの認証方法を指定
+     protected function guard()
+     {
+         return Auth::guard('user');
+     }
+ 
+     // 新規登録画面
+     public function showRegistrationForm()
+     {
+         return view('user.auth.register');
+     }
+ 
 
     /**
      * Get a validator for an incoming registration request.

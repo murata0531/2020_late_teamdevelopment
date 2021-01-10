@@ -19,11 +19,18 @@ class Authenticate extends Middleware
     //     }
     // }
 
+    protected $user_route  = 'user.login';
+    protected $company_route = 'company.login';
+
     protected function redirectTo($request)
-{
-    if (! $request->expectsJson()) {
-        if($request->is('company/*')) return route('company.login');
-        return route('login');
+    {
+        // ルーティングに応じて未ログイン時のリダイレクト先を振り分ける
+        if (!$request->expectsJson()) {
+            if (Route::is('user.*')) {
+                return route($this->user_route);
+            } elseif (Route::is('company.*')) {
+                return route($this->company_route);
+            }
+        }
     }
-}
 }
