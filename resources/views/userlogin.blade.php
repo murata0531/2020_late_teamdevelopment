@@ -68,7 +68,7 @@
 
             .login-form {
                 position:relative;
-                height:50%;
+                height:55%;
                 width:100%;
                 display:flex;
                 flex-direction: column;
@@ -142,7 +142,7 @@
 
             .toregister {
                 position:relative;
-                height:30%;
+                height:25%;
                 width:100%;
                 display:flex;
                 justify-content:center;

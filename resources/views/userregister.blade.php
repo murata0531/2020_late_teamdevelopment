@@ -68,14 +68,14 @@
 
             .login-form {
                 position:relative;
-                height:50%;
+                height:55%;
                 width:100%;
                 display:flex;
                 flex-direction: column;
                 font-size:1.2vw;
             }
 
-            .invalid-mail, .area, .invalid-pass, .signin {
+            .area, .invalid, .signin {
                 position:relative;
                 width:100%;
                 height:100%;
@@ -116,7 +116,7 @@
 
             }
 
-            .signin {
+            .signup {
                 position:relative;
                 height:100%;
                 width:100%;
@@ -126,7 +126,7 @@
                 opacity:1;
             }
 
-            .signin > input {
+            .signup > input {
                 position:relative;
                 height:100%;
                 width:80%;
@@ -140,9 +140,9 @@
 
             }
 
-            .toregister {
+            .tologin {
                 position:relative;
-                height:30%;
+                height:25%;
                 width:100%;
                 display:flex;
                 justify-content:center;
@@ -150,7 +150,7 @@
                 flex-flow:column;
             }
 
-            .toregister-title {
+            .tologin-title {
                 position:relative;
                 display:flex;
                 flex-direction:row;
@@ -160,7 +160,7 @@
 
             hr {
                 position:relative;
-                width:20%;
+                width:18%;
                 background-color:white;
                 border:none;
                 height:1px;
@@ -189,24 +189,32 @@
 
                 <form method="post" class="login-form" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
-                <div class="area">
+                    <div class="area">
                         <div class="text"><i class="far fa-envelope"></i>　あなたのお名前</div>
                         <div class="name">
                             <input type="text" class="@error('email') is-invalid @enderror" name="name" id="email" value="{{ old('email') }}" placeholder="example@example.com" required></input>
                         </div>
                     </div>
+                    <div class="invalid">
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    
                     <div class="area">
                         <div class="text"><i class="far fa-envelope"></i>　メールアドレス</div>
                         <div class="mail-address">
                             <input type="email" class="@error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="example@example.com" required></input>
                         </div>
                     </div>
-                    <div class="invalid-mail">
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <div class="invalid">
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     <div class="area">
                         <div class="text"><i class="fas fa-lock"></i>　パスワード　　</div>
@@ -214,21 +222,34 @@
                             <input type="password" class="@error('pass') is-invalid @enderror" name="pass" id="pass" placeholder="8文字以上で入力してください" required></input>
                         </div>
                     </div>
-                    <div class="invalid-pass">
-                    @error('pass')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <div class="invalid">
+                        @error('pass')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="area">
+                        <div class="text"><i class="fas fa-lock"></i>　パスワード再入力　　</div>
+                        <div class="password">
+                            <input type="password" class="@error('pass') is-invalid @enderror" name="pass" id="pass" placeholder="8文字以上で入力してください" required></input>
+                        </div>
+                    </div>
+                    <div class="invalid">
+                        @error('pass')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
-                    <div class="signin"><input type="submit" value="サインイン"></input></div>
+                    <div class="signup"><input type="submit" value="アカウントを作成"></input></div>
                 </form>
 
-                <div class="toregister">
-                    <div class="toregister-title">
+                <div class="tologin">
+                    <div class="tologin-title">
                         <hr>
-                        <p>ARAELの新しい仲間ですか？</p>
+                        <p>すでにアカウントをお持ちですか？</p>
                         <hr>
                     </div>
                     <a href="">アカウントをお持ちでない方はこちらへ</a>
