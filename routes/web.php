@@ -24,11 +24,6 @@ Route::domain('{account}.localhost')->group(function(){
     Route::get('/userregister', function($user){
         return view('userregister',compact('user'));
     });
-
-    Auth::routes();
-
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 });
 
 //ユーザログイン認証
@@ -61,26 +56,25 @@ Route::domain('localhost')->group(function(){
     // Route::get('/company/{url}',function ($user) {
     //     return $user;
     // });
-
-    //企業管理者認証
-    Route::prefix('company')->namespace('Company')->name('company.')->group(function(){
-        // Auth::routes();
-        Route::post('login', [App\Http\Controllers\Company\Auth\LoginController::class, 'login']);
-        Route::post('logout',[App\Http\Controllers\Company\Auth\LoginController::class,'logout'])->name('logout');
-        Route::post('register',[App\Http\Controllers\Company\Auth\RegisterController::class,'register']);
-        Route::get('login',[App\Http\Controllers\Company\Auth\LoginController::class,'showLoginForm'])->name('login');
-        Route::get('register',[App\Http\Controllers\Company\Auth\RegisterController::class,'showRegistrationForm'])->name('register');
-
-
-        //ログイン認証後
-        Route::middleware('auth:company')->group(function () {
-            Route::get('/home',[App\Http\Controllers\Company\HomeController::class,'index']);
-        });
-
-    });
 });
 
 
+//企業管理者認証
+Route::prefix('company')->namespace('Company')->name('company.')->group(function(){
+    // Auth::routes();
+    Route::post('login', [App\Http\Controllers\Company\Auth\LoginController::class, 'login']);
+    Route::post('logout',[App\Http\Controllers\Company\Auth\LoginController::class,'logout'])->name('logout');
+    Route::post('register',[App\Http\Controllers\Company\Auth\RegisterController::class,'register']);
+    Route::get('login',[App\Http\Controllers\Company\Auth\LoginController::class,'showLoginForm'])->name('login');
+    Route::get('register',[App\Http\Controllers\Company\Auth\RegisterController::class,'showRegistrationForm'])->name('register');
+
+
+    //ログイン認証後
+    Route::middleware('auth:company')->group(function () {
+        Route::get('/home',[App\Http\Controllers\Company\HomeController::class,'index']);
+    });
+
+});
 
 //企業管理者認証
 // Route::namespace('admin')->prefix('admin')->name('admin.')->group(function () {
@@ -127,5 +121,7 @@ Route::domain('localhost')->group(function(){
 //    return view('welcome');
 // })->middleware('auth');
 
+Auth::routes();
 
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
