@@ -53,7 +53,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('admin.auth.register');
+        return view('company.auth.register');
     }
 
     /**
@@ -75,7 +75,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \App\Models\Company
      */
     protected function create(array $data)
     {
