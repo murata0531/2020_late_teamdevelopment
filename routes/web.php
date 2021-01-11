@@ -20,9 +20,8 @@ Route::domain('{account}.localhost')->group(function(){
 
     Route::get('/', function($user){
 
-        $url = Company::select('url')->get();
-        return view('userwelcome',compact('user','url'));
-        
+        return view('userwelcome',compact('user'));
+
     });
 
     Route::get('/user/login', function($user){
@@ -58,7 +57,9 @@ Route::post('/top',[App\Http\Controllers\TopController::class, 'post'])->name('t
 Route::domain('localhost')->group(function(){
     
     Route::get('/', function () {
-        return view('main');
+
+        $url = Company::select('url')->get();
+        return view('main','url');
     });
 
     // Route::get('/company/{url}',function ($user) {

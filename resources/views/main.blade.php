@@ -291,7 +291,7 @@
 
         <script>
 
-            let url = @json($url->url();
+            var url = @json($url->url);
 
 
             const target = document.getElementById("target");
@@ -301,7 +301,7 @@
                 
                 for (var i = 0; i < url.length; i++) {
 
-                    if(url[i].toString() == text){
+                    if(url[i] == text){
                         target.href = "http://" + text + ".localhost:8000/";
                         alert(target.href);
                         exit;
