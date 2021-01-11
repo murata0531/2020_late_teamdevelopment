@@ -103,7 +103,7 @@
                 align-items:center;
             }
 
-            .mail-address > input, .password > input, .name > input {
+            input {
                 position:relative;
                 height:60%;
                 width:80%;
