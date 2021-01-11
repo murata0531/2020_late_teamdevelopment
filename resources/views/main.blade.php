@@ -291,9 +291,10 @@
 
         <script>
 
-            var url = @json($url->url);
+            var url = @json($url);
 
-
+            var url_array = JSON.stringify();
+            alert(url_array);
             const target = document.getElementById("target");
 
             function change1(){
@@ -301,10 +302,10 @@
                 
                 for (var i = 0; i < url.length; i++) {
 
-                    if(url[i] == text){
+                    if(url[i].toString() == text){
                         target.href = "http://" + text + ".localhost:8000/";
                         alert(target.href);
-                        exit;
+                        
                     }
                 }
                 

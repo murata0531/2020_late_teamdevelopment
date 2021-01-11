@@ -59,7 +59,7 @@ Route::domain('localhost')->group(function(){
     Route::get('/', function () {
 
         $url = Company::select('url')->get();
-        return view('main','url');
+        return view('main',compact('url'));
     });
 
     // Route::get('/company/{url}',function ($user) {
