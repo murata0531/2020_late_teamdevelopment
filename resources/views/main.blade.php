@@ -56,6 +56,11 @@
                 /* justify-content:center; */
                 align-items:center;
             }
+            
+            .box3 {
+                position:absolute;
+                bottom:0px;
+            }
 
             .title {
                 height:100%;
@@ -285,9 +290,10 @@
                     <button type="button" class="signin"><a id="target">サインイン</a></button>
                 </form>
                 <button class="company"><a>企業管理ページへ</a></button>
-                
             </div>
         </div>
+
+        <div class="box3"><p id="valid">ok</p></div>
 
         <script>
 
@@ -308,6 +314,8 @@
                         target.href = "http://" + text + ".localhost:8000/";
                         alert(target.href);
                         alert(url[key].url);
+                    }else {
+
                     }
                 }
                 
