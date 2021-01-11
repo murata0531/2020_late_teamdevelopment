@@ -293,20 +293,21 @@
 
             var url = @json($url);
 
-            var url_json_array = JSON.stringify(url);
-            var url_array = JSON.parse(url_json_array)
-            alert(url_array);
+            console.log(url[0].url);
+            Object.keys(url).forEach(key => console.log(key + ':' + url[key].url));
             const target = document.getElementById("target");
 
             function change1(){
                 const text = document.getElementById('text').value;
                 
-                for (var i = 0; i < url.length; i++) {
+                        
+                
+                for (let key in url) {
 
-                    if(url[i].toString() == text){
+                    if(url[key].url == text){
                         target.href = "http://" + text + ".localhost:8000/";
                         alert(target.href);
-                        
+                        alert(url[key].url);
                     }
                 }
                 

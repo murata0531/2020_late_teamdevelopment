@@ -58,7 +58,8 @@ Route::domain('localhost')->group(function(){
     
     Route::get('/', function () {
 
-        $url = Company::select('url')->get();
+        // $url = Company::all('url');
+        $url = DB::select('select url from companies;');
         return view('main',compact('url'));
     });
 
