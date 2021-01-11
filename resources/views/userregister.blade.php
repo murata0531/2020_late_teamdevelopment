@@ -75,7 +75,7 @@
                 font-size:1.2vw;
             }
 
-            .mail, .invalid-mail, .pass, .invalid-pass, .signin {
+            .invalid-mail, .area, .invalid-pass, .signin {
                 position:relative;
                 width:100%;
                 height:100%;
@@ -85,7 +85,7 @@
                 justify-content:center;
             }
 
-            .mail-text, .pass-text {
+            .text{
                 position:relative;
                 height:100%;
                 width:45%;
@@ -95,7 +95,7 @@
                 align-items:center;
             }
 
-            .mail-address, .password {
+            .mail-address, .password,.name {
                 position:relative;
                 height:100%;
                 width:55%;
@@ -103,7 +103,7 @@
                 align-items:center;
             }
 
-            .mail-address > input, .password > input {
+            .mail-address > input, .password > input, .name > input {
                 position:relative;
                 height:60%;
                 width:80%;
@@ -189,8 +189,14 @@
 
                 <form method="post" class="login-form" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
-                    <div class="mail">
-                        <div class="mail-text"><i class="far fa-envelope"></i>　メールアドレス</div>
+                <div class="area">
+                        <div class="text"><i class="far fa-envelope"></i>　あなたのお名前</div>
+                        <div class="name">
+                            <input type="text" class="@error('email') is-invalid @enderror" name="name" id="email" value="{{ old('email') }}" placeholder="example@example.com" required></input>
+                        </div>
+                    </div>
+                    <div class="area">
+                        <div class="text"><i class="far fa-envelope"></i>　メールアドレス</div>
                         <div class="mail-address">
                             <input type="email" class="@error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="example@example.com" required></input>
                         </div>
@@ -202,8 +208,8 @@
                         </span>
                     @enderror
                     </div>
-                    <div class="pass">
-                        <div class="pass-text"><i class="fas fa-lock"></i>　パスワード　　</div>
+                    <div class="area">
+                        <div class="text"><i class="fas fa-lock"></i>　パスワード　　</div>
                         <div class="password">
                             <input type="password" class="@error('pass') is-invalid @enderror" name="pass" id="pass" placeholder="8文字以上で入力してください" required></input>
                         </div>
