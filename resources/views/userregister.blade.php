@@ -185,9 +185,9 @@
 
         <div class="opacity-box">
             <div class="box">
-                <div class="title">ユーザサインイン</div>
+                <div class="title">ユーザアカウント作成</div>
 
-                <form method="post" class="login-form" action="{{ route('login') }}" enctype="multipart/form-data">
+                <form method="post" class="login-form" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
                     <div class="mail">
                         <div class="mail-text"><i class="far fa-envelope"></i>　メールアドレス</div>
