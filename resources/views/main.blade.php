@@ -293,7 +293,7 @@
 
             var url = @json($url);
 
-            var url_array = JSON.stringify();
+            var url_array = JSON.stringify(url);
             alert(url_array);
             const target = document.getElementById("target");
 
