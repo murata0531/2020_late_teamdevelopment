@@ -60,6 +60,9 @@
             .box3 {
                 position:absolute;
                 bottom:0px;
+                color:red;
+                font-size:2vw;
+                left:20%;
             }
 
             .title {
@@ -146,6 +149,7 @@
                 left:10%;
                 display:flex;
                 align-items:center;
+                justify-content: space-around;
                 height:10vh;
                 width:40vw;
                 background: var(--unnamed-color-62abb6) 0% 0% no-repeat padding-box;
@@ -153,20 +157,23 @@
                 border-radius: 10px;
                 opacity: 1;
                 font-size:1.2vw;
+                overflow:hidden;
+
             }
 
             .url-field > p {
                 position:relative;
-                left:15%;
+                /* left:15%; */
                 color: var(--unnamed-color-ffffff);
                 text-align: center;
                 letter-spacing: 4px;
                 color: #FFFFFF;
                 opacity: 1;
             }
+
             .url-field > input {
                 position:relative;
-                left:15%;
+                /* left:15%; */
                 height:40%;
                 width:30%;
                 text-align:center;
@@ -177,7 +184,7 @@
 
             .url-field > select {
                 position:relative;
-                left:20%;
+                /* left:20%; */
                 height:40%;
                 width:20%;
                 background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
@@ -186,6 +193,8 @@
                 -moz-appearance: none;
                 -webkit-appearance: none;
                 appearance: none;
+                text-align:center;
+                text-indent:10%;
             }
 
             .signin {
@@ -284,7 +293,7 @@
                         <p>https://</p>
                         <input type="text" id="text" name="url" required onchange="change1();">
                         <select name="domain">
-                            <option>arael.ne.jp</option>
+                            <option>.arael.ne.jp</option>
                         </select>
                     </div>
                     <button type="button" class="signin"><a id="target">サインイン</a></button>
@@ -293,29 +302,32 @@
             </div>
         </div>
 
-        <div class="box3"><p id="valid">ok</p></div>
+        <div class="box3"><p id="valid"></p></div>
 
         <script>
 
-            var url = @json($url);
+            const url = @json($url);
 
-            console.log(url[0].url);
             Object.keys(url).forEach(key => console.log(key + ':' + url[key].url));
+
             const target = document.getElementById("target");
 
+            const valid = document.getElementById('valid');
+
             function change1(){
+
                 const text = document.getElementById('text').value;
-                
-                        
                 
                 for (let key in url) {
 
                     if(url[key].url == text){
                         target.href = "http://" + text + ".localhost:8000/";
-                        alert(target.href);
-                        alert(url[key].url);
-                    }else {
+                        // alert(target.href);
+                        // alert(url[key].url);
+                        valid.textContent = "";
 
+                    }else {
+                        valid.textContent = "無効なURLです";
                     }
                 }
                 
