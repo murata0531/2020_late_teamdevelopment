@@ -277,7 +277,7 @@
                     @csrf
                     <div class="url-field">
                         <p>https://</p>
-                        <input type="text" id="text" required onchange="change1();">
+                        <input type="text" id="text" name="url" required onchange="change1();">
                         <select name="domain">
                             <option>arael.ne.jp</option>
                         </select>
@@ -291,13 +291,23 @@
 
         <script>
 
+            let url = @json($url->url();
+
+
             const target = document.getElementById("target");
 
             function change1(){
                 const text = document.getElementById('text').value;
                 
-                target.href = "http://" + text + ".localhost:8000/";
-                alert(target.href);
+                for (var i = 0; i < url.length; i++) {
+
+                    if(url[i].toString() == text){
+                        target.href = "http://" + text + ".localhost:8000/";
+                        alert(target.href);
+                        exit;
+                    }
+                }
+                
             }
             
         </script>

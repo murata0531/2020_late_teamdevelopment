@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Company;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::domain('{account}.localhost')->group(function(){
 
     Route::get('/', function($user){
-        return view('userwelcome',compact('user'));
+
+        $url = Company::select('url')->get();
+        return view('userwelcome',compact('user','url'));
+        
     });
-    
+
     Route::get('/user/login', function($user){
         return view('userlogin',compact('user'));
     });
