@@ -17,11 +17,15 @@ use Illuminate\Support\Facades\Route;
 //ユーザアクセス
 Route::domain('{account}.localhost')->group(function(){
 
-    Route::get('/userlogin', function($user){
+    Route::get('/', function($user){
+        return view('userwelcome',compact('user'));
+    });
+    
+    Route::get('/user/login', function($user){
         return view('userlogin',compact('user'));
     });
 
-    Route::get('/userregister', function($user){
+    Route::get('/user/register', function($user){
         return view('userregister',compact('user'));
     });
 });
