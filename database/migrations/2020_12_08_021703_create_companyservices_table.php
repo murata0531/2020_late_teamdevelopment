@@ -23,6 +23,8 @@ class CreateCompanyservicesTable extends Migration
             $table->tinyInteger('report')->default(1);
 
             $table->timestamps();
+
+            $table->foreign('company_id')->references('id')->on('compamies');
         });
     }
 

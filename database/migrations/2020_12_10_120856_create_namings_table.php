@@ -19,6 +19,12 @@ class CreateNamingsTable extends Migration
             $table->integer('opponent_id')->unique();
             $table->string('talk_name');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->unique(['user_id','opponent_id']);
+
         });
     }
 

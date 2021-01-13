@@ -16,6 +16,11 @@ class CreateTalkmanagementsTable extends Migration
         Schema::create('talkmanagements', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->foreign('talk_id')->references('id')->on('talks');
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->unique(['user_id','talk_id']);
         });
     }
 
