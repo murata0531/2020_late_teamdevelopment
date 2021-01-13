@@ -320,7 +320,7 @@
                 
                 for (let key in url) {
 
-                    if(url[key].url == text){
+                    if(url[key].url == text ||  typeof url == "undifined"){
                         target.href = "http://" + text + ".localhost:8000/";
                         // alert(target.href);
                         // alert(url[key].url);

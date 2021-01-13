@@ -225,7 +225,7 @@
                         <p>ARAELの新しい仲間ですか？</p>
                         <hr>
                     </div>
-                    <a href="/register">アカウントをお持ちでない方はこちらへ</a>
+                    <a href="{{ route('register') }}">アカウントをお持ちでない方はこちらへ</a>
                 </div>
             </div>
         </div>

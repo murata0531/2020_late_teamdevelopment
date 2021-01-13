@@ -75,7 +75,7 @@
                 font-size:1.2vw;
             }
 
-            .mail, .invalid-mail, .pass, .invalid-pass, .signin {
+            .pass, .invalid-pass, .signin, .guide {
                 position:relative;
                 width:100%;
                 height:100%;
@@ -85,7 +85,7 @@
                 justify-content:center;
             }
 
-            .mail-text, .pass-text {
+            .pass-text {
                 position:relative;
                 height:100%;
                 width:45%;
@@ -95,7 +95,7 @@
                 align-items:center;
             }
 
-            .mail-address, .password {
+            .password {
                 position:relative;
                 height:100%;
                 width:55%;
@@ -103,7 +103,7 @@
                 align-items:center;
             }
 
-            .mail-address > input, .password > input {
+            .password > input {
                 position:relative;
                 height:60%;
                 width:80%;
@@ -136,45 +136,11 @@
                 cursor:pointer;
                 opacity:1;
                 color:rgba(255,255,255,1);
-                font-size:1.2vw;
+                font-size:2vw;
 
             }
 
-            .toregister {
-                position:relative;
-                height:25%;
-                width:100%;
-                display:flex;
-                justify-content:center;
-                align-items:center;
-                flex-flow:column;
-            }
-
-            .toregister-title {
-                position:relative;
-                display:flex;
-                flex-direction:row;
-                width:100%;
-                align-items:center;
-            }
-
-            hr {
-                position:relative;
-                width:20%;
-                background-color:white;
-                border:none;
-                height:1px;
-            }
-
-            p {
-                font-size:1vw;
-            }
-
-            a {
-                font-size:1vw;
-                color:white;
-                text-decoration:none;
-            }
+            
         </style>
         
     </head>
@@ -187,20 +153,10 @@
             <div class="box">
                 <div class="title">{{ $user }}へようこそ</div>
 
-                <form method="post" class="login-form" action="{{ route('login') }}" enctype="multipart/form-data">
+                <form method="post" class="login-form" action="{{ route('valid') }}" enctype="multipart/form-data">
                 @csrf
-                    <div class="mail">
-                        <div class="mail-text"><i class="far fa-envelope"></i>　メールアドレス</div>
-                        <div class="mail-address">
-                            <input type="email" class="@error('email') is-invalid @enderror" name="email" id="email" value="{{ old('email') }}" placeholder="example@example.com" required></input>
-                        </div>
-                    </div>
-                    <div class="invalid-mail">
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <div class="guide">
+                        <p>会社のパスワードを入力してください</p>
                     </div>
                     <div class="pass">
                         <div class="pass-text"><i class="fas fa-lock"></i>　パスワード　　</div>
@@ -216,17 +172,9 @@
                     @enderror
                     </div>
 
-                    <div class="signin"><input type="submit" value="サインイン"></input></div>
+                    <div class="signin"><input type="submit" value="{{ $user }}のページへ入る"></input></div>
                 </form>
 
-                <div class="toregister">
-                    <div class="toregister-title">
-                        <hr>
-                        <p>ARAELの新しい仲間ですか？</p>
-                        <hr>
-                    </div>
-                    <a href="/userregister">アカウントをお持ちでない方はこちらへ</a>
-                </div>
             </div>
         </div>
 

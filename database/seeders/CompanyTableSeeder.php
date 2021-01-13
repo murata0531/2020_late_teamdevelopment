@@ -17,7 +17,7 @@ class CompanyTableSeeder extends Seeder
     {
         //
         \DB::table('companies')->insert([
-            'company_name'              => 'arael',
+            'name'              => 'arael',
             'email'             => 'user@example.com',
             'password'          => Hash::make('12345678'),
             'url'                       =>'arael',
