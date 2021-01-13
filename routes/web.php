@@ -36,6 +36,8 @@ Route::domain('{account}.localhost')->group(function(){
     });
 
 
+    Route::post('/top',[App\Http\Controllers\TopController::class, 'post'])->name('top');
+
 });
 
 //ユーザログイン認証
@@ -54,9 +56,6 @@ Route::domain('{account}.localhost')->group(function(){
 //     });
     
 // });
-
-Route::post('/top',[App\Http\Controllers\TopController::class, 'post'])->name('top');
-
 
 //通常アクセス
 Route::domain('localhost')->group(function(){

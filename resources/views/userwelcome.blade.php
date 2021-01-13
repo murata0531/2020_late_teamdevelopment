@@ -153,7 +153,7 @@
             <div class="box">
                 <div class="title">{{ $user }}へようこそ</div>
 
-                <form method="post" class="login-form" action="{{ route('valid') }}" enctype="multipart/form-data">
+                <form method="post" class="login-form" action="{{ route('top') }}" enctype="multipart/form-data">
                 @csrf
                     <div class="guide">
                         <p>会社のパスワードを入力してください</p>
