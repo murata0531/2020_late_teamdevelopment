@@ -15,7 +15,7 @@ class CreateCompanyservicesTable extends Migration
     {
         Schema::create('companyservices', function (Blueprint $table) {
             $table->id();
-            $table->integer('company_id')->unique();
+            $table->unsignedBigInteger('company_id')->unique();
             $table->tinyInteger('task')->default(1);
             $table->tinyInteger('talk')->default(1);
             $table->tinyInteger('note')->default(1);
@@ -24,7 +24,7 @@ class CreateCompanyservicesTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('company_id')->references('id')->on('compamies');
+            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 

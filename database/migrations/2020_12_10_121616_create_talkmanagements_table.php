@@ -15,6 +15,10 @@ class CreateTalkmanagementsTable extends Migration
     {
         Schema::create('talkmanagements', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('talk_id');
+            $table->unsignedBigInteger('user_id');
+            $table->datetime('last_reference');
+
             $table->timestamps();
 
             $table->foreign('talk_id')->references('id')->on('talks');

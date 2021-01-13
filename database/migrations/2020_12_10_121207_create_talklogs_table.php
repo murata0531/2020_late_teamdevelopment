@@ -15,8 +15,8 @@ class CreateTalklogsTable extends Migration
     {
         Schema::create('talklogs', function (Blueprint $table) {
             $table->id();
-            $table->integer('talk_id')->unique();
-            $table->integer('user_id')->unique();
+            $table->unsignedBigInteger('talk_id');
+            $table->unsignedBigInteger('user_id');
             $table->datetime('date');
             $table->string('message');
             $table->timestamps();
