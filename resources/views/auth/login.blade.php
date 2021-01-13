@@ -175,6 +175,10 @@
                 color:white;
                 text-decoration:none;
             }
+
+            span {
+                color:red;
+            }
         </style>
         
     </head>
@@ -205,11 +209,11 @@
                     <div class="pass">
                         <div class="pass-text"><i class="fas fa-lock"></i>　パスワード　　</div>
                         <div class="password">
-                            <input type="password" class="@error('pass') is-invalid @enderror" name="pass" id="pass" placeholder="8文字以上で入力してください" required></input>
+                            <input type="password" class="@error('password') is-invalid @enderror" name="password" id="pass" placeholder="8文字以上で入力してください" required></input>
                         </div>
                     </div>
                     <div class="invalid-pass">
-                    @error('pass')
+                    @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
