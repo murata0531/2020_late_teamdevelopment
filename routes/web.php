@@ -14,6 +14,9 @@ use App\Models\Company;
 |
 */
 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //ユーザアクセス
 Route::domain('{account}.localhost')->group(function(){
@@ -31,6 +34,8 @@ Route::domain('{account}.localhost')->group(function(){
     Route::get('/user/register', function($user){
         return view('userregister',compact('user'));
     });
+
+
 });
 
 //ユーザログイン認証
@@ -131,7 +136,5 @@ Route::prefix('company')->namespace('Company')->name('company.')->group(function
 //    return view('welcome');
 // })->middleware('auth');
 
-Auth::routes();
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
