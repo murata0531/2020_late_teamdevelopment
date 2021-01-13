@@ -11,8 +11,8 @@ class TopController extends Controller
     public function post(Request $request){
 
         $pass = $request['pass'];
-
         $hidden = $request['hidden'];
-        return view('auth.login',compact('hidden'));
+
+        return redirect('/login')->with('hidden');
     }
 }

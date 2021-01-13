@@ -185,7 +185,7 @@
 
         <div class="opacity-box">
             <div class="box">
-                <div class="title">{{ $hidden }}ユーザサインイン</div>
+                <div class="title">{{ $hidden ?? '' }}ユーザサインイン</div>
 
                 <form method="post" class="login-form" action="{{ route('login') }}" enctype="multipart/form-data">
                 @csrf
@@ -222,7 +222,7 @@
                 <div class="toregister">
                     <div class="toregister-title">
                         <hr>
-                        <p>{{ $hidden }}の新しい仲間ですか？</p>
+                        <p>{{ $hidden ?? '' }}の新しい仲間ですか？</p>
                         <hr>
                     </div>
                     <a href="{{ route('register') }}">アカウントをお持ちでない方はこちらへ</a>
