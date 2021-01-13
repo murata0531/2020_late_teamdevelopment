@@ -155,6 +155,8 @@
 
                 <form method="post" class="login-form" action="{{ route('top') }}" enctype="multipart/form-data">
                 @csrf
+
+                    <input type="hidden" name="hidden" value="{{ $user }}"></input>
                     <div class="guide">
                         <p>会社のパスワードを入力してください</p>
                     </div>

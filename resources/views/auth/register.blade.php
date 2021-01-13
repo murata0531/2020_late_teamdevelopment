@@ -185,7 +185,7 @@
 
         <div class="opacity-box">
             <div class="box">
-                <div class="title">ユーザアカウント作成</div>
+                <div class="title">{{ $user }}ユーザアカウント作成</div>
 
                 <form method="post" class="login-form" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf

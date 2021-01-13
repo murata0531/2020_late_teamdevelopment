@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Company;
 
 class TopController extends Controller
 {
     public function post(Request $request){
 
-        $text = $request['text'];
+        $pass = $request['pass'];
 
-        return redirect('/company/' . $text);
+        $hidden = $request['hidden'];
+        return view('auth.login',compact('hidden'));
     }
 }

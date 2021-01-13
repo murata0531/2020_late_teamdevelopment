@@ -18,6 +18,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::post('/top',[App\Http\Controllers\TopController::class, 'post'])->name('top');
+
 //ユーザアクセス
 Route::domain('{account}.localhost')->group(function(){
 
@@ -34,9 +36,6 @@ Route::domain('{account}.localhost')->group(function(){
     Route::get('/user/register', function($user){
         return view('userregister',compact('user'));
     });
-
-
-    Route::post('/top',[App\Http\Controllers\TopController::class, 'post'])->name('top');
 
 });
 
