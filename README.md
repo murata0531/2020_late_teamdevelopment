@@ -14,9 +14,21 @@ ___________________________________________________
 
 cp .env.example .env
 
-composer update
+composer install
 
 npm install
 
 
 firebase apiキー各自取得
+
+___________________________________________________
+
+デバッグ用
+
+データベースを再設計
+
+php artisan migrate:fresh
+
+データベースにテストデータを作成
+
+php artisan db:seed
