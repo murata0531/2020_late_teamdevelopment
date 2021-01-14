@@ -204,7 +204,7 @@
                     </div>
 
                     <div class="area">
-                        <div class="text"><i class="far fa-user"></i>　企業用のurl　　　</div>
+                        <div class="text"><i class="fas fa-link"></i>　企業用のurl　　　</div>
                         <div class="url">
                             <input type="text" class="@error('url') is-invalid @enderror" name="url" id="name" value="{{ old('url') }}" placeholder="" required></input>
                         </div>
