@@ -298,7 +298,7 @@
                     </div>
                     <button type="button" class="signin"><a id="target">サインイン</a></button>
                 </form>
-                <button class="company"><a>企業管理ページへ</a></button>
+                <button class="company"><a href="{{ route('company.login') }}">企業管理ページへ</a></button>
             </div>
         </div>
 
