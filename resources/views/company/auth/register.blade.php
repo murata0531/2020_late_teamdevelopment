@@ -175,6 +175,11 @@
                 color:white;
                 text-decoration:none;
             }
+
+            .invalid {
+                color:red;
+            }
+            
         </style>
         
     </head>
@@ -246,7 +251,7 @@
                     <div class="area">
                         <div class="text"><i class="fas fa-redo"></i>　パスワード再入力</div>
                         <div class="password">
-                            <input type="password" class="@error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="pass" placeholder="8文字以上で入力してください" required></input>
+                            <input type="password" class="@error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password_confirmation" placeholder="8文字以上で入力してください" required></input>
                         </div>
                     </div>
                     <div class="invalid">
