@@ -68,7 +68,7 @@
 
             .login-form {
                 position:relative;
-                height:55%;
+                height:60%;
                 width:100%;
                 display:flex;
                 flex-direction: column;
@@ -95,7 +95,7 @@
                 align-items:center;
             }
 
-            .mail-address, .password,.name {
+            .mail-address, .password,.name,.email,.url {
                 position:relative;
                 height:100%;
                 width:55%;
@@ -142,7 +142,7 @@
 
             .tologin {
                 position:relative;
-                height:25%;
+                height:20%;
                 width:100%;
                 display:flex;
                 justify-content:center;
@@ -185,18 +185,32 @@
 
         <div class="opacity-box">
             <div class="box">
-                <div class="title">ユーザアカウント作成</div>
+                <div class="title">企業アカウント作成</div>
 
-                <form method="post" class="login-form" action="{{ route('register') }}" enctype="multipart/form-data">
+                <form method="post" class="login-form" action="{{ route('company.register') }}" enctype="multipart/form-data">
                 @csrf
                     <div class="area">
-                        <div class="text"><i class="far fa-user"></i>　あなたのお名前　</div>
+                        <div class="text"><i class="far fa-user"></i>　企業名　　　　　</div>
                         <div class="name">
-                            <input type="text" class="@error('email') is-invalid @enderror" name="name" id="email" value="{{ old('email') }}" placeholder="example@example.com" required></input>
+                            <input type="text" class="@error('name') is-invalid @enderror" name="name" id="name" value="{{ old('name') }}" placeholder="" required></input>
                         </div>
                     </div>
                     <div class="invalid">
                         @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="area">
+                        <div class="text"><i class="far fa-user"></i>　企業用のurl　　　</div>
+                        <div class="url">
+                            <input type="text" class="@error('url') is-invalid @enderror" name="url" id="name" value="{{ old('url') }}" placeholder="" required></input>
+                        </div>
+                    </div>
+                    <div class="invalid">
+                        @error('url')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -219,11 +233,11 @@
                     <div class="area">
                         <div class="text"><i class="fas fa-lock"></i>　パスワード　　　</div>
                         <div class="password">
-                            <input type="password" class="@error('pass') is-invalid @enderror" name="pass" id="pass" placeholder="8文字以上で入力してください" required></input>
+                            <input type="password" class="@error('password') is-invalid @enderror" name="password" id="password" placeholder="8文字以上で入力してください" required></input>
                         </div>
                     </div>
                     <div class="invalid">
-                        @error('pass')
+                        @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -252,7 +266,7 @@
                         <p>すでにアカウントをお持ちですか？</p>
                         <hr>
                     </div>
-                    <a href="">アカウントをお持ちでない方はこちらへ</a>
+                    <a href="">アカウントをお持ちの方はこちらへ</a>
                 </div>
             </div>
         </div>
