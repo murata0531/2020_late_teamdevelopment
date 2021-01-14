@@ -219,11 +219,11 @@
                     <div class="area">
                         <div class="text"><i class="fas fa-lock"></i>　パスワード　　　</div>
                         <div class="password">
-                            <input type="password" class="@error('pass') is-invalid @enderror" name="pass" id="pass" placeholder="8文字以上で入力してください" required></input>
+                            <input type="password" class="@error('password') is-invalid @enderror" name="password" id="password" placeholder="8文字以上で入力してください" required></input>
                         </div>
                     </div>
                     <div class="invalid">
-                        @error('pass')
+                        @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -232,11 +232,11 @@
                     <div class="area">
                         <div class="text"><i class="fas fa-redo"></i>　パスワード再入力</div>
                         <div class="password">
-                            <input type="password" class="@error('pass') is-invalid @enderror" name="pass" id="pass" placeholder="8文字以上で入力してください" required></input>
+                            <input type="password" class="@error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password_confirmation" placeholder="8文字以上で入力してください" required></input>
                         </div>
                     </div>
                     <div class="invalid">
-                        @error('pass')
+                        @error('password_confirmation')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
