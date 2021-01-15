@@ -180,12 +180,12 @@
             .circle{
                 /* width: 48px;
                 height: 48px; */
-                width: 38px;
-                height: 38px;
+                width: 3vw;
+                height: 3vw;
                 border-radius: 50%;
                 background: white;
                 text-align: center;
-                line-height: 36px;
+                line-height: 3vw;
             }
 
             .my-header-items{
@@ -215,7 +215,7 @@
             }
 
             .my-header-items > .my-header-items-section > p {
-                font-size:12px;
+                font-size:50%;
             }
 
             /*main-items*/
