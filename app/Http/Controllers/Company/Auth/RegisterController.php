@@ -82,6 +82,7 @@ class RegisterController extends Controller
     {
         return Company::create([
             'name' => $data['name'],
+            'url' => $data['url'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
