@@ -151,13 +151,13 @@
 
         <div class="opacity-box">
             <div class="box">
-                <div class="title">{{ $user }}へようこそ</div>
+                <div class="title">{{ $company_name }}へようこそ</div>
 
                 <form method="post" class="login-form" action="{{ route('top') }}" enctype="multipart/form-data">
                 @csrf
 
                     <input type="hidden" name="hidden" value="{{ $user }}"></input>
-                    
+
                     <div class="guide">
                         <p>会社のパスワードを入力してください</p>
                     </div>
@@ -175,7 +175,7 @@
                     @enderror
                     </div>
 
-                    <div class="signin"><input type="submit" value="{{ $user }}のページへ入る"></input></div>
+                    <div class="signin"><input type="submit" value="{{ $company_name }}のページへ入る"></input></div>
                 </form>
 
             </div>

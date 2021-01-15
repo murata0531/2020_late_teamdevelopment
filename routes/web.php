@@ -25,7 +25,8 @@ Route::domain('{account}.localhost')->group(function(){
 
     Route::get('/', function($user){
 
-        return view('userwelcome',compact('user'));
+        $company_name = DB::select('select name from companies where url = ?',[$user]);
+        return view('userwelcome',compact('user','conmpany_name'));
 
     });
 
