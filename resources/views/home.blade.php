@@ -287,21 +287,12 @@
             top: 30%;
         } */
         .circle {
-            /* width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: red;
-            text-align: center;
-            color:white;
-            position:relative;
-            bottom:13px;
-            left:255px; */
-            width: 40px;
-            height: 40px;
+            width: 3vw;
+            height: 3vw;
             border-radius: 50%;
             background: white;
             text-align: center;
-            line-height: 36px;
+            line-height: 3vw;
             -webkit-border-radius:50%;
             display:block;
         }
