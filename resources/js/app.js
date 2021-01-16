@@ -14,6 +14,8 @@ require('./bootstrap');
 
 require('./components/Example');
 require('./components/filesharing/filesharing');
+require('./components/talk/talk');
+
 
 window.addEventListener('load', () => {
     if ('serviceWorker' in navigator) {
