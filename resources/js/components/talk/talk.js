@@ -14,7 +14,7 @@ export default class Talk extends Component {
                     <div className="search-back"><input type="text" className="search-text" placeholder=" &#xf002; キーワードを入力"></input></div>
                     <ul className="folder-list">
                         <li>
-                            <div className="user-icon"><i class="far fa-user"></i></div>
+                            <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
                                 <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
                                 <div className="talk-list">
@@ -24,7 +24,7 @@ export default class Talk extends Component {
                             </div>
                         </li>
                         <li>
-                            <div className="user-icon"><i class="far fa-user"></i></div>
+                            <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
                                 <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
                                 <div className="talk-list">
@@ -34,7 +34,7 @@ export default class Talk extends Component {
                             </div>
                         </li>
                         <li>
-                            <div className="user-icon"><i class="far fa-user"></i></div>
+                            <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
                                 <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
                                 <div className="talk-list">
@@ -44,7 +44,7 @@ export default class Talk extends Component {
                             </div>
                         </li>
                         <li>
-                            <div className="user-icon"><i class="far fa-user"></i></div>
+                            <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
                                 <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
                                 <div className="talk-list">
@@ -54,7 +54,7 @@ export default class Talk extends Component {
                             </div>
                         </li>
                         <li>
-                            <div className="user-icon"><i class="far fa-user"></i></div>
+                            <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
                                 <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
                                 <div className="talk-list">
@@ -64,7 +64,7 @@ export default class Talk extends Component {
                             </div>
                         </li>
                         <li>
-                            <div className="user-icon"><i class="far fa-user"></i></div>
+                            <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
                                 <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
                                 <div className="talk-list">
@@ -74,7 +74,7 @@ export default class Talk extends Component {
                             </div>
                         </li>
                         <li>
-                            <div className="user-icon"><i class="far fa-user"></i></div>
+                            <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
                                 <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
                                 <div className="talk-list">
@@ -84,7 +84,7 @@ export default class Talk extends Component {
                             </div>
                         </li>
                         <li>
-                            <div className="user-icon"><i class="far fa-user"></i></div>
+                            <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
                                 <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
                                 <div className="talk-list">
@@ -104,7 +104,7 @@ export default class Talk extends Component {
                         </div>
                         <div className="my-header-items">
                             <section className="my-header-items-section">
-                                <a href="" className="circle"><i class="fas fa-phone-alt"></i></a>
+                                <a href="" className="circle"><i className="fas fa-phone-alt"></i></a>
                                 <p onClick={
                                     function () {
 
@@ -112,30 +112,30 @@ export default class Talk extends Component {
                                 }>通話</p>
                             </section>
                             <section className="my-header-items-section">
-                                <a href="" className="circle"><i class="fas fa-video"></i></a>
+                                <a href="" className="circle"><i className="fas fa-video"></i></a>
                                 <p>ビデオ通話</p>
                             </section>
                             <section className="my-header-items-section">
-                                <a href="" className="circle"><i class="fas fa-bars"></i></a>
+                                <a href="" className="circle"><i className="fas fa-bars"></i></a>
                                 <p>メニュー</p>
                             </section>
                         </div>
                     </div>
                     <div className="account-settings">
                         <section className="my-header-items-section">
-                            <a href="" className="circle"><i class="far fa-user"></i></a>
+                            <a href="" className="circle"><i className="far fa-user"></i></a>
                             <p>アカウント</p>
                         </section>
                         <section className="my-header-items-section">
-                            <a href="" className="circle"><i class="far fa-bell"></i></a>
+                            <a href="" className="circle"><i className="far fa-bell"></i></a>
                             <p>通知</p>
                         </section>
                         <section className="my-header-items-section">
-                            <a href="" className="circle"><i class="fas fa-cog"></i></a>
+                            <a href="" className="circle"><i className="fas fa-cog"></i></a>
                             <p>設定</p>
                         </section>
                         <section className="my-header-items-section">
-                            <a href="" className="circle"><i class="far fa-question-circle"></i></a>
+                            <a href="" className="circle"><i className="far fa-question-circle"></i></a>
                             <p>ヘルプ</p>
                         </section>
                     </div>
@@ -143,73 +143,73 @@ export default class Talk extends Component {
                         <div id="messageLine" className="p-2">
 
                             {/* <!-- 会話挿入空間 --> */}
-                            <div class="opponent">
+                            <div className="opponent">
                                 {/*相手*/}
-                                <div class="faceicon">
-                                    <img src="" width="50" height="50" class="rounded-circle align-middle img-responsive float-left"></img>
+                                <div className="faceicon">
+                                    <img src="" width="50" height="50" className="rounded-circle align-middle img-responsive float-left"></img>
                                     {/* <p className="name font-weight-bold m-0">開発部長</p> */}
                                     <div className="flex-col">
                                         <div className="flex-row">
                                             <p className="name font-weight-bold m-0">開発部長</p>
-                                            <p class="dateTime float-right">2019</p>
+                                            <p className="dateTime float-right">2019</p>
                                         </div>
-                                        <div class="message_box m-2">
-                                            <div class="message_content p-3">
-                                                <div class="message_text">おはよう御座います。</div>
+                                        <div className="message_box m-2">
+                                            <div className="message_content p-3">
+                                                <div className="message_text">おはよう御座います。</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="clear"></div>
+                                    <div className="clear"></div>
                                 </div>
                                 {/*自分*/}
-                                <div class="my-faceicon">
-                                    <img src="" width="50" height="50" class="rounded-circle align-middle img-responsive float-left"></img>
+                                <div className="my-faceicon">
+                                    <img src="" width="50" height="50" className="rounded-circle align-middle img-responsive float-left"></img>
                                     <div className="flex-col">
                                         <div className="flex-row">
                                             <p className="name font-weight-bold m-0">自分</p>
-                                            <p class="dateTime float-right">2019</p>
+                                            <p className="dateTime float-right">2019</p>
                                         </div>
-                                        <div class="message_box m-2">
-                                            <div class="message_content p-3">
-                                                <div class="message_text">おはよう御座います。おはよう御座います。こちらサンプルテキストです。おはよう御座います。こちらサンプルテキストです。おはよう御座います。こちらサンプルテキストです。</div>
+                                        <div className="message_box m-2">
+                                            <div className="message_content p-3">
+                                                <div className="message_text">おはよう御座います。おはよう御座います。こちらサンプルテキストです。おはよう御座います。こちらサンプルテキストです。おはよう御座います。こちらサンプルテキストです。</div>
                                             </div>
                                         </div>
 
                                     </div>
-                                    <div class="clear"></div>
+                                    <div className="clear"></div>
                                 </div>
-                                <div class="my-faceicon">
-                                    <img src="" width="50" height="50" class="rounded-circle align-middle img-responsive float-left"></img>
+                                <div className="my-faceicon">
+                                    <img src="" width="50" height="50" className="rounded-circle align-middle img-responsive float-left"></img>
                                     <div className="flex-col">
                                         <div className="flex-row">
                                             <p className="name font-weight-bold m-0">自分</p>
-                                            <p class="dateTime float-right">2019</p>
+                                            <p className="dateTime float-right">2019</p>
                                         </div>
-                                        <div class="message_box m-2">
-                                            <div class="message_content p-3">
-                                                <div class="message_text">おはよう御座います。おはよう御座います。こちらサンプルテキストです。おはよう御座います。こちらサンプルテキストです。おはよう御座います。こちらサンプルテキストです。</div>
+                                        <div className="message_box m-2">
+                                            <div className="message_content p-3">
+                                                <div className="message_text">おはよう御座います。おはよう御座います。こちらサンプルテキストです。おはよう御座います。こちらサンプルテキストです。おはよう御座います。こちらサンプルテキストです。</div>
                                             </div>
                                         </div>
 
                                     </div>
-                                    <div class="clear"></div>
+                                    <div className="clear"></div>
                                 </div>
                                 {/*相手*/}
-                                <div class="faceicon">
-                                    <img src="" width="50" height="50" class="rounded-circle align-middle img-responsive float-left"></img>
+                                <div className="faceicon">
+                                    <img src="" width="50" height="50" className="rounded-circle align-middle img-responsive float-left"></img>
                                     {/* <p className="name font-weight-bold m-0">開発部長</p> */}
                                     <div className="flex-col">
                                         <div className="flex-row">
                                             <p className="name font-weight-bold m-0">開発部長</p>
-                                            <p class="dateTime float-right">2019</p>
+                                            <p className="dateTime float-right">2019</p>
                                         </div>
-                                        <div class="message_box m-2">
-                                            <div class="message_content p-3">
-                                                <div class="message_text">おはよう御座います。</div>
+                                        <div className="message_box m-2">
+                                            <div className="message_content p-3">
+                                                <div className="message_text">おはよう御座います。</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="clear"></div>
+                                    <div className="clear"></div>
                                 </div>  
                             </div>
                         </div>
@@ -225,14 +225,14 @@ export default class Talk extends Component {
                             <div id="send-text">
                                 <textarea></textarea>
                                 <div id="message-list">
-                                    <i class="fas fa-wrench"></i>
-                                    <i class="fas fa-paperclip"></i>
-                                    <i class="fas fa-at"></i>
-                                    <i class="fas fa-image"></i>
+                                    <i className="fas fa-wrench"></i>
+                                    <i className="fas fa-paperclip"></i>
+                                    <i className="fas fa-at"></i>
+                                    <i className="fas fa-image"></i>
                                 </div>
                             </div>
 
-                            <button type="submit" id="send-button"><i class="fab fa-telegram-plane"></i></button>               
+                            <button type="submit" id="send-button"><i className="fab fa-telegram-plane"></i></button>               
                         </div>
 
                     </div>

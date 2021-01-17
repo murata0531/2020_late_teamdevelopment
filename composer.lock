@@ -5536,7 +5536,7 @@
                     "email": "me@mikevanriel.com"
                 }
             ],
-            "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
+            "description": "A PSR-5 based resolver of class names, Types and Structural Element Names",
             "time": "2020-09-17T18:55:26+00:00"
         },
         {
