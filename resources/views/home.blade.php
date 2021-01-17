@@ -16,10 +16,10 @@
 
 
     <style>
-     *{
+        *{
             margin: 0px;
             padding: 0px;
-    }
+        }
         html,body {
             display: flex;
             display:-webkit-box;
