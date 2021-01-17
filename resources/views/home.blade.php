@@ -481,12 +481,12 @@
 <body>
     <div class="side-menu">
         <ul>
-            <li><a href="#"><i class="fas fa-home"></i><span>ホーム</span></a></li>
-            <li><a href="#"><i class="fas fa-tasks"></i><span>タスク</span></a></li>
-            <li><a href="#"><i class="far fa-comment-alt"></i><span>トーク</span></a></li>
-            <li><a href="#"><i class="fas fa-book-open"></i><span>ノート</span></a></li>
-            <li><a href="#"><i class="far fa-folder"></i><span>ファイル共有</span></a></li>
-            <li><a href="#"><i class="far fa-file-alt"></i><span>レポート</span></a></li>
+            <li><a href="/home"><i class="fas fa-home"></i><span>ホーム</span></a></li>
+            <li><a href="/home/task"><i class="fas fa-tasks"></i><span>タスク</span></a></li>
+            <li><a href="/home/talk"><i class="far fa-comment-alt"></i><span>トーク</span></a></li>
+            <li><a href="/home/note"><i class="fas fa-book-open"></i><span>ノート</span></a></li>
+            <li><a href="/home/file"><i class="far fa-folder"></i><span>ファイル共有</span></a></li>
+            <li><a href="/home/report"><i class="far fa-file-alt"></i><span>レポート</span></a></li>
 
         </ul>
     </div>
