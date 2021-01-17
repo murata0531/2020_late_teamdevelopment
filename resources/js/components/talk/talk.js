@@ -6,32 +6,7 @@ import ReactDOM from 'react-dom';
 export default class Talk extends Component {
     render() {
 
-        const videocontext = {
-            left: "2%",
-            bottom: "100%"
-        };
-
-        const filecontext = {
-            left: "18.5%",
-            bottom: "100%"
-        }
-
-        const submitcontext = {
-            left: "83.5%",
-            bottom: "100%"
-        }
-
-        const familycontext = {
-            left: "20px",
-            top: "0px",
-            color: "black"
-        }
-
-        const familysettingcontext = {
-            left: "90%",
-            top: "0px",
-            color: "black"
-        }
+    
         return (
 
             <div className="main-menu">
@@ -267,6 +242,6 @@ export default class Talk extends Component {
     }
 }
 
-if (document.getElementById('talk')) {
-    ReactDOM.render(<Talk />, document.getElementById('talk'));
-}
+// if (document.getElementById('talk')) {
+//     ReactDOM.render(<Talk />, document.getElementById('talk'));
+// }

@@ -16,7 +16,7 @@ use App\Models\Company;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('home{any}', [App\Http\Controllers\HomeController::class, 'index'])->where('any','.*')->name('home');
 
 Route::post('/top',[App\Http\Controllers\TopController::class, 'post'])->name('top');
 
