@@ -24,7 +24,7 @@ export default class Talk extends Component {
             const data = results.data;
             console.log(data);
             this.setState({
-              users: [...data]
+              users: [data]
             });
           });
       }
