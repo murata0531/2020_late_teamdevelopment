@@ -66,6 +66,7 @@
   	        display:-ms-flexbox;
             height: 100vh;
             width: calc(100vw - 18vw);
+            
         }
         /*トーク一覧*/
         .folder-menu {
@@ -74,6 +75,7 @@
             background-color: #CCE3E3;
             color: #007a7a;
             border: solid #E0E0E0 1px;
+            
         }
 
         .search-back {
@@ -95,6 +97,7 @@
             color: #00697A;
             font-family: "Font Awesome 5 Free", 'Noto Sans JP', 'sans-serif';
             font-weight: 600;
+            
         }
         .folder-list {
             position: relative;
@@ -103,11 +106,12 @@
             overflow-y:scroll;
             -ms-overflow-style: none;    /* IE, Edge 対応 */
             scrollbar-width: none;       /* Firefox 対応 */
+            
         }
 
         .folder-list>li {
             border: solid 1px white;
-            height: 80px;
+            height: 100px;
             width: 100%;
             display: flex;
             display:-webkit-box;
@@ -119,6 +123,7 @@
             overflow-x:scroll;
             -ms-overflow-style: none;    /* IE, Edge 対応 */
             scrollbar-width: none;       /* Firefox 対応 */
+            
         }
 
         .folder-list::-webkit-scrollbar,.folder-list > li::-webkit-scrollbar {  /* Chrome, Safari 対応 */
@@ -166,7 +171,7 @@
             bottom: 10px;
         }
         .talk-list>input {
-            height: 10px;
+            height: 30px;
             width: 15vw;
             text-overflow: ellipsis;
             position: relative;
