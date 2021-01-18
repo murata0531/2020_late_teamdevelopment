@@ -26,11 +26,17 @@ export default class Talk extends Component {
 
     componentDidMount() {
        
-        axios.get('http://localhost:8000/api/user')
+        axios.get('http://localhost:8000/api/user', {
+            params: {
+              // ここにクエリパラメータを指定する
+              ID: {}
+            }
+        })
         .then(function (response) {
             // handle success
           this.setState({ users: response.data.users });
           console.log(this.state.users);
+          console.log();
 
         }.bind(this))
         .catch(function (error) {

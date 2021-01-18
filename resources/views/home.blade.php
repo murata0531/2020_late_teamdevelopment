@@ -498,6 +498,9 @@
     <div id="app"></div>
     <script src="{{asset('/js/app.js')}}"></script>
    
+   <script>
+        const authuser = @json($user->id);
+   </script>
 </body>
 
 </html>

@@ -70057,12 +70057,18 @@ var Talk = /*#__PURE__*/function (_Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/user').then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/user', {
+        params: {
+          // ここにクエリパラメータを指定する
+          ID: {}
+        }
+      }).then(function (response) {
         // handle success
         this.setState({
           users: response.data.users
         });
         console.log(this.state.users);
+        console.log();
       }.bind(this))["catch"](function (error) {
         // handle error
         console.log(error);
