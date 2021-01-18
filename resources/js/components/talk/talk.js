@@ -18,26 +18,43 @@ export default class Talk extends Component {
     }
     
     getData() {
-        axios
-          .get('http://localhost:8000/api/user')
-          .then(results => {
-            const data = results.data;
-            console.log(data);
-            this.setState({
-              users: [data]
-            });
-          });
-      }
+        // axios
+        //   .get('http://localhost:8000/api/user')
+        //   .then(results => {
+        //     const data = results.data;
+        //     console.log(data);
+        //     this.setState({
+        //       users: [...data]
+        //     });
+        //   });
+
+          
+    }
 
     componentDidMount() {
        
-    
+        axios.get('http://localhost:8000/api/user')
+        .then(function (response) {
+            // handle success
+          console.log(response.data.users[0]);
+        })
+        .catch(function (error) {
+            // handle error
+          console.log(error);
+        })
+        .finally(function () {
+            // always executed
+        });
     }
 
 
     render() {
 
+        const users = this.state.users.map(user => {
+            return <li key={user.id}>{user.name}</li>;
+          });
 
+          console.log(users);
         return (
 
             <div className="main-menu">
@@ -45,18 +62,7 @@ export default class Talk extends Component {
                     <div className="search-back"><input type="text" className="search-text" placeholder=" &#xf002; キーワードを入力"></input></div>
                     <ul className="folder-list">
 
-                        {/* {users.map((users) => 
-                        
-                        <li key={user.id}>
-                            <div className="user-icon"><i className="far fa-user"></i></div>
-                            <div className="user-text">
-                                <div className="text-list"><span className="person">{user.name}</span><span className="date">昨日</span></div>
-                                <div className="talk-list">
-                                    <input type="text" value="おはよう御座います。こちらサンプルテキストです。"></input>
-                                    <p className="talk-circle">7</p>
-                                </div>
-                            </div>
-                        </li>)} */}
+                        <li>{users}</li>
                         <li>
                             <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">

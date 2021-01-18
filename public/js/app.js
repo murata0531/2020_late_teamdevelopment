@@ -70053,24 +70053,37 @@ var Talk = /*#__PURE__*/function (_Component) {
 
   _createClass(Talk, [{
     key: "getData",
-    value: function getData() {
-      var _this2 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/user').then(function (results) {
-        var data = results.data;
-        console.log(data);
-
-        _this2.setState({
-          users: [data]
-        });
-      });
+    value: function getData() {// axios
+      //   .get('http://localhost:8000/api/user')
+      //   .then(results => {
+      //     const data = results.data;
+      //     console.log(data);
+      //     this.setState({
+      //       users: [...data]
+      //     });
+      //   });
     }
   }, {
     key: "componentDidMount",
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/user').then(function (response) {
+        // handle success
+        console.log(response.data.users[0]);
+      })["catch"](function (error) {
+        // handle error
+        console.log(error);
+      })["finally"](function () {// always executed
+      });
+    }
   }, {
     key: "render",
     value: function render() {
+      var users = this.state.users.map(function (user) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: user.id
+        }, user.name);
+      });
+      console.log(users);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-menu"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -70083,7 +70096,7 @@ var Talk = /*#__PURE__*/function (_Component) {
         placeholder: " \uF002 \u30AD\u30FC\u30EF\u30FC\u30C9\u3092\u5165\u529B"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "folder-list"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, users), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "user-icon"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "far fa-user"
