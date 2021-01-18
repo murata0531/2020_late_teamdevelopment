@@ -2,17 +2,61 @@
 // import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
 export default class Talk extends Component {
+    
+    constructor(props){
+
+        super(props);
+
+        this.state = {
+            users: []
+          };
+
+        this.getData = this.getData.bind(this);
+    }
+    
+    getData() {
+        axios
+          .get('http://localhost:8000/api/user')
+          .then(results => {
+            const data = results.data;
+            console.log(data);
+            this.setState({
+              users: [...data]
+            });
+          });
+      }
+
+    componentDidMount() {
+       
+    
+    }
+
+
     render() {
 
-    
+
         return (
 
             <div className="main-menu">
                 <div className="folder-menu">
                     <div className="search-back"><input type="text" className="search-text" placeholder=" &#xf002; キーワードを入力"></input></div>
                     <ul className="folder-list">
+
+                        {/* {users.map((users) => 
+                        
+                        <li key={user.id}>
+                            <div className="user-icon"><i className="far fa-user"></i></div>
+                            <div className="user-text">
+                                <div className="text-list"><span className="person">{user.name}</span><span className="date">昨日</span></div>
+                                <div className="talk-list">
+                                    <input type="text" value="おはよう御座います。こちらサンプルテキストです。"></input>
+                                    <p className="talk-circle">7</p>
+                                </div>
+                            </div>
+                        </li>)} */}
                         <li>
                             <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
@@ -232,7 +276,7 @@ export default class Talk extends Component {
                                 </div>
                             </div>
 
-                            <button type="submit" id="send-button"><i className="fab fa-telegram-plane"></i></button>               
+                            <button type="submit" id="send-button" onClick={this.getData}><i className="fab fa-telegram-plane"></i></button>               
                         </div>
 
                     </div>
