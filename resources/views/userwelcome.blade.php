@@ -63,7 +63,7 @@
                 justify-content:center;
                 align-items:center;
                 color:rgba(255,255,255,1);
-                font-size:2vw;
+                font-size:2em;
             }
 
             .login-form {
@@ -140,6 +140,11 @@
 
             }
 
+            .invalid-pass {
+                color:red;
+                font-size:2em;
+            }
+
             
         </style>
         
@@ -170,11 +175,11 @@
                         </div>
                     </div>
                     <div class="invalid-pass">
-                    @error('pass')
+                    @if (Session::has('message'))
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            <strong>{{ session('message') }}</strong>
                         </span>
-                    @enderror
+                    @endif
                     </div>
 
                     <div class="signin"><input type="submit" value="{{ $company[0]->name }}のページへ入る"></input></div>
