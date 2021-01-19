@@ -70,6 +70,7 @@
         }
         /*トーク一覧*/
         .folder-menu {
+            position:relative;
             width: 24vw;
             height: 100vh;
             background-color: #CCE3E3;
@@ -109,11 +110,13 @@
             
         }
 
-        .folder-list>li {
+        .folder-list > li {
+            position:relative;
             border: solid 1px white;
             height: 100px;
-            width: 100%;
+            width: 24vw;
             display: flex;
+            flex-direction: row;
             display:-webkit-box;
   	        display:-ms-flexbox;
             align-items: center;
@@ -131,65 +134,71 @@
         }
 
         .user-icon {
-            height: 30px;
-            width: 35px;
-            position: relative;
-            margin: 15px;
-            background: #FFFFFF;
+            position:relative;
+            height: 100%;
+            width: 20%;
             text-align: center;
+            align-items:center;
+            justify-content:center;
+            display:flex;
         }
-        .user-icon > .fa-user {
-            position: relative;
-            top: 4px;
-        }
+        
         .user-text {
             position: relative;
             height: 100%;
-            width: 100%;
+            width: 80%;
             display: flex;
             flex-flow: column;
-            justify-content: space-around;
+            align-items:middle;
             -ms-flex-pack: distribute;
+            justify-content: space-between;
+
         }
         .text-list {
             display: flex;
             display:-webkit-box;
   	        display:-ms-flexbox;
             position: relative;
-            /* top: 15px; */
+            width:100%;
+            height:50%;
+            /* justify-content: space-around; */
+            justify-content: space-between;
+
+            top:10%;
         }
         .date {
+            position:relative;
             color: #8aa0a0;
-            font-size: 12px;
-            position: relative;
-            left: 155px;
-            top: 5px;
+            margin-right:10%;
         }
+
+        .person {
+            position:relative;
+            margin-right:10%;
+        }
+
         .talk-list {
             width: 100%;
+            height:50%;
             position: relative;
-            bottom: 10px;
         }
         .talk-list>input {
-            height: 30px;
+            /* height: 30px;
             width: 15vw;
             text-overflow: ellipsis;
             position: relative;
-            top: 13px;
+            top: 13px; */
         }
-        .talk-list>.talk-circle {
+        .talk-circle {
+            position:relative;
             width: 20px;
             height: 20px;
+            margin-right:10%;
             border-radius: 50%;
             -webkit-border-radius:50%;
             background: #E47E7E;
             text-align: center;
             color: white;
-            position: relative;
-            bottom: 25px;
-            left: 255px;
-            bottom: 10px;
-            
         }
         /*main-contents: header + main-items*/
         .main-contents {

@@ -69,10 +69,13 @@ export default class Talk extends Component {
                         <li>
                             <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
-                                <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
+                                <div className="text-list">
+                                    <p className="person">開発部長</p>
+                                    <p className="date">昨日</p>
+                                    <p className="talk-circle">7</p>
+                                </div>
                                 <div className="talk-list">
                                     <input type="text" value="おはよう御座います。こちらサンプルテキストです。"></input>
-                                    <p className="talk-circle">7</p>
                                 </div>
                             </div>
                         </li>
