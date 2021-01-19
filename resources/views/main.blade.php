@@ -320,12 +320,14 @@
                 
                 for (let key in url) {
 
-                    if(url[key].url == text ||  typeof url == "undifined"){
+                    if(url[key].url == text){
                         target.href = "http://" + text + ".localhost:8000/";
                         // alert(target.href);
                         // alert(url[key].url);
                         valid.textContent = "";
 
+                        break;
+                        
                     }else {
                         valid.textContent = "無効なURLです";
                     }
