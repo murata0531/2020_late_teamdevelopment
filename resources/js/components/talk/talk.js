@@ -26,17 +26,18 @@ export default class Talk extends Component {
 
     componentDidMount() {
        
+        const auth_company_id = auth_company_id;
         axios.get('http://localhost:8000/api/user', {
             params: {
               // ここにクエリパラメータを指定する
-              ID: {}
+              companyid: auth_company_id
             }
         })
         .then(function (response) {
             // handle success
           this.setState({ users: response.data.users });
           console.log(this.state.users);
-          console.log();
+          console.log(response.data.users.id);
 
         }.bind(this))
         .catch(function (error) {

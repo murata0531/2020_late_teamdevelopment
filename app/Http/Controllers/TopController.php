@@ -13,6 +13,6 @@ class TopController extends Controller
         $pass = $request['pass'];
         $hidden = $request['hidden'];
 
-        return redirect('/login')->with('hidden');
+        return redirect()->route('login', ['company' => $hidden]);
     }
 }

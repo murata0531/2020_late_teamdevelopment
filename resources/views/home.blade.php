@@ -496,11 +496,15 @@
         </ul>
     </div>
     <div id="app"></div>
+
+   <script>
+        
+        const auth_company_id = @json($user->company_id);
+
+   </script>
+
     <script src="{{asset('/js/app.js')}}"></script>
    
-   <script>
-        const authuser = @json($user->id);
-   </script>
 </body>
 
 </html>

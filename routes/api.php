@@ -36,7 +36,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/user',function (Request $request) {
-    $users = User::all();
+    $id = $request->input('companyid');
+
+    $users = DB::select('select * from users where company_id = ?',[$id]);
     return response()->json(['users' => $users]);
   });
 

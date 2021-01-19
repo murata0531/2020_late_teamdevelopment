@@ -70057,10 +70057,11 @@ var Talk = /*#__PURE__*/function (_Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
+      var auth_company_id = auth_company_id;
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('http://localhost:8000/api/user', {
         params: {
           // ここにクエリパラメータを指定する
-          ID: {}
+          companyid: auth_company_id
         }
       }).then(function (response) {
         // handle success
@@ -70068,7 +70069,7 @@ var Talk = /*#__PURE__*/function (_Component) {
           users: response.data.users
         });
         console.log(this.state.users);
-        console.log();
+        console.log(response.data.users.id);
       }.bind(this))["catch"](function (error) {
         // handle error
         console.log(error);

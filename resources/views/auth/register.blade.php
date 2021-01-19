@@ -185,12 +185,12 @@
 
         <div class="opacity-box">
             <div class="box">
-                <div class="title">{{ $user }}ユーザアカウント作成</div>
+                <div class="title">{{ $company }}ユーザアカウント作成</div>
 
                 <form method="post" class="login-form" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
 
-                    <input type="hidden" value="{{ $user}}"></input>
+                    <input type="hidden" value="{{ $company }}"></input>
                     <div class="area">
                         <div class="text"><i class="far fa-user"></i>　あなたのお名前　</div>
                         <div class="name">

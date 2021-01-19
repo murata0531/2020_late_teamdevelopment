@@ -189,7 +189,7 @@
 
         <div class="opacity-box">
             <div class="box">
-                <div class="title">{{ $hidden ?? '' }}ユーザサインイン</div>
+                <div class="title">{{ $company }}ユーザサインイン</div>
 
                 <form method="post" class="login-form" action="{{ route('login') }}" enctype="multipart/form-data">
                 @csrf
@@ -229,7 +229,7 @@
                         <p>{{ $hidden ?? '' }}の新しい仲間ですか？</p>
                         <hr>
                     </div>
-                    <a href="{{ route('register') }}">アカウントをお持ちでない方はこちらへ</a>
+                    <a href="/register?company={{$company}}">アカウントをお持ちでない方はこちらへ</a>
                 </div>
             </div>
         </div>
