@@ -189,7 +189,7 @@
 
         <div class="opacity-box">
             <div class="box">
-                <div class="title">{{ $company }}ユーザサインイン</div>
+                <div class="title">{{ $companyname }}ユーザサインイン</div>
 
                 <form method="post" class="login-form" action="{{ route('login') }}" enctype="multipart/form-data">
                 @csrf
@@ -226,10 +226,10 @@
                 <div class="toregister">
                     <div class="toregister-title">
                         <hr>
-                        <p>{{ $hidden ?? '' }}の新しい仲間ですか？</p>
+                        <p>{{ $companyname }}の新しい仲間ですか？</p>
                         <hr>
                     </div>
-                    <a href="/register?company={{$company}}">アカウントをお持ちでない方はこちらへ</a>
+                    <a href="/register?companyname={{$companyname}}&companyid={{$companyid}}">アカウントをお持ちでない方はこちらへ</a>
                 </div>
             </div>
         </div>

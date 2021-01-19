@@ -185,16 +185,17 @@
 
         <div class="opacity-box">
             <div class="box">
-                <div class="title">{{ $company }}ユーザアカウント作成</div>
+                <div class="title">{{ $companyname }}ユーザアカウント作成</div>
 
                 <form method="post" class="login-form" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
 
-                    <input type="hidden" value="{{ $company }}"></input>
+                    <input type="hidden" name="company_id" value="{{ $companyid }}"></input>
+
                     <div class="area">
                         <div class="text"><i class="far fa-user"></i>　あなたのお名前　</div>
                         <div class="name">
-                            <input type="text" class="@error('email') is-invalid @enderror" name="name" id="email" value="{{ old('email') }}" placeholder="example@example.com" required></input>
+                            <input type="text" class="@error('name') is-invalid @enderror" name="name" id="email" value="{{ old('name') }}" required></input>
                         </div>
                     </div>
                     <div class="invalid">
@@ -254,7 +255,7 @@
                         <p>すでにアカウントをお持ちですか？</p>
                         <hr>
                     </div>
-                    <a href="">アカウントをお持ちの方はこちらへ</a>
+                    <a href="/login?companyname={{$companyname}}&companyid={{$companyid}}">アカウントをお持ちの方はこちらへ</a>
                 </div>
             </div>
         </div>

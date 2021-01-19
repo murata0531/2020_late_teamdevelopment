@@ -44,9 +44,11 @@ class RegisterController extends Controller
 
     public function showRegistrationForm(Request $request)
     {
-        $company = $request->input('company');
+        $companyname = $request->input('companyname');
+        $companyid = $request->input('companyid');
 
-        return view('auth.register',compact('company'));
+
+        return view('auth.register',compact('companyname','companyid'));
     }
 
     /**
@@ -76,6 +78,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'company_id' => $data
         ]);
     }
 }

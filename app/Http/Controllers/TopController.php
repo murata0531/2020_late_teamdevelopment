@@ -12,7 +12,9 @@ class TopController extends Controller
 
         $pass = $request['pass'];
         $hidden = $request['hidden'];
+        $hidden2 = $request['hidden2'];
 
-        return redirect()->route('login', ['company' => $hidden]);
+
+        return redirect()->route('login', ['companyname' => $hidden,'companyid' => $hidden2]);
     }
 }

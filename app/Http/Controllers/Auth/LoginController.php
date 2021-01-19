@@ -41,8 +41,9 @@ class LoginController extends Controller
 
     public function showLoginForm(Request $request)
     {
-        $company = $request->input('company');
+        $companyname = $request->input('companyname');
+        $companyid = $request->input('companyid');
 
-        return view('auth.login',compact('company'));
+        return view('auth.login',compact('companyname','companyid'));
     }
 }
