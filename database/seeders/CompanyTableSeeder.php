@@ -15,12 +15,16 @@ class CompanyTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        \DB::table('companies')->insert([
-            'name'              => 'arael',
-            'email'             => 'user@example.com',
-            'password'          => Hash::make('12345678'),
-            'url'                       =>'arael',
-        ]);
+        
+        for($i = 1;$i <= 10;$i++){
+
+            \DB::table('companies')->insert([
+                'name'              => 'arael' . $i,
+                'email'             => 'arael' . $i . '@example.com',
+                'password'          => Hash::make('12345678'),
+                'url'               =>'arael' . $i,
+            ]);
+        }
+        
     }
 }

@@ -18,11 +18,16 @@ class UsersTableSeeder extends Seeder
     {
         //
 
-        \DB::table('users')->insert([
-            'name'              => 'arael',
-            'email'             => 'user1@example.com',
-            'company_id'        => 1,
-            'password'          => Hash::make('12345678'),
-        ]);
+        for($i = 1;$i <= 10;$i++){
+
+            \DB::table('users')->insert([
+                'name'              => 'user' . $i,
+                'email'             => 'user' . $i . '@example.com',
+                'company_id'        => 1,
+                'password'          => Hash::make('12345678'),
+            ]);
+
+        }
+        
     }
 }
