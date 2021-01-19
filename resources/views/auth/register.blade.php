@@ -175,6 +175,10 @@
                 color:white;
                 text-decoration:none;
             }
+
+            .invalid {
+                color:red;
+            }
         </style>
         
     </head>
