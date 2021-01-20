@@ -149,6 +149,7 @@
             padding: 0;
             appearance: none;
         }
+
         .user-icon {
             position:relative;
             height: 100%;

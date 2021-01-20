@@ -2,7 +2,10 @@
 // import ReactDOM from 'react-dom';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 import axios from 'axios';
+
+Modal.setAppElement("#app");
 
 export default class Talk extends Component {
 
@@ -11,18 +14,30 @@ export default class Talk extends Component {
         super(props);
 
         this.state = {
-            users: []
+            users: [],
+            modalIsOpen: false,
+
         };
 
-        this.getData = this.getData.bind(this);
 
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
-    getData() {
-
-
-
+    openModal() {
+        this.setState({ modalIsOpen: true });
     }
+
+    afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        this.subtitle.style.color = '#f00';
+    }
+
+    closeModal() {
+        this.setState({ modalIsOpen: false });
+    }
+
 
     componentDidMount() {
 
@@ -52,6 +67,20 @@ export default class Talk extends Component {
 
     render() {
 
+
+        const customStyles = {
+            content: {
+                top: '50%',
+                left: '50%',
+                right: 'auto',
+                bottom: 'auto',
+                marginRight: '-50%',
+                transform: 'translate(-50%, -50%)'
+            },
+            overlay: {
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            }
+        };
         return (
 
             <div className="main-menu">
@@ -59,7 +88,27 @@ export default class Talk extends Component {
                     <div className="search-back"><input type="text" className="search-text" placeholder=" &#xf002; キーワードを入力"></input></div>
                     <ul className="folder-list">
 
-                        <li><button className="add"><i className="fas fa-user-plus"></i> トークを追加</button></li>
+                        <li><button className="add" onClick={this.openModal}><i className="fas fa-user-plus"></i> トークを追加</button></li>
+
+                        <Modal
+                            isOpen={this.state.modalIsOpen}
+                            onAfterOpen={this.afterOpenModal}
+                            onRequestClose={this.closeModal}
+                            style={customStyles}
+                            contentLabel="Example Modal"
+                        >
+
+                            <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
+                            <button onClick={this.closeModal}>close</button>
+                            <div>I am a modal</div>
+                            <form>
+                                <input />
+                                <button>tab navigation</button>
+                                <button>stays</button>
+                                <button>inside</button>
+                                <button>the modal</button>
+                            </form>
+                        </Modal>
 
                         {this.state.users.map((user) => (
                             <li key={user.id} name={user.name} id={user.id}>
