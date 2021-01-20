@@ -70091,7 +70091,11 @@ var Talk = /*#__PURE__*/function (_Component) {
         placeholder: " \uF002 \u30AD\u30FC\u30EF\u30FC\u30C9\u3092\u5165\u529B"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "folder-list"
-      }, this.state.users.map(function (user) {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "add"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-user-plus"
+      }), " \u30C8\u30FC\u30AF\u3092\u8FFD\u52A0")), this.state.users.map(function (user) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: user.id,
           name: user.name,

@@ -59,6 +59,8 @@ export default class Talk extends Component {
                     <div className="search-back"><input type="text" className="search-text" placeholder=" &#xf002; キーワードを入力"></input></div>
                     <ul className="folder-list">
 
+                        <li><button className="add"><i className="fas fa-user-plus"></i> トークを追加</button></li>
+
                         {this.state.users.map((user) => (
                             <li key={user.id} name={user.name} id={user.id}>
 

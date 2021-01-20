@@ -133,6 +133,22 @@
             display:none;
         }
 
+        .add {
+            position:relative;
+            width:100%;
+            height:100%;
+            display:flex;
+            justify-content:center;
+            text-align:center;
+            align-items:center;
+
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            padding: 0;
+            appearance: none;
+        }
         .user-icon {
             position:relative;
             height: 100%;
