@@ -96,18 +96,30 @@ export default class Talk extends Component {
                             onRequestClose={this.closeModal}
                             style={customStyles}
                             contentLabel="Example Modal"
+                            id="modal-add"
                         >
 
-                            <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-                            <button onClick={this.closeModal}>close</button>
+                            <h2 ref={subtitle => this.subtitle = subtitle}>トーク相手を選択してください</h2>
                             <div>I am a modal</div>
                             <form>
-                                <input />
-                                <button>tab navigation</button>
-                                <button>stays</button>
-                                <button>inside</button>
-                                <button>the modal</button>
+
+                                <label><input type="radio" name="talktype" value="private"></input>個人</label>
+                                <select>
+                                    {this.state.users.map((user) => (
+                                        <option key={user.id} name={user.name} id={user.id} value={user.id}>{user.name}</option>
+                                    ))}
+                                </select>
+
+                                <label><input type="radio" name="talktype" value="open"></input>ルーム</label>
+                                <select multiple="multiple">
+                                    {this.state.users.map((user) => (
+                                        <option key={user.id} name={user.name} id={user.id} value={user.id}>{user.name}</option>
+                                    ))}
+                                </select>
                             </form>
+
+                            <button onClick={this.closeModal}>close</button>
+
                         </Modal>
 
                         {this.state.users.map((user) => (

@@ -150,6 +150,16 @@
             appearance: none;
         }
 
+        #modal-add {
+            color:blue;
+            height:60%;
+        }
+
+        #modal-add > form {
+            position:relative;
+            width:100%;
+            height:70%;
+        }
         .user-icon {
             position:relative;
             height: 100%;
