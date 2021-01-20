@@ -23,6 +23,9 @@ export default class Talk extends Component {
         this.openModal = this.openModal.bind(this);
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.radioClick = this.radioClick.bind(this);
+        this.modalClick = this.modalClick.bind(this);
+
     }
 
     openModal() {
@@ -39,6 +42,54 @@ export default class Talk extends Component {
     }
 
 
+    radioClick(){
+
+        const check =document.getElementById('modal-form').talktype;
+
+        const selectedprivate = document.getElementById('selectedprivate');
+        const selectedroom = document.getElementById('selectedroom');
+
+        if(check.value == 'private'){
+            selectedprivate.style.display ="";
+            selectedroom.style.display = "none";
+        }else {
+            selectedprivate.style.display ="none";
+            selectedroom.style.display = "";
+        }
+    }
+
+    modalClick(){
+        const check =document.getElementById('modal-form').talktype;
+        const selectedprivate = document.getElementById('selectedprivate');
+        const selectedroom = document.getElementById('selectedroom');
+        const modal_vali1 = document.getElementById('modal-vali1');
+        const modal_vali2 = document.getElementById('modal-vali2');
+
+        if(check.value == 'private'){
+            if(selectedprivate == "" || selectedprivate == 'undifined' ){
+                modal_vali1.textContent = "追加したいメンバーを選んでください";
+
+            }else {
+            }
+        }else {
+            if(selectedroom.length <= 0 || selectedroom == 'undifined'){
+                modal_vali2.textContent = "追加したいメンバーを選んでください";
+            }else {
+                
+                const array = [];
+
+                for (let i = 0;i < selectedroom.length; i++) {
+                    if (selectedroom[i].selected ) {
+                        array.push(selectedroom[i].value)
+                    }
+                }
+                alert(array);
+                modal_vali2.textContent = "";
+
+            }
+        }
+
+    }
     componentDidMount() {
 
         const auth_id = auth_company_id;
@@ -100,22 +151,29 @@ export default class Talk extends Component {
                         >
 
                             <h2 ref={subtitle => this.subtitle = subtitle}>トーク相手を選択してください</h2>
-                            <div>I am a modal</div>
-                            <form>
 
-                                <label><input type="radio" name="talktype" value="private"></input>個人</label>
-                                <select>
+                            <form id="modal-form">
+
+                                <div><label><input type="radio" name="talktype" value="private" onClick={this.radioClick} defaultChecked></input>個人</label></div>
+                                <div>
+                                <select id="selectedprivate" >
                                     {this.state.users.map((user) => (
                                         <option key={user.id} name={user.name} id={user.id} value={user.id}>{user.name}</option>
                                     ))}
                                 </select>
+                                </div>
+                                <div class="modal-vali" id="modal-vali1"></div>
 
-                                <label><input type="radio" name="talktype" value="open"></input>ルーム</label>
-                                <select multiple="multiple">
+                                <div><label><input type="radio" name="talktype" value="room" onClick={this.radioClick}></input>ルーム</label></div>
+                                <div>
+                                <select multiple="multiple" id="selectedroom">
                                     {this.state.users.map((user) => (
                                         <option key={user.id} name={user.name} id={user.id} value={user.id}>{user.name}</option>
                                     ))}
                                 </select>
+                                </div>
+                                <div class="modal-vali" id="modal-vali2"></div>
+                                    <button type="button" onClick={this.modalClick}>追加する</button>
                             </form>
 
                             <button onClick={this.closeModal}>close</button>

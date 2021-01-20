@@ -155,10 +155,25 @@
             height:60%;
         }
 
+        #modal-add > h2 {
+            position:relative;
+            width:100%;
+            height:20%;
+        }
         #modal-add > form {
             position:relative;
             width:100%;
             height:70%;
+            display:flex;
+            flex-direction:column;
+            align-items: center;
+
+        }
+
+        #modal-add > form > button {
+            position:relative;
+            width:80%;
+            top:10%;
         }
         .user-icon {
             position:relative;

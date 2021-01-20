@@ -71760,6 +71760,8 @@ var Talk = /*#__PURE__*/function (_Component) {
     _this.openModal = _this.openModal.bind(_assertThisInitialized(_this));
     _this.afterOpenModal = _this.afterOpenModal.bind(_assertThisInitialized(_this));
     _this.closeModal = _this.closeModal.bind(_assertThisInitialized(_this));
+    _this.radioClick = _this.radioClick.bind(_assertThisInitialized(_this));
+    _this.modalClick = _this.modalClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -71782,6 +71784,51 @@ var Talk = /*#__PURE__*/function (_Component) {
       this.setState({
         modalIsOpen: false
       });
+    }
+  }, {
+    key: "radioClick",
+    value: function radioClick() {
+      var check = document.getElementById('modal-form').talktype;
+      var selectedprivate = document.getElementById('selectedprivate');
+      var selectedroom = document.getElementById('selectedroom');
+
+      if (check.value == 'private') {
+        selectedprivate.style.display = "";
+        selectedroom.style.display = "none";
+      } else {
+        selectedprivate.style.display = "none";
+        selectedroom.style.display = "";
+      }
+    }
+  }, {
+    key: "modalClick",
+    value: function modalClick() {
+      var check = document.getElementById('modal-form').talktype;
+      var selectedprivate = document.getElementById('selectedprivate');
+      var selectedroom = document.getElementById('selectedroom');
+      var modal_vali1 = document.getElementById('modal-vali1');
+      var modal_vali2 = document.getElementById('modal-vali2');
+
+      if (check.value == 'private') {
+        if (selectedprivate == "" || selectedprivate == 'undifined') {
+          modal_vali1.textContent = "追加したいメンバーを選んでください";
+        } else {}
+      } else {
+        if (selectedroom.length <= 0 || selectedroom == 'undifined') {
+          modal_vali2.textContent = "追加したいメンバーを選んでください";
+        } else {
+          var array = [];
+
+          for (var i = 0; i < selectedroom.length; i++) {
+            if (selectedroom[i].selected) {
+              array.push(selectedroom[i].value);
+            }
+          }
+
+          alert(array);
+          modal_vali2.textContent = "";
+        }
+      }
     }
   }, {
     key: "componentDidMount",
@@ -71851,23 +71898,16 @@ var Talk = /*#__PURE__*/function (_Component) {
         ref: function ref(subtitle) {
           return _this2.subtitle = subtitle;
         }
-      }, "\u30C8\u30FC\u30AF\u76F8\u624B\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "I am a modal"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "\u30C8\u30FC\u30AF\u76F8\u624B\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        id: "modal-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
         name: "talktype",
-        value: "private"
-      }), "\u500B\u4EBA"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", null, this.state.users.map(function (user) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          key: user.id,
-          name: user.name,
-          id: user.id,
-          value: user.id
-        }, user.name);
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "radio",
-        name: "talktype",
-        value: "open"
-      }), "\u30EB\u30FC\u30E0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        multiple: "multiple"
+        value: "private",
+        onClick: this.radioClick,
+        defaultChecked: true
+      }), "\u500B\u4EBA")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "selectedprivate"
       }, this.state.users.map(function (user) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
           key: user.id,
@@ -71875,7 +71915,31 @@ var Talk = /*#__PURE__*/function (_Component) {
           id: user.id,
           value: user.id
         }, user.name);
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal-vali",
+        id: "modal-vali1"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        name: "talktype",
+        value: "room",
+        onClick: this.radioClick
+      }), "\u30EB\u30FC\u30E0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        multiple: "multiple",
+        id: "selectedroom"
+      }, this.state.users.map(function (user) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+          key: user.id,
+          name: user.name,
+          id: user.id,
+          value: user.id
+        }, user.name);
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        "class": "modal-vali",
+        id: "modal-vali2"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        onClick: this.modalClick
+      }, "\u8FFD\u52A0\u3059\u308B")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.closeModal
       }, "close")), this.state.users.map(function (user) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
