@@ -71777,6 +71777,8 @@ var Talk = /*#__PURE__*/function (_Component) {
     value: function afterOpenModal() {
       // references are now sync'd and can be accessed.
       this.subtitle.style.color = '#f00';
+      var selectedroom = document.getElementById('selectedroom');
+      selectedroom.style.display = "none";
     }
   }, {
     key: "closeModal",

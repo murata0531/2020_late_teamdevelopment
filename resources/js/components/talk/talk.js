@@ -35,6 +35,8 @@ export default class Talk extends Component {
     afterOpenModal() {
         // references are now sync'd and can be accessed.
         this.subtitle.style.color = '#f00';
+        const selectedroom = document.getElementById('selectedroom');
+            selectedroom.style.display = "none";
     }
 
     closeModal() {
@@ -113,6 +115,7 @@ export default class Talk extends Component {
             .finally(function () {
                 // always executed
             });
+
     }
 
 

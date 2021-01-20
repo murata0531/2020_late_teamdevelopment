@@ -555,6 +555,7 @@
         
         const auth_company_id = @json($user->company_id);
 
+
    </script>
 
     <script src="{{asset('/js/app.js')}}"></script>
