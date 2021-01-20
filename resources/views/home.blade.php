@@ -188,6 +188,9 @@
             text-overflow: ellipsis;
             position: relative;
             top: 13px; */
+            text-overflow: ellipsis;
+            -webkit-text-overflow: ellipsis; /* Safari */
+            -o-text-overflow: ellipsis; /* Opera */
         }
         .talk-circle {
             position:relative;
