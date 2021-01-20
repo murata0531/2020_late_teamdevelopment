@@ -5,48 +5,48 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 export default class Talk extends Component {
-    
-    constructor(props){
+
+    constructor(props) {
 
         super(props);
 
         this.state = {
             users: []
-          };
+        };
 
         this.getData = this.getData.bind(this);
 
     }
-    
+
     getData() {
-        
-        
-          
+
+
+
     }
 
     componentDidMount() {
-       
-        const auth_company_id = auth_company_id;
+
+        const auth_id = auth_company_id;
         axios.get('http://localhost:8000/api/user', {
             params: {
-              // ここにクエリパラメータを指定する
-              companyid: auth_company_id
+                // ここにクエリパラメータを指定する
+                companyid: auth_id
             }
         })
-        .then(function (response) {
-            // handle success
-          this.setState({ users: response.data.users });
-          console.log(this.state.users);
-          console.log(response.data.users.id);
+            .then(function (response) {
+                // handle success
+                this.setState({ users: response.data.users });
+                console.log(this.state.users);
+                console.log(auth_id);
 
-        }.bind(this))
-        .catch(function (error) {
-            // handle error
-          console.log(error);
-        })
-        .finally(function () {
-            // always executed
-        });
+            }.bind(this))
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
     }
 
 
@@ -59,13 +59,36 @@ export default class Talk extends Component {
                     <div className="search-back"><input type="text" className="search-text" placeholder=" &#xf002; キーワードを入力"></input></div>
                     <ul className="folder-list">
 
-                    {this.state.users.map((user) => (
-                    <li
-                        key={user.id}
-                        name={user.name}
-                        
-                    >{user.name}</li>
-                    ))}
+                        {this.state.users.map((user) => (
+                            <li key={user.id} name={user.name} id={user.id}>
+
+                                <div className="user-icon"><i className="far fa-user"></i></div>
+                                <div className="user-text">
+                                    <div className="text-list">
+                                        <p className="person">{user.name}</p>
+                                        <p className="date">昨日</p>
+                                        <p className="talk-circle">7</p>
+                                    </div>
+                                    <div className="talk-list">
+                                        <input type="button" value="おはよう御座います。"></input>
+                                    </div>
+                                </div>
+                            </li>
+                        ))}
+                        <li>
+                            <div className="user-icon"><i className="far fa-user"></i></div>
+                            <div className="user-text">
+                                <div className="text-list">
+                                    <p className="person">開発部長</p>
+                                    <p className="date">昨日</p>
+                                    <p className="talk-circle">7</p>
+                                </div>
+                                <div className="talk-list">
+                                    <input type="text" value="おはよう御座います。こちらサンプルテキストです。"></input>
+                                </div>
+                            </div>
+                        </li>
+
                         <li>
                             <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
@@ -82,70 +105,65 @@ export default class Talk extends Component {
                         <li>
                             <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
-                                <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
+                                <div className="text-list">
+                                    <p className="person">開発部長</p>
+                                    <p className="date">昨日</p>
+                                    <p className="talk-circle">7</p>
+                                </div>
                                 <div className="talk-list">
                                     <input type="text" value="おはよう御座います。こちらサンプルテキストです。"></input>
-                                    <p className="talk-circle">7</p>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
-                                <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
+                                <div className="text-list">
+                                    <p className="person">開発部長</p>
+                                    <p className="date">昨日</p>
+                                    <p className="talk-circle">7</p>
+                                </div>
                                 <div className="talk-list">
                                     <input type="text" value="おはよう御座います。こちらサンプルテキストです。"></input>
-                                    <p className="talk-circle">7</p>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
-                                <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
+                                <div className="text-list">
+                                    <p className="person">開発部長</p>
+                                    <p className="date">昨日</p>
+                                    <p className="talk-circle">7</p>
+                                </div>
                                 <div className="talk-list">
                                     <input type="text" value="おはよう御座います。こちらサンプルテキストです。"></input>
-                                    <p className="talk-circle">7</p>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
-                                <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
+                                <div className="text-list">
+                                    <p className="person">開発部長</p>
+                                    <p className="date">昨日</p>
+                                    <p className="talk-circle">7</p>
+                                </div>
                                 <div className="talk-list">
                                     <input type="text" value="おはよう御座います。こちらサンプルテキストです。"></input>
-                                    <p className="talk-circle">7</p>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div className="user-icon"><i className="far fa-user"></i></div>
                             <div className="user-text">
-                                <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
-                                <div className="talk-list">
-                                    <input type="text" value="おはよう御座います。こちらサンプルテキストです。"></input>
+                                <div className="text-list">
+                                    <p className="person">開発部長</p>
+                                    <p className="date">昨日</p>
                                     <p className="talk-circle">7</p>
                                 </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="user-icon"><i className="far fa-user"></i></div>
-                            <div className="user-text">
-                                <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
                                 <div className="talk-list">
                                     <input type="text" value="おはよう御座います。こちらサンプルテキストです。"></input>
-                                    <p className="talk-circle">7</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div className="user-icon"><i className="far fa-user"></i></div>
-                            <div className="user-text">
-                                <div className="text-list"><span className="person">開発部長</span><span className="date">昨日</span></div>
-                                <div className="talk-list">
-                                    <input type="text" value="おはよう御座います。こちらサンプルテキストです。"></input>
-                                    <p className="talk-circle">7</p>
                                 </div>
                             </div>
                         </li>
@@ -266,14 +284,14 @@ export default class Talk extends Component {
                                         </div>
                                     </div>
                                     <div className="clear"></div>
-                                </div>  
+                                </div>
                             </div>
                         </div>
 
                         {/* </div> */}
 
                         {/* 会話部分ここまで↑ */}
-                        
+
                         {/* 会話送信部分ここから */}
 
                         <div id="send">
@@ -288,7 +306,7 @@ export default class Talk extends Component {
                                 </div>
                             </div>
 
-                            <button type="submit" id="send-button" onClick={this.getData}><i className="fab fa-telegram-plane"></i></button>               
+                            <button type="submit" id="send-button" onClick={this.getData}><i className="fab fa-telegram-plane"></i></button>
                         </div>
 
                     </div>
