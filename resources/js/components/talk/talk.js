@@ -28,7 +28,7 @@ export default class Talk extends Component {
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.radioClick = this.radioClick.bind(this);
-        // this.modalClick = this.modalClick.bind(this);
+        this.modalClick = this.modalClick.bind(this);
 
     }
 
@@ -64,48 +64,63 @@ export default class Talk extends Component {
         }
     }
 
-    // modalClick() {
-    //     const check = document.getElementById('modal-form').talktype;
-    //     const selectedprivate = document.getElementById('selectedprivate');
-    //     const selectedroom = document.getElementById('selectedroom');
-    //     const modal_vali1 = document.getElementById('modal-vali1');
-    //     const modal_vali2 = document.getElementById('modal-vali2');
+    modalClick() {
+        const check = document.getElementById('modal-form').talktype;
+        const selectedprivate = document.getElementById('selectedprivate');
+        const selectedroom = document.getElementById('selectedroom');
+        const modal_vali1 = document.getElementById('modal-vali1');
+        const modal_vali2 = document.getElementById('modal-vali2');
 
-    //     if (check.value == 'private') {
-    //         if (selectedprivate == "" || selectedprivate == 'undifined') {
-    //             modal_vali1.textContent = "追加したいメンバーを選んでください";
+        if (check.value == 'private') {
+            if (selectedprivate.value == "" || selectedprivate.value == 'undifined') {
+                modal_vali1.textContent = "追加したいメンバーを選んでください";
 
-    //         } else {
-    //         }
-    //     } else {
-    //         if (selectedroom.length <= 0 || selectedroom == 'undifined') {
-    //             modal_vali2.textContent = "追加したいメンバーを選んでください";
-    //         } else {
+            } else {
+                axios
+                    .post('http://localhost:8000/api/adduser',{
+                        add_user:selectedprivate.value,
+                        authuserid:authuser_id
+                    })
+                    .then(res => {
+                        alert(res.data.id);
+                    })
+                    .catch(error => {
+                        alert("登録失敗");
+                        console.log(error, data);
+                    });
+            }
+        } else {
+            if (selectedroom.value.length <= 0 || selectedroom == 'undifined') {
+                modal_vali2.textContent = "追加したいメンバーを選んでください";
+            } else {
 
-    //             const array = [];
+                const array = [];
 
-    //             for (let i = 0; i < selectedroom.length; i++) {
-    //                 if (selectedroom[i].selected) {
-    //                     array.push(selectedroom[i].value)
-    //                 }
-    //             }
-    //             alert(authuser_id);
+                for (let i = 0; i < selectedroom.length; i++) {
+                    if (selectedroom[i].selected) {
+                        array.push(selectedroom[i].value)
+                    }
+                }
+                alert(array);
 
-    //             axios
-    //                 .post('/api/add/', array,authuser_id)
-    //                 .then(res => {
-    //                     alert("登録完了");
-    //                 })
-    //                 .catch(error => {
-    //                     alert("登録失敗");
-    //                     console.log(error, data);
-    //                 });
-    //             modal_vali2.textContent = "";
+                axios
+                    .post('http://localhost:8000/api/addusers',{
+                        add_users:array,
+                        authuserid:authuser_id
+                    })
+                    .then(res => {
+                        alert("登録完了");
+                    })
+                    .catch(error => {
+                        alert("登録失敗");
+                        console.log(error, data);
+                    });
+                modal_vali2.textContent = "";
 
-    //         }
-    //     }
+            }
+        }
 
-    // }
+    }
     componentDidMount() {
 
         const auth_id = auth_company_id;
@@ -169,9 +184,7 @@ export default class Talk extends Component {
 
                             <h2 ref={subtitle => this.subtitle = subtitle}>トーク相手を選択してください</h2>
 
-                            <form id="modal-form" method="post" action="api/add">
-
-                                <input type="hidden" name="_token" value={document.querySelector('meta[name="csrf-token"').getAttribute('content')} />
+                            <form id="modal-form">
 
                                 <div><label><input type="radio" name="talktype" value="private" onClick={this.radioClick} defaultChecked></input>個人</label></div>
                                 <div>
@@ -192,7 +205,7 @@ export default class Talk extends Component {
                                     </select>
                                 </div>
                                 <div><p class="modal-vali" id="modal-vali2"></p></div>
-                                <button type="submit">追加する</button>
+                                <button type="button" onClick={this.modalClick}>追加する</button>
                             </form>
 
                             <button onClick={this.closeModal}>close</button>

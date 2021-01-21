@@ -71761,8 +71761,8 @@ var Talk = /*#__PURE__*/function (_Component) {
     _this.openModal = _this.openModal.bind(_assertThisInitialized(_this));
     _this.afterOpenModal = _this.afterOpenModal.bind(_assertThisInitialized(_this));
     _this.closeModal = _this.closeModal.bind(_assertThisInitialized(_this));
-    _this.radioClick = _this.radioClick.bind(_assertThisInitialized(_this)); // this.modalClick = this.modalClick.bind(this);
-
+    _this.radioClick = _this.radioClick.bind(_assertThisInitialized(_this));
+    _this.modalClick = _this.modalClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -71802,42 +71802,56 @@ var Talk = /*#__PURE__*/function (_Component) {
         selectedprivate.style.display = "none";
         selectedroom.style.display = "";
       }
-    } // modalClick() {
-    //     const check = document.getElementById('modal-form').talktype;
-    //     const selectedprivate = document.getElementById('selectedprivate');
-    //     const selectedroom = document.getElementById('selectedroom');
-    //     const modal_vali1 = document.getElementById('modal-vali1');
-    //     const modal_vali2 = document.getElementById('modal-vali2');
-    //     if (check.value == 'private') {
-    //         if (selectedprivate == "" || selectedprivate == 'undifined') {
-    //             modal_vali1.textContent = "追加したいメンバーを選んでください";
-    //         } else {
-    //         }
-    //     } else {
-    //         if (selectedroom.length <= 0 || selectedroom == 'undifined') {
-    //             modal_vali2.textContent = "追加したいメンバーを選んでください";
-    //         } else {
-    //             const array = [];
-    //             for (let i = 0; i < selectedroom.length; i++) {
-    //                 if (selectedroom[i].selected) {
-    //                     array.push(selectedroom[i].value)
-    //                 }
-    //             }
-    //             alert(authuser_id);
-    //             axios
-    //                 .post('/api/add/', array,authuser_id)
-    //                 .then(res => {
-    //                     alert("登録完了");
-    //                 })
-    //                 .catch(error => {
-    //                     alert("登録失敗");
-    //                     console.log(error, data);
-    //                 });
-    //             modal_vali2.textContent = "";
-    //         }
-    //     }
-    // }
+    }
+  }, {
+    key: "modalClick",
+    value: function modalClick() {
+      var check = document.getElementById('modal-form').talktype;
+      var selectedprivate = document.getElementById('selectedprivate');
+      var selectedroom = document.getElementById('selectedroom');
+      var modal_vali1 = document.getElementById('modal-vali1');
+      var modal_vali2 = document.getElementById('modal-vali2');
 
+      if (check.value == 'private') {
+        if (selectedprivate.value == "" || selectedprivate.value == 'undifined') {
+          modal_vali1.textContent = "追加したいメンバーを選んでください";
+        } else {
+          axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('http://localhost:8000/api/adduser', {
+            add_user: selectedprivate.value,
+            authuserid: authuser_id
+          }).then(function (res) {
+            alert(res.data.id);
+          })["catch"](function (error) {
+            alert("登録失敗");
+            console.log(error, data);
+          });
+        }
+      } else {
+        if (selectedroom.value.length <= 0 || selectedroom == 'undifined') {
+          modal_vali2.textContent = "追加したいメンバーを選んでください";
+        } else {
+          var array = [];
+
+          for (var i = 0; i < selectedroom.length; i++) {
+            if (selectedroom[i].selected) {
+              array.push(selectedroom[i].value);
+            }
+          }
+
+          alert(array);
+          axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('http://localhost:8000/api/addusers', {
+            add_users: array,
+            authuserid: authuser_id
+          }).then(function (res) {
+            alert("登録完了");
+          })["catch"](function (error) {
+            alert("登録失敗");
+            console.log(error, data);
+          });
+          modal_vali2.textContent = "";
+        }
+      }
+    }
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
@@ -71907,14 +71921,8 @@ var Talk = /*#__PURE__*/function (_Component) {
           return _this2.subtitle = subtitle;
         }
       }, "\u30C8\u30FC\u30AF\u76F8\u624B\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        id: "modal-form",
-        method: "post",
-        action: "api/add"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "hidden",
-        name: "_token",
-        value: document.querySelector('meta[name="csrf-token"').getAttribute('content')
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "modal-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
         name: "talktype",
         value: "private",
@@ -71951,7 +71959,8 @@ var Talk = /*#__PURE__*/function (_Component) {
         "class": "modal-vali",
         id: "modal-vali2"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "submit"
+        type: "button",
+        onClick: this.modalClick
       }, "\u8FFD\u52A0\u3059\u308B")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.closeModal
       }, "close")), this.state.users.map(function (user) {

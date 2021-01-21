@@ -41,9 +41,13 @@ Route::get('/user',function (Request $request) {
     return response()->json(['users' => $users]);
 });
 
-Route::post('/add',function (Request $request) {
-    
-    return response()->json(['users' => $users]);
+Route::post('/adduser',function (Request $request) {
+
+    $id = $request->input('authuserid');
+    $add = $request->input('add_user');
+    $users = DB::select('select * from users where company_id = ?',[$id]);
+
+    return response()->json(['id' => $id,'add' => $add]);
 });
 
 
