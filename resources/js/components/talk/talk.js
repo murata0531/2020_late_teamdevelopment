@@ -165,7 +165,7 @@ export default class Talk extends Component {
                                     ))}
                                 </select>
                                 </div>
-                                <div class="modal-vali" id="modal-vali1"></div>
+                                <div><p class="modal-vali" id="modal-vali1"></p></div>
 
                                 <div><label><input type="radio" name="talktype" value="room" onClick={this.radioClick}></input>ルーム</label></div>
                                 <div>
@@ -175,7 +175,7 @@ export default class Talk extends Component {
                                     ))}
                                 </select>
                                 </div>
-                                <div class="modal-vali" id="modal-vali2"></div>
+                                <div><p class="modal-vali" id="modal-vali2"></p></div>
                                     <button type="button" onClick={this.modalClick}>追加する</button>
                             </form>
 
