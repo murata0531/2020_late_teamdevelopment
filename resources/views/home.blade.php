@@ -555,6 +555,7 @@
         
         const auth_company_id = @json($user->company_id);
 
+        const auth_user_id = @json($user->id);
 
    </script>
 

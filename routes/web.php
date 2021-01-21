@@ -38,6 +38,7 @@ Route::domain('{account}.localhost')->group(function(){
         return view('userregister',compact('user'));
     });
 
+
 });
 
 //ユーザログイン認証
