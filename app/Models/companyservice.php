@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Companyservice extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'task',
+        'talk',
+        'note',
+        'file',
+        'report',
+    ];
+
 }

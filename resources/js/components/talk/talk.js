@@ -19,6 +19,7 @@ export default class Talk extends Component {
 
         this.state = {
             users: [],
+            managements: [],
             modalIsOpen: false,
             modal_name:''
 
@@ -76,19 +77,31 @@ export default class Talk extends Component {
         const selectedroom = document.getElementById('selectedroom');
         const modal_vali1 = document.getElementById('modal-vali1');
         const modal_vali2 = document.getElementById('modal-vali2');
+        let modal_name_invalid = document.getElementById('modal-name-invalid');
 
-        if (check.value == 'private') {
+        let modal_name = document.getElementById('modal-name');
+
+        if(modal_name.value == ''){
+            modal_name_invalid.textContent = "トーク名が設定されていません";
+            modal_name_invalid.color = "red";
+        }
+        else if (check.value == 'private') {
+
+            modal_name_invalid.textContent = "";
+
             if (selectedprivate.value == "" || selectedprivate.value == 'undifined') {
                 modal_vali1.textContent = "追加したいメンバーを選んでください";
 
             } else {
                 axios
                     .post('http://localhost:8000/api/adduser',{
-                        add_user:selectedprivate.value,
-                        authuserid:authuser_id
+                        adduser:selectedprivate.value,
+                        authuserid:authuser_id,
+                        talkname:modal_name.value
+
                     })
                     .then(res => {
-                        alert(res.data.id);
+                        alert(res.data.add + ',' + res.data.id + ',' + res.data.talk_name);
                     })
                     .catch(error => {
                         alert("登録失敗");
@@ -96,6 +109,8 @@ export default class Talk extends Component {
                     });
             }
         } else {
+            modal_name_invalid.textContent = "";
+
             if (selectedroom.value.length <= 0 || selectedroom == 'undifined') {
                 modal_vali2.textContent = "追加したいメンバーを選んでください";
             } else {
@@ -111,8 +126,9 @@ export default class Talk extends Component {
 
                 axios
                     .post('http://localhost:8000/api/addusers',{
-                        add_users:array,
-                        authuserid:authuser_id
+                        addusers:array,
+                        authuserid:authuser_id,
+                        talkname:modal_name
                     })
                     .then(res => {
                         alert("登録完了");
@@ -133,12 +149,14 @@ export default class Talk extends Component {
         axios.get('http://localhost:8000/api/user', {
             params: {
                 // ここにクエリパラメータを指定する
-                companyid: auth_id
+                companyid: auth_id,
+                authuserid:authuser_id
             }
         })
             .then(function (response) {
                 // handle success
                 this.setState({ users: response.data.users });
+                this.setState({ managements: response.data.management})
                 console.log(this.state.users);
                 console.log(auth_id);
 
@@ -192,7 +210,9 @@ export default class Talk extends Component {
 
                             <form id="modal-form">
 
+                                <h3>トーク名を入力してください</h3>
                                 <input type="text" name="modal-name" id="modal-name" onChange={this.modalNameChange}></input>
+                                <p id="modal-name-invalid"></p>
                                 <div><label><input type="radio" name="talktype" value="private" onClick={this.radioClick} defaultChecked></input>個人</label></div>
                                 <div>
                                     <select id="selectedprivate" >

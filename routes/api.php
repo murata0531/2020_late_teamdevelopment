@@ -37,17 +37,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/user',function (Request $request) {
     $id = $request->input('companyid');
-    $users = DB::select('select * from users where company_id = ?',[$id]);
-    return response()->json(['users' => $users]);
+    $authid = $request->input('authuserid');
+    $users = DB::select('select * from users where company_id = ? and id <> ?',[$id,$authid]);
+    $management = DB::select('select * from talkmanagements where user_id = ?',[$authid]);
+    return response()->json(['users' => $users,'management'=> $management]);
 });
 
 Route::post('/adduser',function (Request $request) {
 
     $id = $request->input('authuserid');
-    $add = $request->input('add_user');
+    $add = $request->input('adduser');
+    $talk_name = $request->input('talkname');
+
     $users = DB::select('select * from users where company_id = ?',[$id]);
 
-    return response()->json(['id' => $id,'add' => $add]);
+    return response()->json(['id' => $id,'add' => $add,'talk_name' => $talk_name]);
 });
 
 

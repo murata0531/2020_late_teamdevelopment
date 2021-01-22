@@ -71756,6 +71756,7 @@ var Talk = /*#__PURE__*/function (_Component) {
     _this = _super.call(this, props);
     _this.state = {
       users: [],
+      managements: [],
       modalIsOpen: false,
       modal_name: ''
     };
@@ -71820,22 +71821,32 @@ var Talk = /*#__PURE__*/function (_Component) {
       var selectedroom = document.getElementById('selectedroom');
       var modal_vali1 = document.getElementById('modal-vali1');
       var modal_vali2 = document.getElementById('modal-vali2');
+      var modal_name_invalid = document.getElementById('modal-name-invalid');
+      var modal_name = document.getElementById('modal-name');
 
-      if (check.value == 'private') {
+      if (modal_name.value == '') {
+        modal_name_invalid.textContent = "トーク名が設定されていません";
+        modal_name_invalid.color = "red";
+      } else if (check.value == 'private') {
+        modal_name_invalid.textContent = "";
+
         if (selectedprivate.value == "" || selectedprivate.value == 'undifined') {
           modal_vali1.textContent = "追加したいメンバーを選んでください";
         } else {
           axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('http://localhost:8000/api/adduser', {
-            add_user: selectedprivate.value,
-            authuserid: authuser_id
+            adduser: selectedprivate.value,
+            authuserid: authuser_id,
+            talkname: modal_name.value
           }).then(function (res) {
-            alert(res.data.id);
+            alert(res.data.add + ',' + res.data.id + ',' + res.data.talk_name);
           })["catch"](function (error) {
             alert("登録失敗");
             console.log(error, data);
           });
         }
       } else {
+        modal_name_invalid.textContent = "";
+
         if (selectedroom.value.length <= 0 || selectedroom == 'undifined') {
           modal_vali2.textContent = "追加したいメンバーを選んでください";
         } else {
@@ -71849,8 +71860,9 @@ var Talk = /*#__PURE__*/function (_Component) {
 
           alert(array);
           axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('http://localhost:8000/api/addusers', {
-            add_users: array,
-            authuserid: authuser_id
+            addusers: array,
+            authuserid: authuser_id,
+            talkname: modal_name
           }).then(function (res) {
             alert("登録完了");
           })["catch"](function (error) {
@@ -71868,12 +71880,16 @@ var Talk = /*#__PURE__*/function (_Component) {
       axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('http://localhost:8000/api/user', {
         params: {
           // ここにクエリパラメータを指定する
-          companyid: auth_id
+          companyid: auth_id,
+          authuserid: authuser_id
         }
       }).then(function (response) {
         // handle success
         this.setState({
           users: response.data.users
+        });
+        this.setState({
+          managements: response.data.management
         });
         console.log(this.state.users);
         console.log(auth_id);
@@ -71931,11 +71947,13 @@ var Talk = /*#__PURE__*/function (_Component) {
         }
       }, "\u30C8\u30FC\u30AF\u76F8\u624B\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         id: "modal-form"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "\u30C8\u30FC\u30AF\u540D\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         name: "modal-name",
         id: "modal-name",
         onChange: this.modalNameChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        id: "modal-name-invalid"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
         name: "talktype",
