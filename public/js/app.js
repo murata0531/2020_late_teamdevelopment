@@ -71756,11 +71756,13 @@ var Talk = /*#__PURE__*/function (_Component) {
     _this = _super.call(this, props);
     _this.state = {
       users: [],
-      modalIsOpen: false
+      modalIsOpen: false,
+      modal_name: ''
     };
     _this.openModal = _this.openModal.bind(_assertThisInitialized(_this));
     _this.afterOpenModal = _this.afterOpenModal.bind(_assertThisInitialized(_this));
     _this.closeModal = _this.closeModal.bind(_assertThisInitialized(_this));
+    _this.modalNameChange = _this.modalNameChange.bind(_assertThisInitialized(_this));
     _this.radioClick = _this.radioClick.bind(_assertThisInitialized(_this));
     _this.modalClick = _this.modalClick.bind(_assertThisInitialized(_this));
     return _this;
@@ -71786,6 +71788,13 @@ var Talk = /*#__PURE__*/function (_Component) {
     value: function closeModal() {
       this.setState({
         modalIsOpen: false
+      });
+    }
+  }, {
+    key: "modalNameChange",
+    value: function modalNameChange(e) {
+      this.setState({
+        modal_name: e.target.value
       });
     }
   }, {
@@ -71922,7 +71931,12 @@ var Talk = /*#__PURE__*/function (_Component) {
         }
       }, "\u30C8\u30FC\u30AF\u76F8\u624B\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         id: "modal-form"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        name: "modal-name",
+        id: "modal-name",
+        onChange: this.modalNameChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
         name: "talktype",
         value: "private",

@@ -20,6 +20,7 @@ export default class Talk extends Component {
         this.state = {
             users: [],
             modalIsOpen: false,
+            modal_name:''
 
         };
 
@@ -27,6 +28,7 @@ export default class Talk extends Component {
         this.openModal = this.openModal.bind(this);
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.modalNameChange = this.modalNameChange.bind(this);
         this.radioClick = this.radioClick.bind(this);
         this.modalClick = this.modalClick.bind(this);
 
@@ -47,6 +49,10 @@ export default class Talk extends Component {
         this.setState({ modalIsOpen: false });
     }
 
+    modalNameChange(e){
+
+        this.setState({modal_name:e.target.value});
+    }
 
     radioClick() {
 
@@ -186,6 +192,7 @@ export default class Talk extends Component {
 
                             <form id="modal-form">
 
+                                <input type="text" name="modal-name" id="modal-name" onChange={this.modalNameChange}></input>
                                 <div><label><input type="radio" name="talktype" value="private" onClick={this.radioClick} defaultChecked></input>個人</label></div>
                                 <div>
                                     <select id="selectedprivate" >
