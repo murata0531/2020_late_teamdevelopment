@@ -42,7 +42,7 @@ Route::get('/user',function (Request $request) {
     $id = $request->input('companyid');
     $authid = $request->input('authuserid');
     $users = DB::select('select * from users where company_id = ? and id <> ?',[$id,$authid]);
-    $management = DB::select('select * from talkmanagements where user_id = ?',[$authid]);
+    $management = DB::select('select * from talk_management where user_id = ?',[$authid]);
     return response()->json(['users' => $users,'management'=> $management]);
 });
 

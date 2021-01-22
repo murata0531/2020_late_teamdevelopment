@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTalkmanagementsTable extends Migration
+class CreateTalkManagementTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTalkmanagementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('talkmanagements', function (Blueprint $table) {
+        Schema::create('talk_management', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('talk_id');
             $table->unsignedBigInteger('user_id');
@@ -24,7 +24,7 @@ class CreateTalkmanagementsTable extends Migration
             $table->foreign('talk_id')->references('id')->on('talks');
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->unique(['user_id','talk_id']);
+            $table->unique(['talk_id','user_id']);
         });
     }
 
@@ -35,6 +35,6 @@ class CreateTalkmanagementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('talkmanagements');
+        Schema::dropIfExists('talk_management');
     }
 }
