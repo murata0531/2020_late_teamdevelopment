@@ -15,7 +15,7 @@ class CreateTalksTable extends Migration
     {
         Schema::create('talks', function (Blueprint $table) {
             $table->id();
-            $table->datetime('last_modify');
+            $table->datetime('last_modify')->default(now());
             $table->tinyInteger('type');
             $table->timestamps();
         });

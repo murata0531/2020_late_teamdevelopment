@@ -12,6 +12,6 @@ class TalkManagement extends Model
     protected $fillable = [
         'talk_id',
         'user_id',
-        'last_reference'
+        'last_reference',
     ];
 }

@@ -17,7 +17,7 @@ class CreateTalkmanagementsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('talk_id');
             $table->unsignedBigInteger('user_id');
-            $table->datetime('last_reference');
+            $table->datetime('last_reference')->default(now());
 
             $table->timestamps();
 

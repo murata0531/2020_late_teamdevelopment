@@ -17,7 +17,7 @@ class CreateTalklogsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('talk_id');
             $table->unsignedBigInteger('user_id');
-            $table->datetime('date');
+            $table->datetime('date')->default(now());
             $table->string('message');
             $table->timestamps();
 
