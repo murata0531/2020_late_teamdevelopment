@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Models\TalkManagement;
+use App\Models\Talk;
+use App\Models\Naming;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +52,26 @@ Route::post('/adduser',function (Request $request) {
     $id = $request->input('authuserid');
     $add = $request->input('adduser');
     $talk_name = $request->input('talkname');
+
+    $Talk = new Talk;
+    $TalkManagement = new TalkManagement;
+
+    $current_date = Carbon::now();
+    $Talk->last_modify = $current_date;
+    $Talk->type = 1;
+    $newtalk = $talk->save();
+
+    $TalkManagement->user_id = $id;
+    $TalkManagement->talk_id = $newtalk->id;
+    $TalkManagement->last_reference = $current_date;
+
+    $TalkManagement->save();
+
+    $Naming->opponent_id = $id;
+    $Naming->opponent_id = $add;
+    $Naming->talk_name = $talk_name;
+
+    $Naming->save();
 
     $users = DB::select('select * from users where company_id = ?',[$id]);
 
