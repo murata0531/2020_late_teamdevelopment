@@ -71822,9 +71822,8 @@ var Talk = /*#__PURE__*/function (_Component) {
       var modal_vali1 = document.getElementById('modal-vali1');
       var modal_vali2 = document.getElementById('modal-vali2');
       var modal_name_invalid = document.getElementById('modal-name-invalid');
-      var modal_name = document.getElementById('modal-name');
 
-      if (modal_name.value == '') {
+      if (this.state.modal_name == '') {
         modal_name_invalid.textContent = "トーク名が設定されていません";
         modal_name_invalid.color = "red";
       } else if (check.value == 'private') {
@@ -71836,9 +71835,9 @@ var Talk = /*#__PURE__*/function (_Component) {
           axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('http://localhost:8000/api/adduser', {
             adduser: selectedprivate.value,
             authuserid: authuser_id,
-            talkname: modal_name.value
+            talkname: this.state.modal_name
           }).then(function (res) {
-            alert(res.data.add + ',' + res.data.id + ',' + res.data.talk_name);
+            alert(res.data.add + ',' + res.data.id + ',' + res.data);
           })["catch"](function (error) {
             alert("登録失敗");
             console.log(error, data);
@@ -71861,7 +71860,7 @@ var Talk = /*#__PURE__*/function (_Component) {
           axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('http://localhost:8000/api/addusers', {
             addusers: array,
             authuserid: authuser_id,
-            talkname: modal_name.value
+            talkname: this.state.modal_name
           }).then(function (res) {
             alert(res.data.add);
           })["catch"](function (error) {
@@ -71890,8 +71889,12 @@ var Talk = /*#__PURE__*/function (_Component) {
         this.setState({
           managements: response.data.management
         });
-        console.log(this.state.managements);
-        console.log(auth_id);
+
+        for (var item in this.state.managements) {
+          console.log(item + ': ' + this.state.managements[item]['icon']);
+        }
+
+        alert(response.data.management); // console.log(auth_id);
       }.bind(this))["catch"](function (error) {
         // handle error
         console.log(error);
@@ -71969,7 +71972,7 @@ var Talk = /*#__PURE__*/function (_Component) {
           value: user.id
         }, user.name);
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        "class": "modal-vali",
+        className: "modal-vali",
         id: "modal-vali1"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
@@ -71987,10 +71990,11 @@ var Talk = /*#__PURE__*/function (_Component) {
           value: user.id
         }, user.name);
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-        "class": "modal-vali",
+        className: "modal-vali",
         id: "modal-vali2"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
+        id: "modal-form-button",
         onClick: this.modalClick
       }, "\u8FFD\u52A0\u3059\u308B")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "modal-button-area"

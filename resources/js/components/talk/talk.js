@@ -53,6 +53,7 @@ export default class Talk extends Component {
     modalNameChange(e){
 
         this.setState({modal_name:e.target.value});
+
     }
 
     radioClick() {
@@ -79,9 +80,7 @@ export default class Talk extends Component {
         const modal_vali2 = document.getElementById('modal-vali2');
         let modal_name_invalid = document.getElementById('modal-name-invalid');
 
-        let modal_name = document.getElementById('modal-name');
-
-        if(modal_name.value == ''){
+        if(this.state.modal_name == ''){
             modal_name_invalid.textContent = "トーク名が設定されていません";
             modal_name_invalid.color = "red";
         }
@@ -97,11 +96,11 @@ export default class Talk extends Component {
                     .post('http://localhost:8000/api/adduser',{
                         adduser:selectedprivate.value,
                         authuserid:authuser_id,
-                        talkname:modal_name.value
+                        talkname:this.state.modal_name
 
                     })
                     .then(res => {
-                        alert(res.data.add + ',' + res.data.id + ',' + res.data.talk_name);
+                        alert(res.data.add + ',' + res.data.id + ',' + res.data);
                     })
                     .catch(error => {
                         alert("登録失敗");
@@ -127,7 +126,7 @@ export default class Talk extends Component {
                     .post('http://localhost:8000/api/addusers',{
                         addusers:array,
                         authuserid:authuser_id,
-                        talkname:modal_name.value
+                        talkname:this.state.modal_name
                     })
                     .then(res => {
                         alert(res.data.add);
@@ -156,8 +155,12 @@ export default class Talk extends Component {
                 // handle success
                 this.setState({ users: response.data.users });
                 this.setState({ managements: response.data.management})
-                console.log(this.state.managements);
-                console.log(auth_id);
+                for (var item in this.state.managements) {
+
+                    console.log(item + ': ' + this.state.managements[item]['icon'])
+                }
+                alert(response.data.management);
+                // console.log(auth_id);
 
             }.bind(this))
             .catch(function (error) {
@@ -221,7 +224,7 @@ export default class Talk extends Component {
                                         ))}
                                     </select>
                                 </div>
-                                <div><p class="modal-vali" id="modal-vali1"></p></div>
+                                <div><p className="modal-vali" id="modal-vali1"></p></div>
 
                                 <div><label><input type="radio" name="talktype" value="room" onClick={this.radioClick}></input>ルーム</label></div><br></br>
                                 <div>
@@ -231,8 +234,8 @@ export default class Talk extends Component {
                                         ))}
                                     </select>
                                 </div>
-                                <div><p class="modal-vali" id="modal-vali2"></p></div>
-                                <button type="button" onClick={this.modalClick}>追加する</button>
+                                <div><p className="modal-vali" id="modal-vali2"></p></div>
+                                <button type="button" id="modal-form-button" onClick={this.modalClick}>追加する</button>
                             </form>
 
                             <div id="modal-button-area"><button onClick={this.closeModal}>close</button></div>

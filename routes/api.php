@@ -56,7 +56,7 @@ Route::get('/user',function (Request $request) {
             and talk_management.user_id = ? and talks.type = 0
             ',[$authid,$authid]
     );
-                                 
+    
     return response()->json(['users' => $users,'management'=> $management]);
 });
 
