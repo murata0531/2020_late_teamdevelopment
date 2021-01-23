@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\TalkManagement;
 use App\Models\Talk;
 use App\Models\Naming;
+use App\Models\Groupnaming;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,5 +104,31 @@ Route::post('/adduser',function (Request $request) {
 
 Route::post('/addusers',function (Request $request) {
 
+    $id = $request->input('authuserid');
+    $add = $request->input('addusers');
+    $talk_name = $request->input('talkname');
 
+    $newtalk = Talk::create([
+        'type' => 0,
+    ]);
+
+    TalkManagement::create([
+        'talk_id' => $newtalk->id,
+        'user_id' => $id,
+    ]);
+
+    for($i = 0; $i < count($add); $i++){
+
+        TalkManagement::create([
+            'talk_id' => $newtalk->id,
+            'user_id' => $add[$i],
+        ]);
+    }
+
+    Groupnaming::create([
+        'talk_id' => $newtalk->id,
+        'name' => $talk_name,
+    ]);
+    
+    return response()->json(['id' => $id,'add' => $add,'talk_name' => $talk_name]);
 });

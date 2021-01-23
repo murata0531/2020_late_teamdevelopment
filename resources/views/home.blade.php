@@ -173,7 +173,11 @@
         #modal-add > form > button {
             position:relative;
             width:80%;
-            top:10%;
+        }
+
+        #modal-button-area {
+            position:relative;
+            height:10%;
         }
         .user-icon {
             position:relative;

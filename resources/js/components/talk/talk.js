@@ -122,16 +122,15 @@ export default class Talk extends Component {
                         array.push(selectedroom[i].value)
                     }
                 }
-                alert(array);
 
                 axios
                     .post('http://localhost:8000/api/addusers',{
                         addusers:array,
                         authuserid:authuser_id,
-                        talkname:modal_name
+                        talkname:modal_name.value
                     })
                     .then(res => {
-                        alert("登録完了");
+                        alert(res.data.add);
                     })
                     .catch(error => {
                         alert("登録失敗");
@@ -206,13 +205,14 @@ export default class Talk extends Component {
                             id="modal-add"
                         >
 
-                            <h2 ref={subtitle => this.subtitle = subtitle}>トーク相手を選択してください</h2>
+                            <h2 ref={subtitle => this.subtitle = subtitle}>トーク追加</h2>
 
                             <form id="modal-form">
 
-                                <h3>トーク名を入力してください</h3>
+                                <h3>トーク名を入力してください</h3><br></br>
                                 <input type="text" name="modal-name" id="modal-name" onChange={this.modalNameChange}></input>
                                 <p id="modal-name-invalid"></p>
+                                <h3>トーク相手を選択してください</h3><br></br>
                                 <div><label><input type="radio" name="talktype" value="private" onClick={this.radioClick} defaultChecked></input>個人</label></div>
                                 <div>
                                     <select id="selectedprivate" >
@@ -223,7 +223,7 @@ export default class Talk extends Component {
                                 </div>
                                 <div><p class="modal-vali" id="modal-vali1"></p></div>
 
-                                <div><label><input type="radio" name="talktype" value="room" onClick={this.radioClick}></input>ルーム</label></div>
+                                <div><label><input type="radio" name="talktype" value="room" onClick={this.radioClick}></input>ルーム</label></div><br></br>
                                 <div>
                                     <select multiple="multiple" id="selectedroom">
                                         {this.state.users.map((user) => (
@@ -235,7 +235,7 @@ export default class Talk extends Component {
                                 <button type="button" onClick={this.modalClick}>追加する</button>
                             </form>
 
-                            <button onClick={this.closeModal}>close</button>
+                            <div id="modal-button-area"><button onClick={this.closeModal}>close</button></div>
 
                         </Modal>
 
