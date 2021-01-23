@@ -51,6 +51,7 @@ Route::post('/adduser',function (Request $request) {
     $id = $request->input('authuserid');
     $add = $request->input('adduser');
     $talk_name = $request->input('talkname');
+    $opponentuser = DB::select('select * from users where id = ?',[$add]);
 
     
     $newtalk = Talk::create([
@@ -62,15 +63,22 @@ Route::post('/adduser',function (Request $request) {
         'talk_id' => $newtalk->id,
         'user_id' => $id,
     ]);
-    // $talkManagement = new TalkManagement;
-    // $talkManagement->talk_id = $newtalk;
-    // $talkManagement->user_id = $id;
-    // $talkManagement->save();
+
+    TalkManagement::create([
+        'talk_id' => $newtalk->id,
+        'user_id' => $add,
+    ]);
 
     Naming::create([
         'user_id' => $id,
         'opponent_id' => $add,
         'talk_name' => $talk_name,
+    ]);
+
+    Naming::create([
+        'user_id' => $add,
+        'opponent_id' => $id,
+        'talk_name' => $opponentuser[0]->name,
     ]);
     
 
@@ -80,4 +88,7 @@ Route::post('/adduser',function (Request $request) {
 });
 
 
+Route::post('/addusers',function (Request $request) {
 
+
+});
