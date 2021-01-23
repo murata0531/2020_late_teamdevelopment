@@ -42,7 +42,13 @@ Route::get('/user',function (Request $request) {
     $id = $request->input('companyid');
     $authid = $request->input('authuserid');
     $users = DB::select('select * from users where company_id = ? and id <> ?',[$id,$authid]);
-    $management = DB::select('select * from talk_management where user_id = ?',[$authid]);
+
+    $management = DB::select(
+        'select * from users,namings,talk_management,talks
+            where users.id = namings.user_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id
+            and users.id = ? and talks.type = 1',[$authid]
+    );
+                                 
     return response()->json(['users' => $users,'management'=> $management]);
 });
 
@@ -51,7 +57,7 @@ Route::post('/adduser',function (Request $request) {
     $id = $request->input('authuserid');
     $add = $request->input('adduser');
     $talk_name = $request->input('talkname');
-    $opponentuser = DB::select('select * from users where id = ?',[$add]);
+    $opponentuser = DB::select('select * from users where id = ?',[$id]);
 
     
     $newtalk = Talk::create([

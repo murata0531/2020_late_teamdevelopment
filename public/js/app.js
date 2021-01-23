@@ -71891,7 +71891,7 @@ var Talk = /*#__PURE__*/function (_Component) {
         this.setState({
           managements: response.data.management
         });
-        console.log(this.state.users);
+        console.log(this.state.managements);
         console.log(auth_id);
       }.bind(this))["catch"](function (error) {
         // handle error

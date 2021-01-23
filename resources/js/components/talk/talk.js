@@ -157,7 +157,7 @@ export default class Talk extends Component {
                 // handle success
                 this.setState({ users: response.data.users });
                 this.setState({ managements: response.data.management})
-                console.log(this.state.users);
+                console.log(this.state.managements);
                 console.log(auth_id);
 
             }.bind(this))
