@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         // $management = \DB::select(
-        //     'select users.icon,namings.talk_name,namings.opponent_id,talks.type
+        //     'select users.icon,namings.opponent_id,namings.talk_name,talks.type
         //         from users,namings,talk_management,talks
         //         where users.id = namings.user_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id
         //         and talk_management.user_id = ? and talks.type = 1
@@ -34,9 +34,8 @@ class HomeController extends Controller
         //         from users,groupnamings,talk_management,talks
         //         where talks.id = groupnamings.talk_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id
         //         and talk_management.user_id = ? and talks.type = 0
-        //         ',[1,1]
+        //         ',[4,4]
         // );
-        // dd($management);
         $user = Auth::user();
         return view('home',compact('user'));
     }

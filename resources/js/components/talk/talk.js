@@ -242,6 +242,28 @@ export default class Talk extends Component {
 
                         </Modal>
 
+                        {/* {
+                            for (var item in this.state.managements) {
+
+                                console.log(item + ': ' + this.state.managements[item]['icon'])
+                            }
+                        }
+                        {this.state.managements.map((manage) => (
+                            <li key={manage.id} name={user.name} id={user.id}>
+
+                                <div className="user-icon"><i className="far fa-user"></i></div>
+                                <div className="user-text">
+                                    <div className="text-list">
+                                        <p className="person">{user.name}</p>
+                                        <p className="date">昨日</p>
+                                        <p className="talk-circle">7</p>
+                                    </div>
+                                    <div className="talk-list">
+                                        <input type="button" value="おはよう御座います。"></input>
+                                    </div>
+                                </div>
+                            </li>
+                        ))} */}
                         {this.state.users.map((user) => (
                             <li key={user.id} name={user.name} id={user.id}>
 

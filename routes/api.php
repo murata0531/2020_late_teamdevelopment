@@ -45,7 +45,7 @@ Route::get('/user',function (Request $request) {
     $users = DB::select('select * from users where company_id = ? and id <> ?',[$id,$authid]);
 
     $management = \DB::select(
-        'select users.icon,namings.talk_name,namings.opponent_id,talks.type
+        'select users.icon,namings.opponent_id,namings.talk_name,talks.type
             from users,namings,talk_management,talks
             where users.id = namings.user_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id
             and talk_management.user_id = ? and talks.type = 1
