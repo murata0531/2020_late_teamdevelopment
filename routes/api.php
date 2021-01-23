@@ -43,10 +43,17 @@ Route::get('/user',function (Request $request) {
     $authid = $request->input('authuserid');
     $users = DB::select('select * from users where company_id = ? and id <> ?',[$id,$authid]);
 
-    $management = DB::select(
-        'select * from users,namings,talk_management,talks
+    $management = \DB::select(
+        'select users.icon,namings.talk_name,namings.opponent_id,talks.type
+            from users,namings,talk_management,talks
             where users.id = namings.user_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id
-            and users.id = ? and talks.type = 1',[$authid]
+            and talk_management.user_id = ? and talks.type = 1
+            union all
+            select groupnamings.icon,groupnamings.talk_id,groupnamings.name,talks.type
+            from users,groupnamings,talk_management,talks
+            where talks.id = groupnamings.talk_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id
+            and talk_management.user_id = ? and talks.type = 0
+            ',[$authid,$authid]
     );
                                  
     return response()->json(['users' => $users,'management'=> $management]);
