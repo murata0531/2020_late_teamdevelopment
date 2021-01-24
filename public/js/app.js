@@ -71757,8 +71757,10 @@ var Talk = /*#__PURE__*/function (_Component) {
     _this.state = {
       users: [],
       managements: [],
+      messages: [],
       modalIsOpen: false,
-      modal_name: ''
+      modal_name: '',
+      talkname: ''
     };
     _this.openModal = _this.openModal.bind(_assertThisInitialized(_this));
     _this.afterOpenModal = _this.afterOpenModal.bind(_assertThisInitialized(_this));
@@ -71875,6 +71877,26 @@ var Talk = /*#__PURE__*/function (_Component) {
   }, {
     key: "messageClick",
     value: function messageClick(e) {
+      this.setState({
+        talkname: e.target.name
+      });
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('http://localhost:8000/api/message', {
+        params: {
+          // ここにクエリパラメータを指定する
+          authid: authuser_id,
+          talkid: e.target.id
+        }
+      }).then(function (response) {
+        // handle success
+        this.setState({
+          messages: response.data
+        });
+        alert(this.state.managements[0].icon); // console.log(auth_id);
+      }.bind(this))["catch"](function (error) {
+        // handle error
+        console.log(error);
+      })["finally"](function () {// always executed
+      });
       alert(e.target.id);
     }
   }, {
@@ -72030,6 +72052,7 @@ var Talk = /*#__PURE__*/function (_Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "button",
           id: manage.id,
+          name: manage.talk_name,
           value: manage.message,
           onClick: _this2.messageClick
         }))));
@@ -72083,7 +72106,7 @@ var Talk = /*#__PURE__*/function (_Component) {
         className: "my-header"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "my-header-title"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "\u30C8\u30FC\u30AF"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "\u30B0\u30EB\u30FC\u30D7\u540D")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "\u30C8\u30FC\u30AF"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, this.state.talkname)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "my-header-items"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "my-header-items-section"

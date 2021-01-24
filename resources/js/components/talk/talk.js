@@ -20,9 +20,11 @@ export default class Talk extends Component {
         this.state = {
             users: [],
             managements: [],
+            messages:[],
             modalIsOpen: false,
-            modal_name:''
-
+            modal_name:'',
+            talkname:''
+            
         };
 
 
@@ -145,8 +147,33 @@ export default class Talk extends Component {
 
     messageClick(e){
 
+        this.setState({ talkname: e.target.name });
+
+        axios.get('http://localhost:8000/api/message', {
+            params: {
+                // ここにクエリパラメータを指定する
+                authid: authuser_id,
+                talkid:e.target.id
+            }
+        })
+            .then(function (response) {
+                // handle success
+                this.setState({ messages: response.data });
+                
+                alert(this.state.managements[0].icon);
+                // console.log(auth_id);
+
+            }.bind(this))
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
         alert(e.target.id);
     }
+    
     componentDidMount() {
 
         const auth_id = auth_company_id;
@@ -259,7 +286,7 @@ export default class Talk extends Component {
                                         <p className="talk-circle">7</p>
                                     </div>
                                     <div className="talk-list">
-                                        <input type="button" id={manage.id} value={manage.message} onClick={this.messageClick}></input>
+                                        <input type="button" id={manage.id} name={manage.talk_name} value={manage.message} onClick={this.messageClick}></input>
                                     </div>
                                 </div>
                             </li>
@@ -303,7 +330,7 @@ export default class Talk extends Component {
                     <div className="my-header">
                         <div className="my-header-title">
                             <h5>トーク</h5>
-                            <h6>グループ名</h6>
+                            <h6>{this.state.talkname}</h6>
                         </div>
                         <div className="my-header-items">
                             <section className="my-header-items-section">
