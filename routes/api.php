@@ -7,6 +7,7 @@ use App\Models\TalkManagement;
 use App\Models\Talk;
 use App\Models\Naming;
 use App\Models\Groupnaming;
+use App\Models\Talklog;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,18 +45,36 @@ Route::get('/user',function (Request $request) {
     $authid = $request->input('authuserid');
     $users = DB::select('select * from users where company_id = ? and id <> ?',[$id,$authid]);
 
+    // $management = \DB::select(
+    //     'select users.icon,talks.id,namings.talk_name,talks.type
+    //         from users,namings,talk_management,talks
+    //         where users.id = namings.user_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id
+    //         and talk_management.user_id = ? and talks.type = 1
+    //         union all
+    //         select groupnamings.icon,talks.id,groupnamings.name,talks.type
+    //         from users,groupnamings,talk_management,talks
+    //         where talks.id = groupnamings.talk_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id
+    //         and talk_management.user_id = ? and talks.type = 0
+    //         ',[$authid,$authid]
+    // );
+
     $management = \DB::select(
-        'select users.icon,namings.opponent_id,namings.talk_name,talks.type
-            from users,namings,talk_management,talks
-            where users.id = namings.user_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id
+        'select users.icon,talks.id,namings.talk_name,talks.type,talklogs.*
+            from users,namings,talk_management,talks,talklogs
+            where users.id = namings.user_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id and talklogs.talk_id = talks.id
             and talk_management.user_id = ? and talks.type = 1
+            and talklogs.updated_at in (select max(talklogs.updated_at) from talklogs where talklogs.user_id = ? group by talklogs.talk_id )
+            
             union all
-            select groupnamings.icon,groupnamings.talk_id,groupnamings.name,talks.type
-            from users,groupnamings,talk_management,talks
-            where talks.id = groupnamings.talk_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id
+            select groupnamings.icon,talks.id,groupnamings.name,talks.type,talklogs.*
+            from users,groupnamings,talk_management,talks,talklogs
+            where talks.id = groupnamings.talk_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id and talklogs.talk_id = talks.id
             and talk_management.user_id = ? and talks.type = 0
-            ',[$authid,$authid]
+            and talklogs.updated_at in (select max(talklogs.updated_at) from talklogs where talklogs.user_id = ? group by talklogs.talk_id )
+            
+            ',[$authid,$authid,$authid,$authid]
     );
+    
     
     return response()->json(['users' => $users,'management'=> $management]);
 });
@@ -95,6 +114,17 @@ Route::post('/adduser',function (Request $request) {
         'talk_name' => $opponentuser[0]->name,
     ]);
     
+    Talklog::create([
+        'talk_id' => $newtalk->id,
+        'user_id' => $id,
+        'message' => 'トークが作成されました',
+    ]);
+
+    Talklog::create([
+        'talk_id' => $newtalk->id,
+        'user_id' => $add,
+        'message' => 'トークが作成されました',
+    ]);
 
     $users = DB::select('select * from users where company_id = ?',[$id]);
 
@@ -117,11 +147,24 @@ Route::post('/addusers',function (Request $request) {
         'user_id' => $id,
     ]);
 
+    Talklog::create([
+        'talk_id' => $newtalk->id,
+        'user_id' => $id,
+        'message' => 'トークが作成されました',
+    ]);
+
+
     for($i = 0; $i < count($add); $i++){
 
         TalkManagement::create([
             'talk_id' => $newtalk->id,
             'user_id' => $add[$i],
+        ]);
+
+        Talklog::create([
+            'talk_id' => $newtalk->id,
+            'user_id' => $add[$i],
+            'message' => 'トークが作成されました',
         ]);
     }
 
