@@ -529,7 +529,7 @@ export default class Talk extends Component {
                         <div id="send">
                             {/* ここにテキストエリアや送信ボタンを作る */}
                             <div id="send-text">
-                                <textarea value={this.state.value} onChange={this.handleChange}></textarea>
+                                <textarea id="sendarea" value={this.state.value} onChange={this.handleChange}></textarea>
                                 <div id="message-list">
                                     <button><i className="fas fa-wrench"></i></button>
                                     <button><i className="fas fa-paperclip"></i></button>

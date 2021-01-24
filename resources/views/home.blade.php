@@ -605,6 +605,19 @@
 
         const auth_user_id = @json($user->id);
 
+        function func2(){
+                
+            let btn2 = document.getElementById('btn2');
+            let send_button = document.getElementById('send-button');
+            let tu = document.getElementById('review');
+            let sendarea = document.getElementById('sendarea');
+            tu.innerHTML = '';
+            btn2.value = '';
+            if(sendarea.value == ''){
+                send_button.disabled = "disabled";
+                send_button.style.backgroundColor = "gray";
+            }
+        }
    </script>
 
     <script src="{{asset('/js/app.js')}}"></script>
