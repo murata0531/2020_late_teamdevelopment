@@ -175,3 +175,17 @@ Route::post('/addusers',function (Request $request) {
     
     return response()->json(['id' => $id,'add' => $add,'talk_name' => $talk_name]);
 });
+
+Route::get('/message',function (Request $request) {
+
+    $authid = $request->input('authid');
+    $talkid = $request->input('talkid');
+
+    $message = \DB::select(
+        '
+            select * from talklogs,users where talklogs.user_id = users.id and talklogs.talk_id = ?
+            and talklogs.id in (select min(talklogs.id) from talklogs group by talklogs.user_id  )
+        ',[$talkid]);
+
+    return response()->json(['message'=> $message]);
+});

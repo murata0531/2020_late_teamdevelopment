@@ -20,11 +20,11 @@ export default class Talk extends Component {
         this.state = {
             users: [],
             managements: [],
-            messages:[],
+            messages: [],
             modalIsOpen: false,
-            modal_name:'',
-            talkname:''
-            
+            modal_name: '',
+            talkname: ''
+
         };
 
 
@@ -53,9 +53,9 @@ export default class Talk extends Component {
         this.setState({ modalIsOpen: false });
     }
 
-    modalNameChange(e){
+    modalNameChange(e) {
 
-        this.setState({modal_name:e.target.value});
+        this.setState({ modal_name: e.target.value });
 
     }
 
@@ -83,7 +83,7 @@ export default class Talk extends Component {
         const modal_vali2 = document.getElementById('modal-vali2');
         let modal_name_invalid = document.getElementById('modal-name-invalid');
 
-        if(this.state.modal_name == ''){
+        if (this.state.modal_name == '') {
             modal_name_invalid.textContent = "トーク名が設定されていません";
             modal_name_invalid.color = "red";
         }
@@ -96,10 +96,10 @@ export default class Talk extends Component {
 
             } else {
                 axios
-                    .post('http://localhost:8000/api/adduser',{
-                        adduser:selectedprivate.value,
-                        authuserid:authuser_id,
-                        talkname:this.state.modal_name
+                    .post('http://localhost:8000/api/adduser', {
+                        adduser: selectedprivate.value,
+                        authuserid: authuser_id,
+                        talkname: this.state.modal_name
 
                     })
                     .then(res => {
@@ -126,10 +126,10 @@ export default class Talk extends Component {
                 }
 
                 axios
-                    .post('http://localhost:8000/api/addusers',{
-                        addusers:array,
-                        authuserid:authuser_id,
-                        talkname:this.state.modal_name
+                    .post('http://localhost:8000/api/addusers', {
+                        addusers: array,
+                        authuserid: authuser_id,
+                        talkname: this.state.modal_name
                     })
                     .then(res => {
                         alert("登録が完了しました");
@@ -145,7 +145,7 @@ export default class Talk extends Component {
 
     }
 
-    messageClick(e){
+    messageClick(e) {
 
         this.setState({ talkname: e.target.name });
 
@@ -153,27 +153,24 @@ export default class Talk extends Component {
             params: {
                 // ここにクエリパラメータを指定する
                 authid: authuser_id,
-                talkid:e.target.id
+                talkid: e.target.id
             }
         })
             .then(function (response) {
                 // handle success
-                this.setState({ messages: response.data });
-                
-                alert(this.state.managements[0].icon);
-                // console.log(auth_id);
+                // this.setState({ messages: response.data.message });
+                this.setState({ messages: response.data.message })
 
             }.bind(this))
             .catch(function (error) {
                 // handle error
-                console.log(error);
+                alert(error);
             })
             .finally(function () {
                 // always executed
             });
-        alert(e.target.id);
     }
-    
+
     componentDidMount() {
 
         const auth_id = auth_company_id;
@@ -181,18 +178,17 @@ export default class Talk extends Component {
             params: {
                 // ここにクエリパラメータを指定する
                 companyid: auth_id,
-                authuserid:authuser_id
+                authuserid: authuser_id
             }
         })
             .then(function (response) {
                 // handle success
                 this.setState({ users: response.data.users });
-                this.setState({ managements: response.data.management})
+                this.setState({ managements: response.data.management })
                 for (var item in this.state.managements) {
 
                     console.log(item + ': ' + this.state.managements[item]['icon'])
                 }
-                alert(this.state.managements[0].icon);
                 // console.log(auth_id);
 
             }.bind(this))
@@ -291,7 +287,9 @@ export default class Talk extends Component {
                                 </div>
                             </li>
                         ))}
+
                         {this.state.users.map((user) => (
+
                             <li key={user.id} name={user.name} id={user.id}>
 
                                 <div className="user-icon"><i className="far fa-user"></i></div>
@@ -321,9 +319,9 @@ export default class Talk extends Component {
                             </div>
                         </li>
 
-                        
-                        
-                       
+
+
+
                     </ul>
                 </div>
                 <div className="main-contents">
@@ -375,9 +373,27 @@ export default class Talk extends Component {
                             {/* <!-- 会話挿入空間 --> */}
                             <div className="opponent">
                                 {/*相手*/}
+
+                                {this.state.messages.map((message) => (
+                                    <div className="faceicon" key={message.id}>
+
+                                        <img src={message.icon} width="50" height="50" className="rounded-circle align-middle img-responsive float-left"></img>
+                                        <div className="flex-col">
+                                            <div className="flex-row">
+                                                <p className="name font-weight-bold m-0">{message.name}</p>
+                                                <p className="dateTime float-right">{message.updated_at}</p>
+                                            </div>
+                                            <div className="message_box m-2">
+                                                <div className="message_content p-3">
+                                                    <div className="message_text">{message.message}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="clear"></div>
+                                    </div>
+                                ))}
                                 <div className="faceicon">
                                     <img src="" width="50" height="50" className="rounded-circle align-middle img-responsive float-left"></img>
-                                    {/* <p className="name font-weight-bold m-0">開発部長</p> */}
                                     <div className="flex-col">
                                         <div className="flex-row">
                                             <p className="name font-weight-bold m-0">開発部長</p>
@@ -391,6 +407,8 @@ export default class Talk extends Component {
                                     </div>
                                     <div className="clear"></div>
                                 </div>
+
+
                                 {/*自分*/}
                                 <div className="my-faceicon">
                                     <img src="" width="50" height="50" className="rounded-circle align-middle img-responsive float-left"></img>

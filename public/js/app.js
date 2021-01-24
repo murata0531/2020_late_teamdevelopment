@@ -71888,16 +71888,15 @@ var Talk = /*#__PURE__*/function (_Component) {
         }
       }).then(function (response) {
         // handle success
+        // this.setState({ messages: response.data.message });
         this.setState({
-          messages: response.data
+          messages: response.data.message
         });
-        alert(this.state.managements[0].icon); // console.log(auth_id);
       }.bind(this))["catch"](function (error) {
         // handle error
-        console.log(error);
+        alert(error);
       })["finally"](function () {// always executed
       });
-      alert(e.target.id);
     }
   }, {
     key: "componentDidMount",
@@ -71920,9 +71919,8 @@ var Talk = /*#__PURE__*/function (_Component) {
 
         for (var item in this.state.managements) {
           console.log(item + ': ' + this.state.managements[item]['icon']);
-        }
+        } // console.log(auth_id);
 
-        alert(this.state.managements[0].icon); // console.log(auth_id);
       }.bind(this))["catch"](function (error) {
         // handle error
         console.log(error);
@@ -72168,7 +72166,33 @@ var Talk = /*#__PURE__*/function (_Component) {
         className: "p-2"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "opponent"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.state.messages.map(function (message) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "faceicon",
+          key: message.id
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: message.icon,
+          width: "50",
+          height: "50",
+          className: "rounded-circle align-middle img-responsive float-left"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "flex-col"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "flex-row"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "name font-weight-bold m-0"
+        }, message.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "dateTime float-right"
+        }, message.updated_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "message_box m-2"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "message_content p-3"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "message_text"
+        }, message.message)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "clear"
+        }));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "faceicon"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         src: "",

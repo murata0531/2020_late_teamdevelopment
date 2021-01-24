@@ -55,6 +55,14 @@ class HomeController extends Controller
         // );
         
         // dd($management);
+
+        // $message = \DB::select(
+        //     '
+        //         select * from talklogs,users where talklogs.user_id = users.id and talklogs.talk_id = 1
+        //         and talklogs.id not in (select min(talklogs.id) from talklogs group by talklogs.user_id  )
+        //     ');
+
+        //     dd($message);
         $user = Auth::user();
         return view('home',compact('user'));
     }
