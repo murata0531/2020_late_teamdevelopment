@@ -37,24 +37,24 @@ class HomeController extends Controller
         //         ',[4,4]
         // );
 
-        $management = \DB::select(
-            'select users.icon,talks.id,namings.talk_name,talks.type,talklogs.*
-                from users,namings,talk_management,talks,talklogs
-                where users.id = namings.user_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id and talklogs.talk_id = talks.id
-                and talk_management.user_id = ? and talks.type = 1
-                and talklogs.updated_at in (select max(talklogs.updated_at) from talklogs where talklogs.user_id = ? group by talklogs.talk_id )
+        // $management = \DB::select(
+        //     'select users.icon,talks.id,namings.talk_name,talks.type,talklogs.*
+        //         from users,namings,talk_management,talks,talklogs
+        //         where users.id = namings.user_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id and talklogs.talk_id = talks.id
+        //         and talk_management.user_id = ? and talks.type = 1
+        //         and talklogs.updated_at in (select max(talklogs.updated_at) from talklogs where talklogs.user_id = ? group by talklogs.talk_id )
                 
-                union all
-                select groupnamings.icon,talks.id,groupnamings.name,talks.type,talklogs.*
-                from users,groupnamings,talk_management,talks,talklogs
-                where talks.id = groupnamings.talk_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id and talklogs.talk_id = talks.id
-                and talk_management.user_id = ? and talks.type = 0
-                and talklogs.updated_at in (select max(talklogs.updated_at) from talklogs where talklogs.user_id = ? group by talklogs.talk_id )
+        //         union all
+        //         select groupnamings.icon,talks.id,groupnamings.name,talks.type,talklogs.*
+        //         from users,groupnamings,talk_management,talks,talklogs
+        //         where talks.id = groupnamings.talk_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id and talklogs.talk_id = talks.id
+        //         and talk_management.user_id = ? and talks.type = 0
+        //         and talklogs.updated_at in (select max(talklogs.updated_at) from talklogs where talklogs.user_id = ? group by talklogs.talk_id )
                 
-                ',[1,1,1,1]
-        );
+        //         ',[1,1,1,1]
+        // );
         
-        dd($management);
+        // dd($management);
         $user = Auth::user();
         return view('home',compact('user'));
     }

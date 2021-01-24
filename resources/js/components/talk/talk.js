@@ -249,10 +249,11 @@ export default class Talk extends Component {
                                 <div className="user-text">
                                     <div className="text-list">
                                         <p className="person">{manage.talk_name}</p>
-                                        
+                                        <p className="date">{manage.updated_at}</p>
+                                        <p className="talk-circle">7</p>
                                     </div>
                                     <div className="talk-list">
-                                        <input type="button" value={manage.talk_name}></input>
+                                        <input type="button" value={manage.message}></input>
                                     </div>
                                 </div>
                             </li>
