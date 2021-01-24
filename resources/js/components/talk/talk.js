@@ -23,7 +23,9 @@ export default class Talk extends Component {
             messages: [],
             modalIsOpen: false,
             modal_name: '',
-            talkname: ''
+            talkname: '',
+            talk_id:'',
+            value:''
 
         };
 
@@ -35,6 +37,7 @@ export default class Talk extends Component {
         this.radioClick = this.radioClick.bind(this);
         this.modalClick = this.modalClick.bind(this);
         this.messageClick = this.messageClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
 
     }
 
@@ -171,6 +174,21 @@ export default class Talk extends Component {
             });
     }
 
+    handleChange(event) {
+        this.setState({ value: event.target.value });
+        var send_button = document.getElementById('send-button');
+
+        if (event.target.value == '') {
+            send_button.disabled = "disabled";
+            send_button.style.backgroundColor = "gray";
+
+        } else if (event.target.value != '') {
+
+            send_button.disabled = "";
+            send_button.style.backgroundColor = "#00AC97";
+        }
+    }
+
     componentDidMount() {
 
         const auth_id = auth_company_id;
@@ -185,12 +203,16 @@ export default class Talk extends Component {
                 // handle success
                 this.setState({ users: response.data.users });
                 this.setState({ managements: response.data.management })
+                this.setState({ talkname: this.state.managements[0]['talk_name']});
+                this.setState({ talk_id: this.state.managements[0]['id']});
+
                 for (var item in this.state.managements) {
 
-                    console.log(item + ': ' + this.state.managements[item]['icon'])
+                    console.log(item + ': ' + this.state.managements[0]['talk_name'])
                 }
                 // console.log(auth_id);
 
+                alert(this.state.talk_id);
             }.bind(this))
             .catch(function (error) {
                 // handle error
@@ -468,15 +490,17 @@ export default class Talk extends Component {
 
                         {/* 会話送信部分ここから */}
 
+                        <div id="review"></div>
                         <div id="send">
                             {/* ここにテキストエリアや送信ボタンを作る */}
                             <div id="send-text">
-                                <textarea></textarea>
+                                <textarea value={this.state.value} onChange={this.handleChange}></textarea>
                                 <div id="message-list">
-                                    <i className="fas fa-wrench"></i>
-                                    <i className="fas fa-paperclip"></i>
-                                    <i className="fas fa-at"></i>
-                                    <i className="fas fa-image"></i>
+                                    <button><i className="fas fa-wrench"></i></button>
+                                    <button><i className="fas fa-paperclip"></i></button>
+                                    <button><i className="fas fa-at"></i></button>
+                                    
+                                    <label htmlFor="btn2" id="avatar"><input id="btn2" type="file" onChange={this.filehandleChange} accept="image/*"></input><i className="fas fa-image"></i></label>
                                 </div>
                             </div>
 

@@ -71760,7 +71760,9 @@ var Talk = /*#__PURE__*/function (_Component) {
       messages: [],
       modalIsOpen: false,
       modal_name: '',
-      talkname: ''
+      talkname: '',
+      talk_id: '',
+      value: ''
     };
     _this.openModal = _this.openModal.bind(_assertThisInitialized(_this));
     _this.afterOpenModal = _this.afterOpenModal.bind(_assertThisInitialized(_this));
@@ -71769,6 +71771,7 @@ var Talk = /*#__PURE__*/function (_Component) {
     _this.radioClick = _this.radioClick.bind(_assertThisInitialized(_this));
     _this.modalClick = _this.modalClick.bind(_assertThisInitialized(_this));
     _this.messageClick = _this.messageClick.bind(_assertThisInitialized(_this));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -71899,6 +71902,22 @@ var Talk = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "handleChange",
+    value: function handleChange(event) {
+      this.setState({
+        value: event.target.value
+      });
+      var send_button = document.getElementById('send-button');
+
+      if (event.target.value == '') {
+        send_button.disabled = "disabled";
+        send_button.style.backgroundColor = "gray";
+      } else if (event.target.value != '') {
+        send_button.disabled = "";
+        send_button.style.backgroundColor = "#00AC97";
+      }
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       var auth_id = auth_company_id;
@@ -71916,11 +71935,19 @@ var Talk = /*#__PURE__*/function (_Component) {
         this.setState({
           managements: response.data.management
         });
+        this.setState({
+          talkname: this.state.managements[0]['talk_name']
+        });
+        this.setState({
+          talk_id: this.state.managements[0]['id']
+        });
 
         for (var item in this.state.managements) {
-          console.log(item + ': ' + this.state.managements[item]['icon']);
+          console.log(item + ': ' + this.state.managements[0]['talk_name']);
         } // console.log(auth_id);
 
+
+        alert(this.state.talk_id);
       }.bind(this))["catch"](function (error) {
         // handle error
         console.log(error);
@@ -72285,20 +72312,33 @@ var Talk = /*#__PURE__*/function (_Component) {
       }, "\u304A\u306F\u3088\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u3002")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "clear"
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "review"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "send"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "send-text"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        value: this.state.value,
+        onChange: this.handleChange
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "message-list"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-wrench"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-paperclip"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-at"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "btn2",
+        id: "avatar"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "btn2",
+        type: "file",
+        onChange: this.filehandleChange,
+        accept: "image/*"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-image"
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         id: "send-button",
         onClick: this.getData
