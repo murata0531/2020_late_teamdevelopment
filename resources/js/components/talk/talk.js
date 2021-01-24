@@ -176,14 +176,49 @@ export default class Talk extends Component {
 
     handleChange(event) {
         this.setState({ value: event.target.value });
-        var send_button = document.getElementById('send-button');
+        let send_button = document.getElementById('send-button');
 
-        if (event.target.value == '') {
+        let btn2 = document.getElementById('btn2');
+
+        if (event.target.value == '' && btn2.value == '') {
             send_button.disabled = "disabled";
             send_button.style.backgroundColor = "gray";
 
-        } else if (event.target.value != '') {
+        } else if (event.target.value != '' || btn2.value != '') {
 
+            send_button.disabled = "";
+            send_button.style.backgroundColor = "#00AC97";
+        }
+    }
+
+    filehandleChange(event) {
+        let send_button = document.getElementById('send-button');
+        let btn2 = document.getElementById('btn2');
+        let review = document.getElementById('review');
+        let reviewurl;
+
+        if (event.target.value == '' && btn2.value == '') {
+
+            send_button.disabled = "disabled";
+            send_button.style.backgroundColor = "gray";
+
+        } else if (event.target.value != '' || btn2.value != '') {
+
+            if (btn2.value != '') {
+
+                let reader = new FileReader();
+                let str = '';
+
+                reader.readAsDataURL(btn2.files[0]);
+
+                reader.onload = function () {
+                    reviewurl = reader.result;
+
+                    str += '<table border="1"><tr><td><img src=' + reviewurl + '></td></tr>';
+                    str += '<tr><td><input type="button" id="resetfile" value="削除" onclick="func2()"></td></tr></table>';
+                    review.innerHTML += str;
+                }
+            }
             send_button.disabled = "";
             send_button.style.backgroundColor = "#00AC97";
         }

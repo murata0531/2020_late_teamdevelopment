@@ -71908,11 +71908,41 @@ var Talk = /*#__PURE__*/function (_Component) {
         value: event.target.value
       });
       var send_button = document.getElementById('send-button');
+      var btn2 = document.getElementById('btn2');
 
-      if (event.target.value == '') {
+      if (event.target.value == '' && btn2.value == '') {
         send_button.disabled = "disabled";
         send_button.style.backgroundColor = "gray";
-      } else if (event.target.value != '') {
+      } else if (event.target.value != '' || btn2.value != '') {
+        send_button.disabled = "";
+        send_button.style.backgroundColor = "#00AC97";
+      }
+    }
+  }, {
+    key: "filehandleChange",
+    value: function filehandleChange(event) {
+      var send_button = document.getElementById('send-button');
+      var btn2 = document.getElementById('btn2');
+      var review = document.getElementById('review');
+      var reviewurl;
+
+      if (event.target.value == '' && btn2.value == '') {
+        send_button.disabled = "disabled";
+        send_button.style.backgroundColor = "gray";
+      } else if (event.target.value != '' || btn2.value != '') {
+        if (btn2.value != '') {
+          var reader = new FileReader();
+          var str = '';
+          reader.readAsDataURL(btn2.files[0]);
+
+          reader.onload = function () {
+            reviewurl = reader.result;
+            str += '<table border="1"><tr><td><img src=' + reviewurl + '></td></tr>';
+            str += '<tr><td><input type="button" id="resetfile" value="削除" onclick="func2()"></td></tr></table>';
+            review.innerHTML += str;
+          };
+        }
+
         send_button.disabled = "";
         send_button.style.backgroundColor = "#00AC97";
       }
