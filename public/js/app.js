@@ -71766,6 +71766,7 @@ var Talk = /*#__PURE__*/function (_Component) {
     _this.modalNameChange = _this.modalNameChange.bind(_assertThisInitialized(_this));
     _this.radioClick = _this.radioClick.bind(_assertThisInitialized(_this));
     _this.modalClick = _this.modalClick.bind(_assertThisInitialized(_this));
+    _this.messageClick = _this.messageClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -71870,6 +71871,11 @@ var Talk = /*#__PURE__*/function (_Component) {
           modal_vali2.textContent = "";
         }
       }
+    }
+  }, {
+    key: "messageClick",
+    value: function messageClick(e) {
+      alert(e.target.id);
     }
   }, {
     key: "componentDidMount",
@@ -72023,7 +72029,9 @@ var Talk = /*#__PURE__*/function (_Component) {
           className: "talk-list"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "button",
-          value: manage.message
+          id: manage.id,
+          value: manage.message,
+          onClick: _this2.messageClick
         }))));
       }), this.state.users.map(function (user) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {

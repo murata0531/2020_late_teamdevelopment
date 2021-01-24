@@ -32,6 +32,7 @@ export default class Talk extends Component {
         this.modalNameChange = this.modalNameChange.bind(this);
         this.radioClick = this.radioClick.bind(this);
         this.modalClick = this.modalClick.bind(this);
+        this.messageClick = this.messageClick.bind(this);
 
     }
 
@@ -140,6 +141,11 @@ export default class Talk extends Component {
             }
         }
 
+    }
+
+    messageClick(e){
+
+        alert(e.target.id);
     }
     componentDidMount() {
 
@@ -253,7 +259,7 @@ export default class Talk extends Component {
                                         <p className="talk-circle">7</p>
                                     </div>
                                     <div className="talk-list">
-                                        <input type="button" value={manage.message}></input>
+                                        <input type="button" id={manage.id} value={manage.message} onClick={this.messageClick}></input>
                                     </div>
                                 </div>
                             </li>
