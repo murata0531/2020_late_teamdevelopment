@@ -562,7 +562,7 @@
 
     </style>
 
- <!-- ここにアプリのscriptタグを貼り付けます。 -->
+        <!-- ここにアプリのscriptタグを貼り付けます。 -->
 
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
@@ -576,6 +576,7 @@
         <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-storage.js"></script>
         <script>
             // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
             var firebaseConfig = {
                 
             };
@@ -604,6 +605,8 @@
         const auth_company_id = @json($user->company_id);
 
         const auth_user_id = @json($user->id);
+        const auth_user_name = @json($user->name);
+        const auth_user_icon = @json($user->icon);
 
         function func2(){
                 
@@ -618,6 +621,7 @@
                 send_button.style.backgroundColor = "gray";
             }
         }
+
    </script>
 
     <script src="{{asset('/js/app.js')}}"></script>

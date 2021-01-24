@@ -8,6 +8,8 @@ import axios from 'axios';
 Modal.setAppElement("#app");
 
 const authuser_id = auth_user_id;
+const authuser_name = auth_user_name;
+const authuser_icon = auth_user_icon;
 
 export default class Talk extends Component {
 
@@ -539,7 +541,73 @@ export default class Talk extends Component {
                                 </div>
                             </div>
 
-                            <button type="submit" id="send-button" onClick={this.getData}><i className="fab fa-telegram-plane"></i></button>
+                            <button type="button" id="send-button" onClick={
+                                function () {
+                                    let database = firebase.database();
+
+                                    let room = this.state.talk_id;
+                                    alert(room + "a1");
+                                    const uname = authuser_name;
+                                    const uicon = authuser_icon;
+                                    const uid = authuser_id;
+                                    let send_button = document.getElementById('send-button');
+                                    let btn2 = document.getElementById('btn2');
+
+                                    const sendarea = document.getElementById("sendarea");
+
+                                    var now = new Date();
+
+                                    if (btn2.files.length <= 0) {
+                                        database.ref(room).push({
+                                            uid: uid,
+                                            icon: uicon,
+                                            name: uname,
+                                            message: sendarea.value,
+                                            isfile: 'nothing',
+                                            date: now.getFullYear() + '年' + eval(now.getMonth() + 1) + '月' + now.getDate() + '日' + now.getHours() + '時' + now.getMinutes() + '分'
+                                        });
+                                    } else {
+
+                                        let file = 'images/' + now + btn2.files[0].name;
+
+                                        let storageRef = firebase.storage().ref();
+                                        let uploadTask = storageRef.child(file).put(btn2.files[0]);
+
+                                        let fmessage = sendarea.value;
+
+                                        uploadTask.on('state_changed',
+                                            function (snapshot) {
+                                                // Observe state change events such as progress, pause, and resume
+                                                // See below for more detail
+                                            }, function (error) {
+                                                // Handle unsuccessful uploads
+                                            }, function () {
+                                                // Handle successful uploads on complete
+                                                // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+
+                                                database.ref(room).push({
+                                                    uid: uid,
+                                                    icon: uicon,
+                                                    name: uname,
+                                                    message: fmessage,
+                                                    isfile: file,
+                                                    date: now.getFullYear() + '年' + eval(now.getMonth() + 1) + '月' + now.getDate() + '日' + now.getHours() + '時' + now.getMinutes() + '分'
+                                                });
+
+                                                let tu = document.getElementById('review');
+                                                tu.innerHTML = '';
+
+                                            }
+                                        );
+                                    }
+
+                                    sendarea.value = "";
+                                    send_button.disabled = "disabled";
+                                    send_button.style.backgroundColor = "gray";
+                                    btn2.value = '';
+
+                                }
+                            }><i className="fab fa-telegram-plane"></i></button>
                         </div>
 
                     </div>
