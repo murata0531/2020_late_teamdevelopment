@@ -16,7 +16,7 @@ class CreateGroupnamingsTable extends Migration
         Schema::create('groupnamings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('talk_id')->unique();
-            $table->string('icon')->default('/icon/default.png');
+            $table->string('icon')->default('../icon/default.png');
             $table->string('name');
             $table->timestamps();
 

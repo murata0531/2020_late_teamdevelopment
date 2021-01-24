@@ -101,7 +101,7 @@ export default class Talk extends Component {
 
                     })
                     .then(res => {
-                        alert(res.data.add + ',' + res.data.id + ',' + res.data);
+                        alert("登録が完了しました");
                     })
                     .catch(error => {
                         alert("登録失敗");
@@ -130,7 +130,7 @@ export default class Talk extends Component {
                         talkname:this.state.modal_name
                     })
                     .then(res => {
-                        alert(res.data.add);
+                        alert("登録が完了しました");
                     })
                     .catch(error => {
                         alert("登録失敗");
@@ -165,7 +165,7 @@ export default class Talk extends Component {
 
                     console.log(item + ': ' + this.state.managements[item]['icon'])
                 }
-                alert(this.state.managements.talk_name);
+                alert(this.state.managements[0].icon);
                 // console.log(auth_id);
 
             }.bind(this))

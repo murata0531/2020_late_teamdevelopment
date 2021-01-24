@@ -71838,7 +71838,7 @@ var Talk = /*#__PURE__*/function (_Component) {
             authuserid: authuser_id,
             talkname: this.state.modal_name
           }).then(function (res) {
-            alert(res.data.add + ',' + res.data.id + ',' + res.data);
+            alert("登録が完了しました");
           })["catch"](function (error) {
             alert("登録失敗");
             console.log(error, data);
@@ -71863,7 +71863,7 @@ var Talk = /*#__PURE__*/function (_Component) {
             authuserid: authuser_id,
             talkname: this.state.modal_name
           }).then(function (res) {
-            alert(res.data.add);
+            alert("登録が完了しました");
           })["catch"](function (error) {
             alert("登録失敗");
             console.log(error, data);
@@ -71900,7 +71900,7 @@ var Talk = /*#__PURE__*/function (_Component) {
           console.log(item + ': ' + this.state.managements[item]['icon']);
         }
 
-        alert(this.state.managements.talk_name); // console.log(auth_id);
+        alert(this.state.managements[0].icon); // console.log(auth_id);
       }.bind(this))["catch"](function (error) {
         // handle error
         console.log(error);

@@ -188,6 +188,13 @@
             justify-content:center;
             display:flex;
         }
+
+        .user-icon > img {
+            position:relative;
+            height:auto;
+            width:100%;
+            object-fit: cover;
+        }
         
         .user-text {
             position: relative;
@@ -197,8 +204,7 @@
             flex-flow: column;
             align-items:middle;
             -ms-flex-pack: distribute;
-            justify-content: space-between;
-
+            left:5%;
         }
         .text-list {
             display: flex;
