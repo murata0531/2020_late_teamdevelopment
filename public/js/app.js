@@ -71774,6 +71774,7 @@ var Talk = /*#__PURE__*/function (_Component) {
     _this.modalClick = _this.modalClick.bind(_assertThisInitialized(_this));
     _this.messageClick = _this.messageClick.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    _this.sendClick = _this.sendClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -71948,6 +71949,58 @@ var Talk = /*#__PURE__*/function (_Component) {
         send_button.disabled = "";
         send_button.style.backgroundColor = "#00AC97";
       }
+    }
+  }, {
+    key: "sendClick",
+    value: function sendClick() {
+      var database = firebase.database();
+      var room = this.state.talk_id;
+      alert(room + "a1");
+      var uname = authuser_name;
+      var uicon = authuser_icon;
+      var uid = authuser_id;
+      var send_button = document.getElementById('send-button');
+      var btn2 = document.getElementById('btn2');
+      var sendarea = document.getElementById("sendarea");
+      var now = new Date();
+
+      if (btn2.files.length <= 0) {
+        database.ref(room).push({
+          uid: uid,
+          icon: uicon,
+          name: uname,
+          message: sendarea.value,
+          isfile: 'nothing',
+          date: now.getFullYear() + '年' + eval(now.getMonth() + 1) + '月' + now.getDate() + '日' + now.getHours() + '時' + now.getMinutes() + '分'
+        });
+      } else {
+        var file = 'images/' + now + btn2.files[0].name;
+        var storageRef = firebase.storage().ref();
+        var uploadTask = storageRef.child(file).put(btn2.files[0]);
+        var fmessage = sendarea.value;
+        uploadTask.on('state_changed', function (snapshot) {// Observe state change events such as progress, pause, and resume
+          // See below for more detail
+        }, function (error) {// Handle unsuccessful uploads
+        }, function () {
+          // Handle successful uploads on complete
+          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+          database.ref(room).push({
+            uid: uid,
+            icon: uicon,
+            name: uname,
+            message: fmessage,
+            isfile: file,
+            date: now.getFullYear() + '年' + eval(now.getMonth() + 1) + '月' + now.getDate() + '日' + now.getHours() + '時' + now.getMinutes() + '分'
+          });
+          var tu = document.getElementById('review');
+          tu.innerHTML = '';
+        });
+      }
+
+      sendarea.value = "";
+      send_button.disabled = "disabled";
+      send_button.style.backgroundColor = "gray";
+      btn2.value = '';
     }
   }, {
     key: "componentDidMount",
@@ -72374,56 +72427,7 @@ var Talk = /*#__PURE__*/function (_Component) {
       })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "button",
         id: "send-button",
-        onClick: function onClick() {
-          var database = firebase.database();
-          var room = this.state.talk_id;
-          alert(room + "a1");
-          var uname = authuser_name;
-          var uicon = authuser_icon;
-          var uid = authuser_id;
-          var send_button = document.getElementById('send-button');
-          var btn2 = document.getElementById('btn2');
-          var sendarea = document.getElementById("sendarea");
-          var now = new Date();
-
-          if (btn2.files.length <= 0) {
-            database.ref(room).push({
-              uid: uid,
-              icon: uicon,
-              name: uname,
-              message: sendarea.value,
-              isfile: 'nothing',
-              date: now.getFullYear() + '年' + eval(now.getMonth() + 1) + '月' + now.getDate() + '日' + now.getHours() + '時' + now.getMinutes() + '分'
-            });
-          } else {
-            var file = 'images/' + now + btn2.files[0].name;
-            var storageRef = firebase.storage().ref();
-            var uploadTask = storageRef.child(file).put(btn2.files[0]);
-            var fmessage = sendarea.value;
-            uploadTask.on('state_changed', function (snapshot) {// Observe state change events such as progress, pause, and resume
-              // See below for more detail
-            }, function (error) {// Handle unsuccessful uploads
-            }, function () {
-              // Handle successful uploads on complete
-              // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-              database.ref(room).push({
-                uid: uid,
-                icon: uicon,
-                name: uname,
-                message: fmessage,
-                isfile: file,
-                date: now.getFullYear() + '年' + eval(now.getMonth() + 1) + '月' + now.getDate() + '日' + now.getHours() + '時' + now.getMinutes() + '分'
-              });
-              var tu = document.getElementById('review');
-              tu.innerHTML = '';
-            });
-          }
-
-          sendarea.value = "";
-          send_button.disabled = "disabled";
-          send_button.style.backgroundColor = "gray";
-          btn2.value = '';
-        }
+        onClick: this.sendClick
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fab fa-telegram-plane"
       }))))));
