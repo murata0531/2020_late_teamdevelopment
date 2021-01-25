@@ -482,6 +482,7 @@
             border: 3px solid #007A7A;
             left:22%;
             position: relative;
+            text-align:center;
         }
 
         
