@@ -363,17 +363,23 @@ export default class Talk extends Component {
                             //編集おｋ
     
                         } else if (v.uid == userid) {
-                            // str += '<div className="name"><img src="..' + v.icon + '" width="50" height="50" className="rounded-circle float-left img-responsive">名前：' + v.name + '</div>';
-                            str += '<div class="myself">';
+                            str += '<div class="my-faceicon">';
                             str += '<div class="faceicon">';
-                            str += '<img src="..' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-right"></div>';
-                            str += '<div class="message_box m-2" style="background-color:lime;">';
+                            str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                            str += '<div class="flex-col"><div class="flex-row">';
+                            str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                            str += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                            str += '<div class="message_box m-2">';
                             str += '<div class="message_content p-3">';
-                            str += '<div class="message_text">' + v.message + '</div></div></div>';
-                            str += '<p class="dateTime float-left">' + v.date + '</div>';
-                            str += '<div class="clear"></div>';
+                            str += '<div class="message_text">' + v.message + '</div>';
+                            str += '</div></div></div>';
+                            str += '<div class="clear"></div></div>';
+
                             output.innerHTML += str;
                             output.scrollIntoView(false);
+
+                            //編集ok
+
                         }
                     }
     
@@ -664,22 +670,7 @@ export default class Talk extends Component {
                                     </div>
                                     <div className="clear"></div>
                                 </div>
-                                <div className="my-faceicon">
-                                    <img src="" width="50" height="50" className="rounded-circle align-middle img-responsive float-left"></img>
-                                    <div className="flex-col">
-                                        <div className="flex-row">
-                                            <p className="name font-weight-bold m-0">自分</p>
-                                            <p className="dateTime float-right">2019</p>
-                                        </div>
-                                        <div className="message_box m-2">
-                                            <div className="message_content p-3">
-                                                <div className="message_text">おはよう御座います。おはよう御座います。こちらサンプルテキストです。おはよう御座います。こちらサンプルテキストです。おはよう御座います。こちらサンプルテキストです。</div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div className="clear"></div>
-                                </div>
+                                
                                 {/*相手*/}
                                 <div className="faceicon">
                                     <img src="" width="50" height="50" className="rounded-circle align-middle img-responsive float-left"></img>

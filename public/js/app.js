@@ -72853,17 +72853,19 @@ var Talk = /*#__PURE__*/function (_Component) {
                       output.innerHTML += str;
                       output.scrollIntoView(false); //編集おｋ
                     } else if (v.uid == userid) {
-                      // str += '<div className="name"><img src="..' + v.icon + '" width="50" height="50" className="rounded-circle float-left img-responsive">名前：' + v.name + '</div>';
-                      str += '<div class="myself">';
+                      str += '<div class="my-faceicon">';
                       str += '<div class="faceicon">';
-                      str += '<img src="..' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-right"></div>';
-                      str += '<div class="message_box m-2" style="background-color:lime;">';
+                      str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                      str += '<div class="flex-col"><div class="flex-row">';
+                      str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                      str += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                      str += '<div class="message_box m-2">';
                       str += '<div class="message_content p-3">';
-                      str += '<div class="message_text">' + v.message + '</div></div></div>';
-                      str += '<p class="dateTime float-left">' + v.date + '</div>';
-                      str += '<div class="clear"></div>';
+                      str += '<div class="message_text">' + v.message + '</div>';
+                      str += '</div></div></div>';
+                      str += '<div class="clear"></div></div>';
                       output.innerHTML += str;
-                      output.scrollIntoView(false);
+                      output.scrollIntoView(false); //編集ok
                     }
                   }
 
@@ -73218,29 +73220,6 @@ var Talk = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "message_text"
       }, "\u304A\u306F\u3088\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u3002")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "clear"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "my-faceicon"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "",
-        width: "50",
-        height: "50",
-        className: "rounded-circle align-middle img-responsive float-left"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "flex-col"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "flex-row"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-        className: "name font-weight-bold m-0"
-      }, "\u81EA\u5206"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-        className: "dateTime float-right"
-      }, "2019")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "message_box m-2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "message_content p-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "message_text"
-      }, "\u304A\u306F\u3088\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u3002\u304A\u306F\u3088\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u3002\u3053\u3061\u3089\u30B5\u30F3\u30D7\u30EB\u30C6\u30AD\u30B9\u30C8\u3067\u3059\u3002\u304A\u306F\u3088\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u3002\u3053\u3061\u3089\u30B5\u30F3\u30D7\u30EB\u30C6\u30AD\u30B9\u30C8\u3067\u3059\u3002\u304A\u306F\u3088\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u3002\u3053\u3061\u3089\u30B5\u30F3\u30D7\u30EB\u30C6\u30AD\u30B9\u30C8\u3067\u3059\u3002")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "clear"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "my-faceicon"
