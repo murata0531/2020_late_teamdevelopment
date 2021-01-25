@@ -10,6 +10,7 @@ Modal.setAppElement("#app");
 const authuser_id = auth_user_id;
 const authuser_name = auth_user_name;
 const authuser_icon = auth_user_icon;
+const authcompanyid = company_id;
 
 export default class Talk extends Component {
 
@@ -231,7 +232,6 @@ export default class Talk extends Component {
         let database = firebase.database();
 
         let room = this.state.talk_id;
-        alert(room + "a1");
         const uname = authuser_name;
         const uicon = authuser_icon;
         const uid = authuser_id;
@@ -240,10 +240,10 @@ export default class Talk extends Component {
 
         const sendarea = document.getElementById("sendarea");
 
-        var now = new Date();
+        let now = new Date();
 
         if (btn2.files.length <= 0) {
-            database.ref(room).push({
+            database.ref(authcompanyid + '/' + room).push({
                 uid: uid,
                 icon: uicon,
                 name: uname,
@@ -315,7 +315,6 @@ export default class Talk extends Component {
                 }
                 // console.log(auth_id);
 
-                alert(this.state.talk_id);
             }.bind(this))
             .catch(function (error) {
                 // handle error
@@ -325,6 +324,119 @@ export default class Talk extends Component {
                 // always executed
             });
 
+
+            let database = firebase.database();
+            let room = this.state.talk_id;
+            const userid = authuser_id;
+            const output = document.getElementById("output");
+            let storage = firebase.storage();
+            let pathReference = storage.ref();
+    
+            let prevTask = Promise.resolve();
+
+            //受信処理
+            database.ref(companyid + '/' + room).on("child_added", (data) => {
+                prevTask = prevTask.finally(async () => {
+                    const v = data.val();
+                    const k = data.key;
+    
+                    if ((v.message != "" && v.isfile != "nothing") || (v.message != "" && v.isfile == "nothing")) {
+    
+                        let str = "";
+    
+                        if (v.uid != userid) {
+                            str += '<div class="faceicon">';
+                            str += '<div class="faceicon">';
+                            str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                            str += '<div class="flex-col">';
+                            str += ' <div class="flex-row">';
+                            str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                            str += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                            str += '<div class="message_box m-2">';
+                            str += '<div class="message_content p-3">';
+                            str += '<div class="message_text">' + v.message + '</div>';
+                            str += '</div></div></div>';
+                            str += '<div class="clear"></div></div>';
+
+                            output.innerHTML += str;
+                            output.scrollIntoView(false);
+    
+                        } else if (v.uid == userid) {
+                            // str += '<div className="name"><img src="..' + v.icon + '" width="50" height="50" className="rounded-circle float-left img-responsive">名前：' + v.name + '</div>';
+                            str += '<div class="myself">';
+                            str += '<div class="faceicon">';
+                            str += '<img src="..' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-right"></div>';
+                            str += '<div class="message_box m-2" style="background-color:lime;">';
+                            str += '<div class="message_content p-3">';
+                            str += '<div class="message_text">' + v.message + '</div></div></div>';
+                            str += '<p class="dateTime float-left">' + v.date + '</div>';
+                            str += '<div class="clear"></div>';
+                            output.innerHTML += str;
+                            output.scrollIntoView(false);
+                        }
+                    }
+    
+                    if ((v.isfile != "nothing" && v.message == "") || (v.isfile != "nothing" && v.message != "")) {
+    
+                        let str = "";
+    
+                        await pathReference.child(v.isfile).getDownloadURL().then(function (url) {
+    
+    
+                            if (v.uid != userid) {
+                                str += '<div className="faceicon">';
+                                str += '<img src="..' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                                str += '<div className="flex-col">';
+                                str += '<<div className="flex-row">';p
+                                str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div></div></div>';
+                                str += '<p class="dateTime float-right">' + v.date + '</div>';
+                                str += '<div class="clear"></div>';
+                                output.innerHTML += str;
+                                output.scrollIntoView(false);
+
+                                                                
+    
+                            } else if (v.uid == userid) {
+                                // str += '<div className="name"><img src="..' + v.icon + '" width="50" height="50" className="rounded-circle float-left img-responsive">名前：' + v.name + '</div>';
+                                str += '<div class="myself">';
+                                str += '<div class="faceicon">';
+                                str += '<img src="..' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-right"></div>';
+                                str += '<div class="message_box m-2" style="background-color:lime;">';
+                                str += '<div class="message_content p-3">';
+                                str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div></div></div>';
+                                str += '<p class="dateTime float-left">' + v.date + '</div>';
+                                str += '<div class="clear"></div>';
+                                output.innerHTML += str;
+                                output.scrollIntoView(false);
+                            }
+    
+                        }).catch(function (error) {
+    
+                            // A full list of error codes is available at
+                            // https://firebase.google.com/docs/storage/web/handle-errors
+                            switch (error.code) {
+                                case 'storage/object-not-found':
+                                    alert('File doesn\'t exist');
+                                    break;
+    
+                                case 'storage/unauthorized':
+                                    alert('User doesn\'t have permission to access the object');
+                                    break;
+    
+                                case 'storage/canceled':
+                                    alert('User canceled the upload');
+                                    break;
+    
+    
+                                case 'storage/unknown':
+                                    alert('Unknown error occurred, inspect the server response');
+                                    break;
+                            }
+                        });
+                    }
+    
+                });
+            });
     }
 
 
@@ -496,7 +608,7 @@ export default class Talk extends Component {
                         <div id="messageLine" className="p-2">
 
                             {/* <!-- 会話挿入空間 --> */}
-                            <div className="opponent">
+                            <div className="opponent" id="output">
                                 {/*相手*/}
 
                                 {this.state.messages.map((message) => (
