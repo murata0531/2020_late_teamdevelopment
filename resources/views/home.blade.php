@@ -607,7 +607,6 @@
         const auth_user_id = @json($user->id);
         const auth_user_name = @json($user->name);
         const auth_user_icon = @json($user->icon);
-        const company_id = @json($user->company_id);
         function func2(){
                 
             let btn2 = document.getElementById('btn2');

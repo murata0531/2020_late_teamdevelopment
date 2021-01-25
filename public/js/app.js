@@ -72523,7 +72523,9 @@ react_modal__WEBPACK_IMPORTED_MODULE_3___default.a.setAppElement("#app");
 var authuser_id = auth_user_id;
 var authuser_name = auth_user_name;
 var authuser_icon = auth_user_icon;
-var authcompanyid = company_id;
+var authcompany_id = auth_company_id;
+var database = firebase.database();
+var storage = firebase.storage();
 
 var Talk = /*#__PURE__*/function (_Component) {
   _inherits(Talk, _Component);
@@ -72666,22 +72668,125 @@ var Talk = /*#__PURE__*/function (_Component) {
       this.setState({
         talkname: e.target.name
       });
-      axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('http://localhost:8000/api/message', {
-        params: {
-          // ここにクエリパラメータを指定する
-          authid: authuser_id,
-          talkid: e.target.id
-        }
-      }).then(function (response) {
-        // handle success
-        // this.setState({ messages: response.data.message });
-        this.setState({
-          messages: response.data.message
-        });
-      }.bind(this))["catch"](function (error) {
-        // handle error
-        alert(error);
-      })["finally"](function () {// always executed
+      this.setState({
+        talk_id: e.target.id
+      });
+      var room = e.target.id;
+      var userid = authuser_id;
+      var output = document.getElementById("output");
+      var pathReference = storage.ref();
+      var prevTask = Promise.resolve();
+      output.innerHTML = ''; //受信処理
+
+      database.ref(authcompany_id + '/' + room).on("child_added", function (data) {
+        prevTask = prevTask["finally"]( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+          var v, k, str, _str;
+
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  v = data.val();
+                  k = data.key;
+
+                  if (v.message != "" && v.isfile != "nothing" || v.message != "" && v.isfile == "nothing") {
+                    str = "";
+
+                    if (v.uid != userid) {
+                      str += '<div class="faceicon">';
+                      str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                      str += '<div class="flex-col">';
+                      str += ' <div class="flex-row">';
+                      str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                      str += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                      str += '<div class="message_box m-2">';
+                      str += '<div class="message_content p-3">';
+                      str += '<div class="message_text">' + v.message + '</div>';
+                      str += '</div></div></div>';
+                      str += '<div class="clear"></div></div>';
+                      output.innerHTML += str;
+                      output.scrollIntoView(false); //編集おｋ
+                    } else if (v.uid == userid) {
+                      str += '<div class="my-faceicon">';
+                      str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                      str += '<div class="flex-col"><div class="flex-row">';
+                      str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                      str += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                      str += '<div class="message_box m-2">';
+                      str += '<div class="message_content p-3">';
+                      str += '<div class="message_text">' + v.message + '</div>';
+                      str += '</div></div></div>';
+                      str += '<div class="clear"></div></div>';
+                      output.innerHTML += str;
+                      output.scrollIntoView(false); //編集ok
+                    }
+                  }
+
+                  if (!(v.isfile != "nothing" && v.message == "" || v.isfile != "nothing" && v.message != "")) {
+                    _context.next = 7;
+                    break;
+                  }
+
+                  _str = "";
+                  _context.next = 7;
+                  return pathReference.child(v.isfile).getDownloadURL().then(function (url) {
+                    if (v.uid != userid) {
+                      _str += '<div class="faceicon">';
+                      _str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                      _str += '<div class="flex-col">';
+                      _str += ' <div class="flex-row">';
+                      _str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                      _str += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                      _str += '<div class="message_box m-2">';
+                      _str += '<div class="message_content p-3">';
+                      _str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div>';
+                      _str += '</div></div></div>';
+                      _str += '<div class="clear"></div></div>';
+                      output.innerHTML += _str;
+                      output.scrollIntoView(false);
+                    } else if (v.uid == userid) {
+                      _str += '<div class="my-faceicon">';
+                      _str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                      _str += '<div class="flex-col"><div class="flex-row">';
+                      _str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                      _str += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                      _str += '<div class="message_box m-2">';
+                      _str += '<div class="message_content p-3">';
+                      _str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div>';
+                      _str += '</div></div></div>';
+                      _str += '<div class="clear"></div></div>';
+                      output.innerHTML += _str;
+                      output.scrollIntoView(false);
+                    }
+                  })["catch"](function (error) {
+                    // A full list of error codes is available at
+                    // https://firebase.google.com/docs/storage/web/handle-errors
+                    switch (error.code) {
+                      case 'storage/object-not-found':
+                        alert('File doesn\'t exist');
+                        break;
+
+                      case 'storage/unauthorized':
+                        alert('User doesn\'t have permission to access the object');
+                        break;
+
+                      case 'storage/canceled':
+                        alert('User canceled the upload');
+                        break;
+
+                      case 'storage/unknown':
+                        alert('Unknown error occurred, inspect the server response');
+                        break;
+                    }
+                  });
+
+                case 7:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee);
+        })));
       });
     }
   }, {
@@ -72744,7 +72849,7 @@ var Talk = /*#__PURE__*/function (_Component) {
       var now = new Date();
 
       if (btn2.files.length <= 0) {
-        database.ref(authcompanyid + '/' + room).push({
+        database.ref(authcompany_id + '/' + room).push({
           uid: uid,
           icon: uicon,
           name: uname,
@@ -72753,7 +72858,7 @@ var Talk = /*#__PURE__*/function (_Component) {
           date: now.getFullYear() + '年' + eval(now.getMonth() + 1) + '月' + now.getDate() + '日' + now.getHours() + '時' + now.getMinutes() + '分'
         });
       } else {
-        var file = 'images/' + now + btn2.files[0].name;
+        var file = 'images/' + authcompany_id + '/' + now + btn2.files[0].name;
         var storageRef = firebase.storage().ref();
         var uploadTask = storageRef.child(file).put(btn2.files[0]);
         var fmessage = sendarea.value;
@@ -72763,7 +72868,7 @@ var Talk = /*#__PURE__*/function (_Component) {
         }, function () {
           // Handle successful uploads on complete
           // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-          database.ref(room).push({
+          database.ref(authcompany_id + '/' + room).push({
             uid: uid,
             icon: uicon,
             name: uname,
@@ -72810,132 +72915,127 @@ var Talk = /*#__PURE__*/function (_Component) {
           console.log(item + ': ' + this.state.managements[0]['talk_name']);
         } // console.log(auth_id);
 
+
+        var room = this.state.talk_id;
+        var userid = authuser_id;
+        var output = document.getElementById("output");
+        var pathReference = storage.ref();
+        var prevTask = Promise.resolve(); //受信処理
+
+        database.ref(authcompany_id + '/' + room).on("child_added", function (data) {
+          prevTask = prevTask["finally"]( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+            var v, k, str, _str2;
+
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    v = data.val();
+                    k = data.key;
+
+                    if (v.message != "" && v.isfile != "nothing" || v.message != "" && v.isfile == "nothing") {
+                      str = "";
+
+                      if (v.uid != userid) {
+                        str += '<div class="faceicon">';
+                        str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                        str += '<div class="flex-col">';
+                        str += ' <div class="flex-row">';
+                        str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                        str += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                        str += '<div class="message_box m-2">';
+                        str += '<div class="message_content p-3">';
+                        str += '<div class="message_text">' + v.message + '</div>';
+                        str += '</div></div></div>';
+                        str += '<div class="clear"></div></div>';
+                        output.innerHTML += str;
+                        output.scrollIntoView(false); //編集おｋ
+                      } else if (v.uid == userid) {
+                        str += '<div class="my-faceicon">';
+                        str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                        str += '<div class="flex-col"><div class="flex-row">';
+                        str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                        str += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                        str += '<div class="message_box m-2">';
+                        str += '<div class="message_content p-3">';
+                        str += '<div class="message_text">' + v.message + '</div>';
+                        str += '</div></div></div>';
+                        str += '<div class="clear"></div></div>';
+                        output.innerHTML += str;
+                        output.scrollIntoView(false); //編集ok
+                      }
+                    }
+
+                    if (!(v.isfile != "nothing" && v.message == "" || v.isfile != "nothing" && v.message != "")) {
+                      _context2.next = 7;
+                      break;
+                    }
+
+                    _str2 = "";
+                    _context2.next = 7;
+                    return pathReference.child(v.isfile).getDownloadURL().then(function (url) {
+                      if (v.uid != userid) {
+                        _str2 += '<div class="faceicon">';
+                        _str2 += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                        _str2 += '<div class="flex-col">';
+                        _str2 += ' <div class="flex-row">';
+                        _str2 += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                        _str2 += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                        _str2 += '<div class="message_box m-2">';
+                        _str2 += '<div class="message_content p-3">';
+                        _str2 += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div>';
+                        _str2 += '</div></div></div>';
+                        _str2 += '<div class="clear"></div></div>';
+                        output.innerHTML += _str2;
+                        output.scrollIntoView(false);
+                      } else if (v.uid == userid) {
+                        _str2 += '<div class="my-faceicon">';
+                        _str2 += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                        _str2 += '<div class="flex-col"><div class="flex-row">';
+                        _str2 += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                        _str2 += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                        _str2 += '<div class="message_box m-2">';
+                        _str2 += '<div class="message_content p-3">';
+                        _str2 += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div>';
+                        _str2 += '</div></div></div>';
+                        _str2 += '<div class="clear"></div></div>';
+                        output.innerHTML += _str2;
+                        output.scrollIntoView(false);
+                      }
+                    })["catch"](function (error) {
+                      // A full list of error codes is available at
+                      // https://firebase.google.com/docs/storage/web/handle-errors
+                      switch (error.code) {
+                        case 'storage/object-not-found':
+                          alert('File doesn\'t exist');
+                          break;
+
+                        case 'storage/unauthorized':
+                          alert('User doesn\'t have permission to access the object');
+                          break;
+
+                        case 'storage/canceled':
+                          alert('User canceled the upload');
+                          break;
+
+                        case 'storage/unknown':
+                          alert('Unknown error occurred, inspect the server response');
+                          break;
+                      }
+                    });
+
+                  case 7:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2);
+          })));
+        });
       }.bind(this))["catch"](function (error) {
         // handle error
         console.log(error);
       })["finally"](function () {// always executed
-      });
-      var database = firebase.database();
-      var room = this.state.talk_id;
-      var userid = authuser_id;
-      var output = document.getElementById("output");
-      var storage = firebase.storage();
-      var pathReference = storage.ref();
-      var prevTask = Promise.resolve(); //受信処理
-
-      database.ref(companyid + '/' + room).on("child_added", function (data) {
-        prevTask = prevTask["finally"]( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-          var v, k, str, _str;
-
-          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-            while (1) {
-              switch (_context.prev = _context.next) {
-                case 0:
-                  v = data.val();
-                  k = data.key;
-
-                  if (v.message != "" && v.isfile != "nothing" || v.message != "" && v.isfile == "nothing") {
-                    str = "";
-
-                    if (v.uid != userid) {
-                      str += '<div class="faceicon">';
-                      str += '<div class="faceicon">';
-                      str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
-                      str += '<div class="flex-col">';
-                      str += ' <div class="flex-row">';
-                      str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
-                      str += '<p class="dateTime float-right">' + v.date + '</p></div>';
-                      str += '<div class="message_box m-2">';
-                      str += '<div class="message_content p-3">';
-                      str += '<div class="message_text">' + v.message + '</div>';
-                      str += '</div></div></div>';
-                      str += '<div class="clear"></div></div>';
-                      output.innerHTML += str;
-                      output.scrollIntoView(false); //編集おｋ
-                    } else if (v.uid == userid) {
-                      str += '<div class="my-faceicon">';
-                      str += '<div class="faceicon">';
-                      str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
-                      str += '<div class="flex-col"><div class="flex-row">';
-                      str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
-                      str += '<p class="dateTime float-right">' + v.date + '</p></div>';
-                      str += '<div class="message_box m-2">';
-                      str += '<div class="message_content p-3">';
-                      str += '<div class="message_text">' + v.message + '</div>';
-                      str += '</div></div></div>';
-                      str += '<div class="clear"></div></div>';
-                      output.innerHTML += str;
-                      output.scrollIntoView(false); //編集ok
-                    }
-                  }
-
-                  if (!(v.isfile != "nothing" && v.message == "" || v.isfile != "nothing" && v.message != "")) {
-                    _context.next = 7;
-                    break;
-                  }
-
-                  _str = "";
-                  _context.next = 7;
-                  return pathReference.child(v.isfile).getDownloadURL().then(function (url) {
-                    if (v.uid != userid) {
-                      _str += '<div class="faceicon">';
-                      _str += '<div class="faceicon">';
-                      _str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
-                      _str += '<div class="flex-col">';
-                      _str += ' <div class="flex-row">';
-                      _str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
-                      _str += '<p class="dateTime float-right">' + v.date + '</p></div>';
-                      _str += '<div class="message_box m-2">';
-                      _str += '<div class="message_content p-3">';
-                      _str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div>';
-                      _str += '</div></div></div>';
-                      _str += '<div class="clear"></div></div>';
-                      output.innerHTML += _str;
-                      output.scrollIntoView(false);
-                    } else if (v.uid == userid) {
-                      _str += '<div class="my-faceicon">';
-                      _str += '<div class="faceicon">';
-                      _str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
-                      _str += '<div class="flex-col"><div class="flex-row">';
-                      _str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
-                      _str += '<p class="dateTime float-right">' + v.date + '</p></div>';
-                      _str += '<div class="message_box m-2">';
-                      _str += '<div class="message_content p-3">';
-                      _str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div>';
-                      _str += '</div></div></div>';
-                      _str += '<div class="clear"></div></div>';
-                      output.innerHTML += _str;
-                      output.scrollIntoView(false);
-                    }
-                  })["catch"](function (error) {
-                    // A full list of error codes is available at
-                    // https://firebase.google.com/docs/storage/web/handle-errors
-                    switch (error.code) {
-                      case 'storage/object-not-found':
-                        alert('File doesn\'t exist');
-                        break;
-
-                      case 'storage/unauthorized':
-                        alert('User doesn\'t have permission to access the object');
-                        break;
-
-                      case 'storage/canceled':
-                        alert('User canceled the upload');
-                        break;
-
-                      case 'storage/unknown':
-                        alert('Unknown error occurred, inspect the server response');
-                        break;
-                    }
-                  });
-
-                case 7:
-                case "end":
-                  return _context.stop();
-              }
-            }
-          }, _callee);
-        })));
       });
     }
   }, {
