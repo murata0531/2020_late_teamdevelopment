@@ -27,8 +27,8 @@ export default class Talk extends Component {
             modalIsOpen: false,
             modal_name: '',
             talkname: '',
-            talk_id:'',
-            value:''
+            talk_id: '',
+            value: ''
 
         };
 
@@ -228,7 +228,7 @@ export default class Talk extends Component {
         }
     }
 
-    sendClick(){
+    sendClick() {
         let database = firebase.database();
 
         let room = this.state.talk_id;
@@ -306,8 +306,8 @@ export default class Talk extends Component {
                 // handle success
                 this.setState({ users: response.data.users });
                 this.setState({ managements: response.data.management })
-                this.setState({ talkname: this.state.managements[0]['talk_name']});
-                this.setState({ talk_id: this.state.managements[0]['id']});
+                this.setState({ talkname: this.state.managements[0]['talk_name'] });
+                this.setState({ talk_id: this.state.managements[0]['id'] });
 
                 for (var item in this.state.managements) {
 
@@ -325,26 +325,73 @@ export default class Talk extends Component {
             });
 
 
-            let database = firebase.database();
-            let room = this.state.talk_id;
-            const userid = authuser_id;
-            const output = document.getElementById("output");
-            let storage = firebase.storage();
-            let pathReference = storage.ref();
-    
-            let prevTask = Promise.resolve();
+        let database = firebase.database();
+        let room = this.state.talk_id;
+        const userid = authuser_id;
+        const output = document.getElementById("output");
+        let storage = firebase.storage();
+        let pathReference = storage.ref();
 
-            //受信処理
-            database.ref(companyid + '/' + room).on("child_added", (data) => {
-                prevTask = prevTask.finally(async () => {
-                    const v = data.val();
-                    const k = data.key;
-    
-                    if ((v.message != "" && v.isfile != "nothing") || (v.message != "" && v.isfile == "nothing")) {
-    
-                        let str = "";
-    
+        let prevTask = Promise.resolve();
+
+        //受信処理
+        database.ref(companyid + '/' + room).on("child_added", (data) => {
+            prevTask = prevTask.finally(async () => {
+                const v = data.val();
+                const k = data.key;
+
+                if ((v.message != "" && v.isfile != "nothing") || (v.message != "" && v.isfile == "nothing")) {
+
+                    let str = "";
+
+                    if (v.uid != userid) {
+                        str += '<div class="faceicon">';
+                        str += '<div class="faceicon">';
+                        str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                        str += '<div class="flex-col">';
+                        str += ' <div class="flex-row">';
+                        str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                        str += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                        str += '<div class="message_box m-2">';
+                        str += '<div class="message_content p-3">';
+                        str += '<div class="message_text">' + v.message + '</div>';
+                        str += '</div></div></div>';
+                        str += '<div class="clear"></div></div>';
+
+                        output.innerHTML += str;
+                        output.scrollIntoView(false);
+                        //編集おｋ
+
+                    } else if (v.uid == userid) {
+                        str += '<div class="my-faceicon">';
+                        str += '<div class="faceicon">';
+                        str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                        str += '<div class="flex-col"><div class="flex-row">';
+                        str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                        str += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                        str += '<div class="message_box m-2">';
+                        str += '<div class="message_content p-3">';
+                        str += '<div class="message_text">' + v.message + '</div>';
+                        str += '</div></div></div>';
+                        str += '<div class="clear"></div></div>';
+
+                        output.innerHTML += str;
+                        output.scrollIntoView(false);
+
+                        //編集ok
+
+                    }
+                }
+
+                if ((v.isfile != "nothing" && v.message == "") || (v.isfile != "nothing" && v.message != "")) {
+
+                    let str = "";
+
+                    await pathReference.child(v.isfile).getDownloadURL().then(function (url) {
+
+
                         if (v.uid != userid) {
+
                             str += '<div class="faceicon">';
                             str += '<div class="faceicon">';
                             str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
@@ -354,15 +401,16 @@ export default class Talk extends Component {
                             str += '<p class="dateTime float-right">' + v.date + '</p></div>';
                             str += '<div class="message_box m-2">';
                             str += '<div class="message_content p-3">';
-                            str += '<div class="message_text">' + v.message + '</div>';
+                            str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div>';
                             str += '</div></div></div>';
                             str += '<div class="clear"></div></div>';
 
                             output.innerHTML += str;
                             output.scrollIntoView(false);
-                            //編集おｋ
-    
+
+
                         } else if (v.uid == userid) {
+
                             str += '<div class="my-faceicon">';
                             str += '<div class="faceicon">';
                             str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
@@ -371,79 +419,40 @@ export default class Talk extends Component {
                             str += '<p class="dateTime float-right">' + v.date + '</p></div>';
                             str += '<div class="message_box m-2">';
                             str += '<div class="message_content p-3">';
-                            str += '<div class="message_text">' + v.message + '</div>';
+                            str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div>';
                             str += '</div></div></div>';
                             str += '<div class="clear"></div></div>';
-
                             output.innerHTML += str;
                             output.scrollIntoView(false);
-
-                            //編集ok
-
                         }
-                    }
-    
-                    if ((v.isfile != "nothing" && v.message == "") || (v.isfile != "nothing" && v.message != "")) {
-    
-                        let str = "";
-    
-                        await pathReference.child(v.isfile).getDownloadURL().then(function (url) {
-    
-    
-                            if (v.uid != userid) {
-                                str += '<div className="faceicon">';
-                                str += '<img src="..' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
-                                str += '<div className="flex-col">';
-                                str += '<<div className="flex-row">';p
-                                str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div></div></div>';
-                                str += '<p class="dateTime float-right">' + v.date + '</div>';
-                                str += '<div class="clear"></div>';
-                                output.innerHTML += str;
-                                output.scrollIntoView(false);
 
-                                                                
-    
-                            } else if (v.uid == userid) {
-                                // str += '<div className="name"><img src="..' + v.icon + '" width="50" height="50" className="rounded-circle float-left img-responsive">名前：' + v.name + '</div>';
-                                str += '<div class="myself">';
-                                str += '<div class="faceicon">';
-                                str += '<img src="..' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-right"></div>';
-                                str += '<div class="message_box m-2" style="background-color:lime;">';
-                                str += '<div class="message_content p-3">';
-                                str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div></div></div>';
-                                str += '<p class="dateTime float-left">' + v.date + '</div>';
-                                str += '<div class="clear"></div>';
-                                output.innerHTML += str;
-                                output.scrollIntoView(false);
-                            }
-    
-                        }).catch(function (error) {
-    
-                            // A full list of error codes is available at
-                            // https://firebase.google.com/docs/storage/web/handle-errors
-                            switch (error.code) {
-                                case 'storage/object-not-found':
-                                    alert('File doesn\'t exist');
-                                    break;
-    
-                                case 'storage/unauthorized':
-                                    alert('User doesn\'t have permission to access the object');
-                                    break;
-    
-                                case 'storage/canceled':
-                                    alert('User canceled the upload');
-                                    break;
-    
-    
-                                case 'storage/unknown':
-                                    alert('Unknown error occurred, inspect the server response');
-                                    break;
-                            }
-                        });
-                    }
-    
-                });
+                    }).catch(function (error) {
+
+                        // A full list of error codes is available at
+                        // https://firebase.google.com/docs/storage/web/handle-errors
+                        switch (error.code) {
+                            case 'storage/object-not-found':
+                                alert('File doesn\'t exist');
+                                break;
+
+                            case 'storage/unauthorized':
+                                alert('User doesn\'t have permission to access the object');
+                                break;
+
+                            case 'storage/canceled':
+                                alert('User canceled the upload');
+                                break;
+
+
+                            case 'storage/unknown':
+                                alert('Unknown error occurred, inspect the server response');
+                                break;
+                        }
+                    });
+                }
+
             });
+        });
     }
 
 
@@ -670,7 +679,7 @@ export default class Talk extends Component {
                                     </div>
                                     <div className="clear"></div>
                                 </div>
-                                
+
                                 {/*相手*/}
                                 <div className="faceicon">
                                     <img src="" width="50" height="50" className="rounded-circle align-middle img-responsive float-left"></img>
@@ -706,7 +715,7 @@ export default class Talk extends Component {
                                     <button><i className="fas fa-wrench"></i></button>
                                     <button><i className="fas fa-paperclip"></i></button>
                                     <button><i className="fas fa-at"></i></button>
-                                    
+
                                     <label htmlFor="btn2" id="avatar"><input id="btn2" type="file" onChange={this.filehandleChange} accept="image/*"></input><i className="fas fa-image"></i></label>
                                 </div>
                             </div>

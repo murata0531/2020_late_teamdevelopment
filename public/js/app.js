@@ -72878,26 +72878,32 @@ var Talk = /*#__PURE__*/function (_Component) {
                   _context.next = 7;
                   return pathReference.child(v.isfile).getDownloadURL().then(function (url) {
                     if (v.uid != userid) {
-                      _str += '<div className="faceicon">';
-                      _str += '<img src="..' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
-                      _str += '<div className="flex-col">';
-                      _str += '<<div className="flex-row">';
-                      p;
-                      _str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div></div></div>';
-                      _str += '<p class="dateTime float-right">' + v.date + '</div>';
-                      _str += '<div class="clear"></div>';
+                      _str += '<div class="faceicon">';
+                      _str += '<div class="faceicon">';
+                      _str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                      _str += '<div class="flex-col">';
+                      _str += ' <div class="flex-row">';
+                      _str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                      _str += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                      _str += '<div class="message_box m-2">';
+                      _str += '<div class="message_content p-3">';
+                      _str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div>';
+                      _str += '</div></div></div>';
+                      _str += '<div class="clear"></div></div>';
                       output.innerHTML += _str;
                       output.scrollIntoView(false);
                     } else if (v.uid == userid) {
-                      // str += '<div className="name"><img src="..' + v.icon + '" width="50" height="50" className="rounded-circle float-left img-responsive">名前：' + v.name + '</div>';
-                      _str += '<div class="myself">';
+                      _str += '<div class="my-faceicon">';
                       _str += '<div class="faceicon">';
-                      _str += '<img src="..' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-right"></div>';
-                      _str += '<div class="message_box m-2" style="background-color:lime;">';
+                      _str += '<img src="' + v.icon + '" width="50" height="50" class="rounded-circle align-middle img-responsive float-left">';
+                      _str += '<div class="flex-col"><div class="flex-row">';
+                      _str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
+                      _str += '<p class="dateTime float-right">' + v.date + '</p></div>';
+                      _str += '<div class="message_box m-2">';
                       _str += '<div class="message_content p-3">';
-                      _str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div></div></div>';
-                      _str += '<p class="dateTime float-left">' + v.date + '</div>';
-                      _str += '<div class="clear"></div>';
+                      _str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div>';
+                      _str += '</div></div></div>';
+                      _str += '<div class="clear"></div></div>';
                       output.innerHTML += _str;
                       output.scrollIntoView(false);
                     }
