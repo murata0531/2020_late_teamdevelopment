@@ -72851,7 +72851,7 @@ var Talk = /*#__PURE__*/function (_Component) {
                       str += '</div></div></div>';
                       str += '<div class="clear"></div></div>';
                       output.innerHTML += str;
-                      output.scrollIntoView(false);
+                      output.scrollIntoView(false); //編集おｋ
                     } else if (v.uid == userid) {
                       // str += '<div className="name"><img src="..' + v.icon + '" width="50" height="50" className="rounded-circle float-left img-responsive">名前：' + v.name + '</div>';
                       str += '<div class="myself">';
