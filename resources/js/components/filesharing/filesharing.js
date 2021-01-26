@@ -10,7 +10,7 @@ export default class File_Sharing extends Component
         return(
             <div className="main-menu">
                 <div className="folder-menu">
-                    <input type="text" className="search-text" placeholder="&#xf002;キーワードを入力"></input>
+                <div className="search-back"><input type="text" className="search-text" placeholder=" &#xf002; キーワードを入力"></input></div>
                     <ul className="folder-list">
                             <li><a href="" className="folder-a"><i className="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i className="fas fa-ellipsis-h"></i></a></li>
                             <li><a href="" className="folder-a"><i className="far fa-folder folder-icon"></i>テストフォルダ</a><a href=""><i className="fas fa-ellipsis-h"></i></a></li>

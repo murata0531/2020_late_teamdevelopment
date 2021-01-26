@@ -747,7 +747,7 @@ export default class Talk extends Component {
                             <p>ヘルプ</p>
                         </section>
                     </div>
-                    <div className="main-item">
+                    <div className="talk-main-item">
                         <div id="messageLine" className="p-2">
 
                             {/* <!-- 会話挿入空間 --> */}
