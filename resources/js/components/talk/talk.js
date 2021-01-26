@@ -117,7 +117,7 @@ export default class Talk extends Component {
                     })
                     .catch(error => {
                         alert("登録失敗");
-                        console.log(error, data);
+                        // console.log(error, data);
                     });
             }
         } else {
@@ -442,10 +442,10 @@ export default class Talk extends Component {
                 this.setState({ talkname: this.state.managements[0]['talk_name'] });
                 this.setState({ talk_id: this.state.managements[0]['id'] });
 
-                for (var item in this.state.managements) {
+                // for (var item in this.state.managements) {
 
-                    console.log(item + ': ' + this.state.managements[0]['talk_name'])
-                }
+                //     console.log(item + ': ' + this.state.managements[0]['talk_name'])
+                // }
                 // console.log(auth_id);
 
 
@@ -489,7 +489,7 @@ export default class Talk extends Component {
                                 str += '<div class="flex-col"><div class="flex-row">';
                                 str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
                                 str += '<p class="dateTime float-right">' + v.date + '</p></div>';
-                                str += '<div class="message_box m-2">';
+                                str += '<div class="message_box m-2"  id="my-message-area">';
                                 str += '<div class="message_content p-3">';
                                 str += '<div class="message_text">' + v.message + '</div>';
                                 str += '</div></div></div>';
@@ -535,7 +535,7 @@ export default class Talk extends Component {
                                     str += '<div class="flex-col"><div class="flex-row">';
                                     str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
                                     str += '<p class="dateTime float-right">' + v.date + '</p></div>';
-                                    str += '<div class="message_box m-2">';
+                                    str += '<div class="message_box m-2" id="my-message-area">';
                                     str += '<div class="message_content p-3">';
                                     str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div>';
                                     str += '</div></div></div>';
@@ -659,7 +659,7 @@ export default class Talk extends Component {
                                     <div className="text-list">
                                         <p className="person">{manage.talk_name}</p>
                                         <p className="date">{manage.updated_at}</p>
-                                        <p className="talk-circle">7</p>
+                                        {/* <p className="talk-circle">7</p> */}
                                     </div>
                                     <div className="talk-list">
                                         <input type="button" id={manage.id} name={manage.talk_name} value={manage.message} onClick={this.messageClick}></input>
@@ -667,40 +667,6 @@ export default class Talk extends Component {
                                 </div>
                             </li>
                         ))}
-
-                        {this.state.users.map((user) => (
-
-                            <li key={user.id} name={user.name} id={user.id}>
-
-                                <div className="user-icon"><i className="far fa-user"></i></div>
-                                <div className="user-text">
-                                    <div className="text-list">
-                                        <p className="person">{user.name}</p>
-                                        <p className="date">昨日</p>
-                                        <p className="talk-circle">7</p>
-                                    </div>
-                                    <div className="talk-list">
-                                        <input type="button" value="おはよう御座います。"></input>
-                                    </div>
-                                </div>
-                            </li>
-                        ))}
-                        <li>
-                            <div className="user-icon"><i className="far fa-user"></i></div>
-                            <div className="user-text">
-                                <div className="text-list">
-                                    <p className="person">開発部長</p>
-                                    <p className="date">昨日</p>
-                                    <p className="talk-circle">7</p>
-                                </div>
-                                <div className="talk-list">
-                                    <input type="text" value="おはよう御座います。こちらサンプルテキストです。"></input>
-                                </div>
-                            </div>
-                        </li>
-
-
-
 
                     </ul>
                 </div>
@@ -752,45 +718,10 @@ export default class Talk extends Component {
 
                             {/* <!-- 会話挿入空間 --> */}
                             <div className="opponent" id="output">
-                                {/*相手*/}
-
-                                {this.state.messages.map((message) => (
-                                    <div className="faceicon" key={message.id}>
-
-                                        <img src={message.icon} width="50" height="50" className="rounded-circle align-middle img-responsive float-left"></img>
-                                        <div className="flex-col">
-                                            <div className="flex-row">
-                                                <p className="name font-weight-bold m-0">{message.name}</p>
-                                                <p className="dateTime float-right">{message.updated_at}</p>
-                                            </div>
-                                            <div className="message_box m-2">
-                                                <div className="message_content p-3">
-                                                    <div className="message_text">{message.message}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="clear"></div>
-                                    </div>
-                                ))}
-                                <div className="faceicon">
-                                    <img src="" width="50" height="50" className="rounded-circle align-middle img-responsive float-left"></img>
-                                    <div className="flex-col">
-                                        <div className="flex-row">
-                                            <p className="name font-weight-bold m-0">開発部長</p>
-                                            <p className="dateTime float-right">2019</p>
-                                        </div>
-                                        <div className="message_box m-2">
-                                            <div className="message_content p-3">
-                                                <div className="message_text">おはよう御座います。</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="clear"></div>
-                                </div>
 
 
                                 {/*自分*/}
-                                <div className="my-faceicon">
+                                {/* <div className="my-faceicon">
                                     <img src="" width="50" height="50" className="rounded-circle align-middle img-responsive float-left"></img>
                                     <div className="flex-col">
                                         <div className="flex-row">
@@ -805,12 +736,11 @@ export default class Talk extends Component {
 
                                     </div>
                                     <div className="clear"></div>
-                                </div>
+                                </div> */}
 
                                 {/*相手*/}
-                                <div className="faceicon">
+                                {/* <div className="faceicon">
                                     <img src="" width="50" height="50" className="rounded-circle align-middle img-responsive float-left"></img>
-                                    {/* <p className="name font-weight-bold m-0">開発部長</p> */}
                                     <div className="flex-col">
                                         <div className="flex-row">
                                             <p className="name font-weight-bold m-0">開発部長</p>
@@ -823,11 +753,9 @@ export default class Talk extends Component {
                                         </div>
                                     </div>
                                     <div className="clear"></div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
-
-                        {/* </div> */}
 
                         {/* 会話部分ここまで↑ */}
 

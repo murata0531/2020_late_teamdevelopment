@@ -13,8 +13,6 @@
     <!-- Styles -->
 
 
-
-
     <style>
         *{
             margin: 0px;
@@ -396,6 +394,10 @@
             flex-direction: column;
         }
 
+        #my-message-area {
+            background-color:#6FD8BB;
+        }
+
         .opponent .message_box {
             max-width: 75%;
             min-width: 20%;
@@ -418,7 +420,7 @@
             position:relative;
             display: flex;
             flex-direction: row;
-            margin-top:10px;
+            margin-top:5%;
             margin-bottom:20px;
         }
 
@@ -452,7 +454,7 @@
             position:relative;
             display: flex;
             flex-direction: row-reverse;
-            margin-top:10px;
+            margin-top:5%;
             margin-bottom:20px;
             float:right;
 

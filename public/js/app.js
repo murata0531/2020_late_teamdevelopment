@@ -73200,8 +73200,7 @@ var Talk = /*#__PURE__*/function (_Component) {
           }).then(function (res) {
             alert("登録が完了しました");
           })["catch"](function (error) {
-            alert("登録失敗");
-            console.log(error, data);
+            alert("登録失敗"); // console.log(error, data);
           });
         }
       } else {
@@ -73494,12 +73493,10 @@ var Talk = /*#__PURE__*/function (_Component) {
         });
         this.setState({
           talk_id: this.state.managements[0]['id']
-        });
-
-        for (var item in this.state.managements) {
-          console.log(item + ': ' + this.state.managements[0]['talk_name']);
-        } // console.log(auth_id);
-
+        }); // for (var item in this.state.managements) {
+        //     console.log(item + ': ' + this.state.managements[0]['talk_name'])
+        // }
+        // console.log(auth_id);
 
         var room = this.state.talk_id;
         var userid = authuser_id;
@@ -73541,7 +73538,7 @@ var Talk = /*#__PURE__*/function (_Component) {
                         str += '<div class="flex-col"><div class="flex-row">';
                         str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
                         str += '<p class="dateTime float-right">' + v.date + '</p></div>';
-                        str += '<div class="message_box m-2">';
+                        str += '<div class="message_box m-2"  id="my-message-area">';
                         str += '<div class="message_content p-3">';
                         str += '<div class="message_text">' + v.message + '</div>';
                         str += '</div></div></div>';
@@ -73579,7 +73576,7 @@ var Talk = /*#__PURE__*/function (_Component) {
                         _str2 += '<div class="flex-col"><div class="flex-row">';
                         _str2 += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
                         _str2 += '<p class="dateTime float-right">' + v.date + '</p></div>';
-                        _str2 += '<div class="message_box m-2">';
+                        _str2 += '<div class="message_box m-2" id="my-message-area">';
                         _str2 += '<div class="message_content p-3">';
                         _str2 += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div>';
                         _str2 += '</div></div></div>';
@@ -73739,9 +73736,7 @@ var Talk = /*#__PURE__*/function (_Component) {
           className: "person"
         }, manage.talk_name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
           className: "date"
-        }, manage.updated_at), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-          className: "talk-circle"
-        }, "7")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        }, manage.updated_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           className: "talk-list"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
           type: "button",
@@ -73750,51 +73745,7 @@ var Talk = /*#__PURE__*/function (_Component) {
           value: manage.message,
           onClick: _this2.messageClick
         }))));
-      }), this.state.users.map(function (user) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-          key: user.id,
-          name: user.name,
-          id: user.id
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-          className: "user-icon"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
-          className: "far fa-user"
-        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-          className: "user-text"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-          className: "text-list"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-          className: "person"
-        }, user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-          className: "date"
-        }, "\u6628\u65E5"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-          className: "talk-circle"
-        }, "7")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-          className: "talk-list"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
-          type: "button",
-          value: "\u304A\u306F\u3088\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u3002"
-        }))));
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "user-icon"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
-        className: "far fa-user"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "user-text"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "text-list"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-        className: "person"
-      }, "\u958B\u767A\u90E8\u9577"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-        className: "date"
-      }, "\u6628\u65E5"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-        className: "talk-circle"
-      }, "7")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "talk-list"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
-        type: "text",
-        value: "\u304A\u306F\u3088\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u3002\u3053\u3061\u3089\u30B5\u30F3\u30D7\u30EB\u30C6\u30AD\u30B9\u30C8\u3067\u3059\u3002"
-      })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "main-contents"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "my-header"
@@ -73863,102 +73814,7 @@ var Talk = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "opponent",
         id: "output"
-      }, this.state.messages.map(function (message) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-          className: "faceicon",
-          key: message.id
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-          src: message.icon,
-          width: "50",
-          height: "50",
-          className: "rounded-circle align-middle img-responsive float-left"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-          className: "flex-col"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-          className: "flex-row"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-          className: "name font-weight-bold m-0"
-        }, message.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-          className: "dateTime float-right"
-        }, message.updated_at)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-          className: "message_box m-2"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-          className: "message_content p-3"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-          className: "message_text"
-        }, message.message)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-          className: "clear"
-        }));
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "faceicon"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "",
-        width: "50",
-        height: "50",
-        className: "rounded-circle align-middle img-responsive float-left"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "flex-col"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "flex-row"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-        className: "name font-weight-bold m-0"
-      }, "\u958B\u767A\u90E8\u9577"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-        className: "dateTime float-right"
-      }, "2019")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "message_box m-2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "message_content p-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "message_text"
-      }, "\u304A\u306F\u3088\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u3002")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "clear"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "my-faceicon"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "",
-        width: "50",
-        height: "50",
-        className: "rounded-circle align-middle img-responsive float-left"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "flex-col"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "flex-row"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-        className: "name font-weight-bold m-0"
-      }, "\u81EA\u5206"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-        className: "dateTime float-right"
-      }, "2019")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "message_box m-2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "message_content p-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "message_text"
-      }, "\u304A\u306F\u3088\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u3002\u304A\u306F\u3088\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u3002\u3053\u3061\u3089\u30B5\u30F3\u30D7\u30EB\u30C6\u30AD\u30B9\u30C8\u3067\u3059\u3002\u304A\u306F\u3088\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u3002\u3053\u3061\u3089\u30B5\u30F3\u30D7\u30EB\u30C6\u30AD\u30B9\u30C8\u3067\u3059\u3002\u304A\u306F\u3088\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u3002\u3053\u3061\u3089\u30B5\u30F3\u30D7\u30EB\u30C6\u30AD\u30B9\u30C8\u3067\u3059\u3002")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "clear"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "faceicon"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-        src: "",
-        width: "50",
-        height: "50",
-        className: "rounded-circle align-middle img-responsive float-left"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "flex-col"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "flex-row"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-        className: "name font-weight-bold m-0"
-      }, "\u958B\u767A\u90E8\u9577"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
-        className: "dateTime float-right"
-      }, "2019")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "message_box m-2"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "message_content p-3"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "message_text"
-      }, "\u304A\u306F\u3088\u3046\u5FA1\u5EA7\u3044\u307E\u3059\u3002")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "clear"
-      })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         id: "review"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         id: "send"
