@@ -190,3 +190,22 @@ Route::get('/message',function (Request $request) {
 
     return response()->json(['message'=> $message]);
 });
+
+Route::post('/addmessage',function (Request $request) {
+
+    $authid = $request->input('authuserid');
+    $talkid = $request->input('talkid');
+    $message = $request->input('message');
+
+    $talkmodel = Talk::find($talkid);
+
+    $talkmodel->touch(); 
+
+    Talklog::create([
+        'talk_id' => $talkid,
+        'user_id' => $authid,
+        'message' => $message,
+    ]);
+
+    return response()->json(['authid' => $authid]);
+});

@@ -14,6 +14,7 @@ const authcompany_id = auth_company_id;
 
 const database = firebase.database();
 let storage = firebase.storage();
+let storageRef = firebase.storage().ref();
 
 
 export default class Talk extends Component {
@@ -336,7 +337,6 @@ export default class Talk extends Component {
     }
 
     sendClick() {
-        let database = firebase.database();
 
         let room = this.state.talk_id;
         const uname = authuser_name;
@@ -344,53 +344,79 @@ export default class Talk extends Component {
         const uid = authuser_id;
         let send_button = document.getElementById('send-button');
         let btn2 = document.getElementById('btn2');
-
-        const sendarea = document.getElementById("sendarea");
-
+        let sendarea = document.getElementById("sendarea");
+        let sendtext = sendarea.value;
         let now = new Date();
 
+
         if (btn2.files.length <= 0) {
-            database.ref(authcompany_id + '/' + room).push({
-                uid: uid,
-                icon: uicon,
-                name: uname,
-                message: sendarea.value,
-                isfile: 'nothing',
-                date: now.getFullYear() + '年' + eval(now.getMonth() + 1) + '月' + now.getDate() + '日' + now.getHours() + '時' + now.getMinutes() + '分'
-            });
-        } else {
 
-            let file = 'images/' + authcompany_id + '/' + now + btn2.files[0].name;
+            axios
+                .post('http://localhost:8000/api/addmessage', {
+                    talkid: room,
+                    authuserid: uid,
+                    message: sendtext
 
-            let storageRef = firebase.storage().ref();
-            let uploadTask = storageRef.child(file).put(btn2.files[0]);
-
-            let fmessage = sendarea.value;
-
-            uploadTask.on('state_changed',
-                function (snapshot) {
-                    // Observe state change events such as progress, pause, and resume
-                    // See below for more detail
-                }, function (error) {
-                    // Handle unsuccessful uploads
-                }, function () {
-                    // Handle successful uploads on complete
-                    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                })
+                .then(res => {
 
                     database.ref(authcompany_id + '/' + room).push({
                         uid: uid,
                         icon: uicon,
                         name: uname,
-                        message: fmessage,
-                        isfile: file,
+                        message: sendtext,
+                        isfile: 'nothing',
                         date: now.getFullYear() + '年' + eval(now.getMonth() + 1) + '月' + now.getDate() + '日' + now.getHours() + '時' + now.getMinutes() + '分'
                     });
+                })
+                .catch(error => {
+                    alert("送信失敗");
+                });
 
-                    let tu = document.getElementById('review');
-                    tu.innerHTML = '';
+        } else {
 
-                }
-            );
+            let file = 'images/' + authcompany_id + '/' + now + btn2.files[0].name;
+
+            let uploadTask = storageRef.child(file).put(btn2.files[0]);
+
+            let fmessage = sendarea.value;
+
+            axios
+                .post('http://localhost:8000/api/addmessage', {
+                    talkid: room,
+                    authuserid: uid,
+                    message: 'ファイルを送信しました'
+
+                })
+                .then(res => {
+                    uploadTask.on('state_changed',
+                        function (snapshot) {
+                            // Observe state change events such as progress, pause, and resume
+                            // See below for more detail
+                        }, function (error) {
+                            // Handle unsuccessful uploads
+                        }, function () {
+                            // Handle successful uploads on complete
+                            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+
+                            database.ref(authcompany_id + '/' + room).push({
+                                uid: uid,
+                                icon: uicon,
+                                name: uname,
+                                message: fmessage,
+                                isfile: file,
+                                date: now.getFullYear() + '年' + eval(now.getMonth() + 1) + '月' + now.getDate() + '日' + now.getHours() + '時' + now.getMinutes() + '分'
+                            });
+
+                            let tu = document.getElementById('review');
+                            tu.innerHTML = '';
+
+                        }
+                    );
+                })
+                .catch(error => {
+                    alert("送信失敗");
+                });
         }
 
         sendarea.value = "";

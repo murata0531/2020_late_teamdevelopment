@@ -72526,6 +72526,7 @@ var authuser_icon = auth_user_icon;
 var authcompany_id = auth_company_id;
 var database = firebase.database();
 var storage = firebase.storage();
+var storageRef = firebase.storage().ref();
 
 var Talk = /*#__PURE__*/function (_Component) {
   _inherits(Talk, _Component);
@@ -72838,7 +72839,6 @@ var Talk = /*#__PURE__*/function (_Component) {
   }, {
     key: "sendClick",
     value: function sendClick() {
-      var database = firebase.database();
       var room = this.state.talk_id;
       var uname = authuser_name;
       var uicon = authuser_icon;
@@ -72846,38 +72846,54 @@ var Talk = /*#__PURE__*/function (_Component) {
       var send_button = document.getElementById('send-button');
       var btn2 = document.getElementById('btn2');
       var sendarea = document.getElementById("sendarea");
+      var sendtext = sendarea.value;
       var now = new Date();
 
       if (btn2.files.length <= 0) {
-        database.ref(authcompany_id + '/' + room).push({
-          uid: uid,
-          icon: uicon,
-          name: uname,
-          message: sendarea.value,
-          isfile: 'nothing',
-          date: now.getFullYear() + '年' + eval(now.getMonth() + 1) + '月' + now.getDate() + '日' + now.getHours() + '時' + now.getMinutes() + '分'
-        });
-      } else {
-        var file = 'images/' + authcompany_id + '/' + now + btn2.files[0].name;
-        var storageRef = firebase.storage().ref();
-        var uploadTask = storageRef.child(file).put(btn2.files[0]);
-        var fmessage = sendarea.value;
-        uploadTask.on('state_changed', function (snapshot) {// Observe state change events such as progress, pause, and resume
-          // See below for more detail
-        }, function (error) {// Handle unsuccessful uploads
-        }, function () {
-          // Handle successful uploads on complete
-          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post('http://localhost:8000/api/addmessage', {
+          talkid: room,
+          authuserid: uid,
+          message: sendtext
+        }).then(function (res) {
           database.ref(authcompany_id + '/' + room).push({
             uid: uid,
             icon: uicon,
             name: uname,
-            message: fmessage,
-            isfile: file,
+            message: sendtext,
+            isfile: 'nothing',
             date: now.getFullYear() + '年' + eval(now.getMonth() + 1) + '月' + now.getDate() + '日' + now.getHours() + '時' + now.getMinutes() + '分'
           });
-          var tu = document.getElementById('review');
-          tu.innerHTML = '';
+        })["catch"](function (error) {
+          alert("送信失敗");
+        });
+      } else {
+        var file = 'images/' + authcompany_id + '/' + now + btn2.files[0].name;
+        var uploadTask = storageRef.child(file).put(btn2.files[0]);
+        var fmessage = sendarea.value;
+        axios__WEBPACK_IMPORTED_MODULE_4___default.a.post('http://localhost:8000/api/addmessage', {
+          talkid: room,
+          authuserid: uid,
+          message: 'ファイルを送信しました'
+        }).then(function (res) {
+          uploadTask.on('state_changed', function (snapshot) {// Observe state change events such as progress, pause, and resume
+            // See below for more detail
+          }, function (error) {// Handle unsuccessful uploads
+          }, function () {
+            // Handle successful uploads on complete
+            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+            database.ref(authcompany_id + '/' + room).push({
+              uid: uid,
+              icon: uicon,
+              name: uname,
+              message: fmessage,
+              isfile: file,
+              date: now.getFullYear() + '年' + eval(now.getMonth() + 1) + '月' + now.getDate() + '日' + now.getHours() + '時' + now.getMinutes() + '分'
+            });
+            var tu = document.getElementById('review');
+            tu.innerHTML = '';
+          });
+        })["catch"](function (error) {
+          alert("送信失敗");
         });
       }
 

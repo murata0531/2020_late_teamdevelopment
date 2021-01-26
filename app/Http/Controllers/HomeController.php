@@ -63,6 +63,7 @@ class HomeController extends Controller
         //     ');
 
         //     dd($message);
+
         $user = Auth::user();
         return view('home',compact('user'));
     }
