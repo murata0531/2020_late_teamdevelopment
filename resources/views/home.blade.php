@@ -32,30 +32,40 @@
         }
         ul {
             list-style: none;
-            padding: 0;
-            margin: 0;
+            
         }
-        li a {
+        li,a {
+            position:relative;
             height: 50px;
             width: 100%;
             color: white;
-            text-align: left;
-            font-size: 100%;
-            display: block;
+            text-align: center;
+            font-size: 95%;
             text-decoration: none;
-            padding-left: 20px;
+            display:flex;
+            align-items:center;
         }
+
+        #home-li {
+            background:#4B8999;
+            text-align:center;
+        }
+
         /*サイドメニュー*/
         .side-menu {
             width: 18vw;
             height: 100vh;
             background-color: #62ABB6;
         }
-        .side-menu>ul>li>a {
-            display: flex;
-            display:-webkit-box;
-  	        display:-ms-flexbox;
-            align-items: center;
+     
+        span {
+            position:relative;
+            text-align:center;
+            display:flex;
+            width:90%;
+            height:100%;
+            left:10%;
+            align-items:center;
         }
         /*main-menu: folder +  main-contents*/
         .main-menu {
@@ -753,12 +763,12 @@
 <body>
     <div class="side-menu">
         <ul>
-            <li><a href="/home"><i class="fas fa-home"></i><span>ホーム</span></a></li>
-            <li><a href="/home/task"><i class="fas fa-tasks"></i><span>タスク</span></a></li>
-            <li><a href="/home/talk"><i class="far fa-comment-alt"></i><span>トーク</span></a></li>
-            <li><a href="/home/note"><i class="fas fa-book-open"></i><span>ノート</span></a></li>
-            <li><a href="/home/file"><i class="far fa-folder"></i><span>ファイル共有</span></a></li>
-            <li><a href="/home/report"><i class="far fa-file-alt"></i><span>レポート</span></a></li>
+            <li id="home-li"><a href="/home"><span><i class="fas fa-home"></i>　　ホーム</span></a></li>
+            <li><a href="/home/task"><span><i class="fas fa-tasks"></i>　　タスク</span></a></li>
+            <li><a href="/home/talk"><span><i class="far fa-comment-alt"></i>　　トーク</span></a></li>
+            <li><a href="/home/note"><span><i class="fas fa-book-open"></i>　　ノート</span></a></li>
+            <li><a href="/home/file"><span><i class="far fa-folder"></i>　　ファイル共有</span></a></li>
+            <li><a href="/home/report"><span><i class="far fa-file-alt"></i>　　レポート</span></a></li>
 
         </ul>
     </div>
