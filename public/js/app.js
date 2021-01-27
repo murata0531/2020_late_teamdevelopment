@@ -73198,7 +73198,7 @@ var Talk = /*#__PURE__*/function (_Component) {
             authuserid: authuser_id,
             talkname: this.state.modal_name
           }).then(function (res) {
-            alert("登録が完了しました");
+            alert("トークが追加されました");
           })["catch"](function (error) {
             alert("登録失敗"); // console.log(error, data);
           });
@@ -73222,10 +73222,9 @@ var Talk = /*#__PURE__*/function (_Component) {
             authuserid: authuser_id,
             talkname: this.state.modal_name
           }).then(function (res) {
-            alert("登録が完了しました");
+            alert("トークが追加されました");
           })["catch"](function (error) {
             alert("登録失敗");
-            console.log(error, data);
           });
           modal_vali2.textContent = "";
         }

@@ -113,7 +113,7 @@ export default class Talk extends Component {
 
                     })
                     .then(res => {
-                        alert("登録が完了しました");
+                        alert("トークが追加されました");
                     })
                     .catch(error => {
                         alert("登録失敗");
@@ -142,11 +142,10 @@ export default class Talk extends Component {
                         talkname: this.state.modal_name
                     })
                     .then(res => {
-                        alert("登録が完了しました");
+                        alert("トークが追加されました");
                     })
                     .catch(error => {
                         alert("登録失敗");
-                        console.log(error, data);
                     });
                 modal_vali2.textContent = "";
 
