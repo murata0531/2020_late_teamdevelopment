@@ -16,6 +16,7 @@ require('./bootstrap');
 // require('./components/filesharing/filesharing');
 // require('./components/talk/talk');
 require('./components/App');
+require('./components/CompanyApp');
 
 
 window.addEventListener('load', () => {

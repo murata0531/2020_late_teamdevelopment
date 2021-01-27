@@ -86,7 +86,7 @@ Route::prefix('company')->namespace('Company')->name('company.')->group(function
 
     //ログイン認証後
     Route::middleware('auth:company')->group(function () {
-        Route::get('/home',[App\Http\Controllers\Company\HomeController::class,'index']);
+        Route::get('/home',[App\Http\Controllers\Company\HomeController::class,'index'])->name('home');
     });
 
 });

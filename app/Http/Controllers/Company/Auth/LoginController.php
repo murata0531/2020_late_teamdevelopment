@@ -66,7 +66,7 @@ class LoginController extends Controller
         if (Auth::guard('company')->attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            return redirect()->route('company.home');
         }
 
         return back()->withErrors([

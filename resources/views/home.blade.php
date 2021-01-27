@@ -67,6 +67,17 @@
             left:10%;
             align-items:center;
         }
+
+        .logout {
+            position:relative;
+            text-align:center;
+            display:flex;
+            width:100%;
+            height:100%;
+            padding-left:10%;
+            align-items:center;
+            background-color:red;
+        }
         /*main-menu: folder +  main-contents*/
         .main-menu {
             display: flex;
@@ -769,6 +780,10 @@
             <li><a href="/home/note"><span><i class="fas fa-book-open"></i>　　ノート</span></a></li>
             <li><a href="/home/file"><span><i class="far fa-folder"></i>　　ファイル共有</span></a></li>
             <li><a href="/home/report"><span><i class="far fa-file-alt"></i>　　レポート</span></a></li>
+            <form method="post" name="form1" action="{{route('logout')}}">
+            @csrf
+                <li><a href="javascript:form1.submit()" class="logout"><i class="fas fa-user-circle p-2">　　ログアウト</i></a></li>
+            </form>
 
         </ul>
     </div>

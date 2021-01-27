@@ -228,8 +228,8 @@
 
         </ul>
     </div>
-    <div id="function_management"></div>
-    <script src="{{asset('/js/companyapp.js')}}"></script>
+    <div id="companyapp"></div>
+    <script src="{{asset('/js/app.js')}}"></script>
    
 </body>
 
