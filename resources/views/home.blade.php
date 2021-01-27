@@ -78,6 +78,24 @@
             align-items:center;
             background-color:red;
         }
+
+        #user-profile {
+            position:relative;
+            display:flex;
+            width:100%;
+            height:80px;
+            flex-direction:row;
+            background-color:black;
+            
+        }
+
+        #user-profile > img {
+            position:relative;
+            height:60%;
+            width:auto;
+            margin:10px;
+        }
+
         /*main-menu: folder +  main-contents*/
         .main-menu {
             display: flex;
@@ -774,6 +792,10 @@
 <body>
     <div class="side-menu">
         <ul>
+            <li id="user-profile">
+                <img src="{{ $user->icon }}">
+                <p>{{ $user->name }}でログイン中</p>
+            </li>
             <li id="home-li"><a href="/home"><span><i class="fas fa-home"></i>　　ホーム</span></a></li>
             <li><a href="/home/task"><span><i class="fas fa-tasks"></i>　　タスク</span></a></li>
             <li><a href="/home/talk"><span><i class="far fa-comment-alt"></i>　　トーク</span></a></li>

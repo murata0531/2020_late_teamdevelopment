@@ -272,6 +272,7 @@
                         <hr>
                     </div>
                     <a href="{{ route('company.login')}}">アカウントをお持ちの方はこちらへ</a>
+                    <a href="http://localhost:8000/">トップページへ戻る</a>
                 </div>
             </div>
         </div>

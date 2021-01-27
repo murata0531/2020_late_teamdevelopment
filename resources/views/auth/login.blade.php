@@ -230,6 +230,7 @@
                         <hr>
                     </div>
                     <a href="/register?companyname={{$companyname}}&companyid={{$companyid}}">アカウントをお持ちでない方はこちらへ</a>
+                    <a href="http://localhost:8000/">トップページへ戻る</a>
                 </div>
             </div>
         </div>

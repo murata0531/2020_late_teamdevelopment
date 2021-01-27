@@ -260,6 +260,7 @@
                         <hr>
                     </div>
                     <a href="/login?companyname={{$companyname}}&companyid={{$companyid}}">アカウントをお持ちの方はこちらへ</a>
+                    <a href="http://localhost:8000/">トップページへ戻る</a>
                 </div>
             </div>
         </div>
