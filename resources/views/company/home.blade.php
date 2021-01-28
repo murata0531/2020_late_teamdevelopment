@@ -16,10 +16,11 @@
 
 
     <style>
-     *{
+        *{
             margin: 0px;
             padding: 0px;
-    }
+        }
+
         html,body {
             display: flex;
             display:-webkit-box;
@@ -33,21 +34,66 @@
             font-family: 'Noto Sans JP', sans-serif;
             position: fixed;
         }
+
         ul {
             list-style: none;
-            padding: 0;
-            margin: 0;
+            
         }
-        li a {
+
+        li,a {
+            position:relative;
             height: 50px;
             width: 100%;
             color: white;
-            text-align: left;
-            font-size: 100%;
-            display: block;
+            text-align: center;
+            font-size: 95%;
             text-decoration: none;
-            padding-left: 20px;
+            display:flex;
+            align-items:center;
         }
+
+        span {
+            position:relative;
+            text-align:center;
+            display:flex;
+            width:90%;
+            height:100%;
+            left:10%;
+            align-items:center;
+        }
+
+        .logout {
+            position:relative;
+            text-align:center;
+            display:flex;
+            width:100%;
+            height:100%;
+            padding-left:10%;
+            align-items:center;
+            background-color:red;
+        }
+
+        #user-profile {
+            position:relative;
+            display:flex;
+            width:100%;
+            height:80px;
+            flex-direction:row;
+            background-color:black;
+            
+        }
+
+        #user-profile > img {
+            position:relative;
+            height:60%;
+            width:auto;
+            margin:10px;
+        }
+        #user-profile > p {
+            position:relative;
+            font-size:1.2vw;
+        }
+
         /*サイドメニュー*/
         .side-menu {
             width: 18vw;
@@ -221,10 +267,17 @@
 <body>
     <div class="side-menu">
         <ul>
-            <li><a href="#">基本管理</a></li>
-            <li><a href="#">ユーザ管理</a></li>
-            <li><a href="#">機能管理</a></li>
-            
+            <li id="user-profile">
+                <img src="{{ $user->icon }}">
+                <p>{{ $user->name }}でログイン中</p>
+            </li>
+            <li><a href="#"><span>基本管理</span></a></li>
+            <li><a href="#"><span>ユーザ管理</span></a></li>
+            <li><a href="#"><span>機能管理</span></a></li>
+            <form method="post" name="form1" action="{{route('company.logout')}}">
+            @csrf
+                <li><a href="javascript:form1.submit()" class="logout"><i class="fas fa-user-circle p-2">　　ログアウト</i></a></li>
+            </form>
 
         </ul>
     </div>

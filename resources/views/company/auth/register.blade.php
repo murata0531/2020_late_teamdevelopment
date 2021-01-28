@@ -66,6 +66,13 @@
                 font-size:2vw;
             }
 
+            .totop {
+                position:relative;
+                width:100%;
+                text-align:center;
+                bottom:3%;
+            }
+
             .login-form {
                 position:relative;
                 height:60%;
@@ -191,7 +198,7 @@
         <div class="opacity-box">
             <div class="box">
                 <div class="title">企業アカウント作成</div>
-
+                <div class="totop"><a href="http://localhost:8000/">トップページへ戻る</a></div>
                 <form method="post" class="login-form" action="{{ route('company.register') }}" enctype="multipart/form-data">
                 @csrf
                     <div class="area">
@@ -272,7 +279,6 @@
                         <hr>
                     </div>
                     <a href="{{ route('company.login')}}">アカウントをお持ちの方はこちらへ</a>
-                    <a href="http://localhost:8000/">トップページへ戻る</a>
                 </div>
             </div>
         </div>
