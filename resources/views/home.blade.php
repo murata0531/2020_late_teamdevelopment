@@ -95,6 +95,10 @@
             width:auto;
             margin:10px;
         }
+        #user-profile > p {
+            position:relative;
+            font-size:1.2vw;
+        }
 
         /*main-menu: folder +  main-contents*/
         .main-menu {
@@ -373,6 +377,17 @@
             background-color: #FFFFFF;
             height: calc(100vh - 80px);
             width: 57.8vw;
+            top: 80px;
+            position: absolute;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        /* ホーム用領域 */
+        .home-main-item {
+            background-color: #FFFFFF;
+            height:100vh;
+            width: 82vw;
             top: 80px;
             position: absolute;
             overflow-y: scroll;
@@ -664,8 +679,18 @@
             margin-left: 5vw;
         }
 
-        /* ホーム */
+        /* ホーム 画面*/
 
+        .home-my-header {
+            width: 64vw;
+            height: 80px;
+            background-color: #E9F2F3;
+            color: #8aa0a0;
+            display: flex;
+            display:-webkit-box;
+  	        display:-ms-flexbox;
+            margin-left: 0;
+        }
         .day{
             margin-top:30px;
             border:2.3px solid #8AA0A0;
@@ -796,12 +821,12 @@
                 <img src="{{ $user->icon }}">
                 <p>{{ $user->name }}でログイン中</p>
             </li>
-            <li id="home-li"><a href="/home"><span><i class="fas fa-home"></i>　　ホーム</span></a></li>
-            <li><a href="/home/task"><span><i class="fas fa-tasks"></i>　　タスク</span></a></li>
-            <li><a href="/home/talk"><span><i class="far fa-comment-alt"></i>　　トーク</span></a></li>
-            <li><a href="/home/note"><span><i class="fas fa-book-open"></i>　　ノート</span></a></li>
-            <li><a href="/home/file"><span><i class="far fa-folder"></i>　　ファイル共有</span></a></li>
-            <li><a href="/home/report"><span><i class="far fa-file-alt"></i>　　レポート</span></a></li>
+            <li><a href="/home" id="home-li"><span><i class="fas fa-home"></i>　　ホーム</span></a></li>
+            <li><a href="/home/task" id="task-li" ><span><i class="fas fa-tasks"></i>　　タスク</span></a></li>
+            <li><a href="/home/talk" id="talk-li" onClick="func(this.id);"><span><i class="far fa-comment-alt"></i>　　トーク</span></a></li>
+            <li><a href="/home/note" id="note-li" onClick="func(this.id);"><span><i class="fas fa-book-open"></i>　　ノート</span></a></li>
+            <li><a href="/home/file" id="file-li" onClick="func(this.id);"><span><i class="far fa-folder"></i>　　ファイル共有</span></a></li>
+            <li><a href="/home/report" id="report-li" onClick="func(this.id);"><span><i class="far fa-file-alt"></i>　　レポート</span></a></li>
             <form method="post" name="form1" action="{{route('logout')}}">
             @csrf
                 <li><a href="javascript:form1.submit()" class="logout"><i class="fas fa-user-circle p-2">　　ログアウト</i></a></li>
@@ -818,6 +843,13 @@
         const auth_user_id = @json($user->id);
         const auth_user_name = @json($user->name);
         const auth_user_icon = @json($user->icon);
+
+        function func(current_id){
+
+            let thisid = document.getElementById(current_id);
+            thisid.style.backgroundColor = '#4B8999';
+        }
+
         function func2(){
                 
             let btn2 = document.getElementById('btn2');

@@ -7,7 +7,7 @@ export default class Home extends Component {
 
             <div className="main-menu">
                 <div className="main-contents">
-                    <div className="my-header">
+                    <div className="home-my-header">
                         <h2>ホーム</h2>
                     </div>
                     <div className="account-settings">
@@ -28,7 +28,7 @@ export default class Home extends Component {
                             <p>ヘルプ</p>
                         </section>
                     </div>
-                    <div className="main-item">
+                    <div className="home-main-item">
                         <h2>最近の更新</h2>
                         <div className="day">
                             <div className="updated-report">
