@@ -73443,14 +73443,13 @@ var Function_Management = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      users: [],
-      managements: [],
-      messages: [],
-      modalIsOpen: false,
-      modal_name: '',
-      talkname: '',
-      talk_id: '',
-      value: ''
+      istalk: '',
+      istask: '',
+      isfile: '',
+      isreport: '',
+      isnote: '',
+      istype: '',
+      ison: ''
     };
     _this.convert = _this.convert.bind(_assertThisInitialized(_this));
     return _this;
@@ -73459,11 +73458,32 @@ var Function_Management = /*#__PURE__*/function (_Component) {
   _createClass(Function_Management, [{
     key: "convert",
     value: function convert(e) {
+      var _this2 = this;
+
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('http://localhost:8000/api/tool', {
         value: e.target.value,
         authuserid: auth_user.id
-      }).then(function (res) {})["catch"](function (error) {
-        alert("登録失敗"); // console.log(error, data);
+      }).then(function (res) {
+        _this2.setState({
+          istype: res.data.xtype
+        });
+
+        _this2.setState({
+          ison: res.data.xvalue
+        });
+
+        var restype = document.getElementById(_this2.state.istype);
+
+        if (_this2.state.ison == 1) {
+          restype.innerHTML = '<i class="fas fa-minus"></i>無効にする';
+          restype.style.backgroundColor = "#F36B6B";
+        } else {
+          restype.style.backgroundColor = "#4B8999";
+          restype.innerHTML = '<i class="fas fa-plus"></i>有効にする';
+        }
+      })["catch"](function (error) {
+        alert("失敗");
+        console.log(error);
       });
     }
   }, {
@@ -73474,6 +73494,21 @@ var Function_Management = /*#__PURE__*/function (_Component) {
       var notevalue = document.getElementById('note');
       var filevalue = document.getElementById('file');
       var reportvalue = document.getElementById('report');
+      this.setState({
+        istask: usertool[0].task
+      });
+      this.setState({
+        istalk: usertool[0].talk
+      });
+      this.setState({
+        isnote: usertool[0].note
+      });
+      this.setState({
+        isfile: usertool[0].file
+      });
+      this.setState({
+        isreport: usertool[0].report
+      });
 
       if (usertool[0].task == 1) {
         taskvalue.style.backgroundColor = "#F36B6B";

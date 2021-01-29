@@ -8,6 +8,8 @@ use App\Models\Talk;
 use App\Models\Naming;
 use App\Models\Groupnaming;
 use App\Models\Talklog;
+use App\Models\Companyservice;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -208,4 +210,19 @@ Route::post('/addmessage',function (Request $request) {
     ]);
 
     return response()->json(['authid' => $authid]);
+});
+
+Route::post('/tool',function (Request $request) {
+
+    $authid = $request->input('authuserid');
+    $servicetype = $request->input('value');
+
+    $updatevalue = \DB::select('select * from companyservices where company_id = ?',[$authid]);
+
+    $xvalue = $updatevalue[0]->$servicetype * -1;
+
+    Companyservice::where('company_id', $authid)
+          ->update([$servicetype => $xvalue]);
+    
+    return response()->json(['xvalue' => $xvalue,'xtype' => $servicetype]);
 });

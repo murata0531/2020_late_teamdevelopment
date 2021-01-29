@@ -9,14 +9,13 @@ export default class Function_Management extends Component {
         super(props);
 
         this.state = {
-            users: [],
-            managements: [],
-            messages: [],
-            modalIsOpen: false,
-            modal_name: '',
-            talkname: '',
-            talk_id: '',
-            value: ''
+            istalk: '',
+            istask: '',
+            isfile: '',
+            isreport: '',
+            isnote: '',
+            istype: '',
+            ison: ''
 
         };
 
@@ -34,10 +33,24 @@ export default class Function_Management extends Component {
 
             })
             .then(res => {
+                
+                this.setState({ istype: res.data.xtype });
+                this.setState({ ison: res.data.xvalue });
+                
+                let restype = document.getElementById(this.state.istype);
+
+                if(this.state.ison == 1){
+                    restype.innerHTML = '<i class="fas fa-minus"></i>無効にする';
+                    restype.style.backgroundColor = "#F36B6B";
+
+                }else {
+                    restype.style.backgroundColor = "#4B8999";
+                    restype.innerHTML = '<i class="fas fa-plus"></i>有効にする';
+                }
             })
             .catch(error => {
-                alert("登録失敗");
-                // console.log(error, data);
+                alert("失敗");
+                console.log(error);
             });
     }
 
@@ -49,6 +62,11 @@ export default class Function_Management extends Component {
         let filevalue = document.getElementById('file');
         let reportvalue = document.getElementById('report');
 
+        this.setState({ istask: usertool[0].task });
+        this.setState({ istalk: usertool[0].talk });
+        this.setState({ isnote: usertool[0].note });
+        this.setState({ isfile: usertool[0].file });
+        this.setState({ isreport: usertool[0].report });
 
         if(usertool[0].task == 1){
             taskvalue.style.backgroundColor = "#F36B6B";
