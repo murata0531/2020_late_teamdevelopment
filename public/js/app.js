@@ -72570,7 +72570,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-modal */ "./node_modules/react-modal/lib/index.js");
+/* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_modal__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -72595,20 +72601,170 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+react_modal__WEBPACK_IMPORTED_MODULE_2___default.a.setAppElement("#app");
+var authuser_id = auth_user_id;
+var authuser_name = auth_user_name;
+var authuser_icon = auth_user_icon;
+var authcompany_id = auth_company_id;
+var database = firebase.database();
+var storage = firebase.storage();
+var storageRef = firebase.storage().ref();
+
 var File_Sharing = /*#__PURE__*/function (_Component) {
   _inherits(File_Sharing, _Component);
 
   var _super = _createSuper(File_Sharing);
 
-  function File_Sharing() {
+  function File_Sharing(props) {
+    var _this;
+
     _classCallCheck(this, File_Sharing);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      users: [],
+      managements: [],
+      messages: [],
+      modalIsOpen: false,
+      modal_name: '',
+      talkname: '',
+      talk_id: '',
+      value: ''
+    };
+    _this.openModal = _this.openModal.bind(_assertThisInitialized(_this));
+    _this.afterOpenModal = _this.afterOpenModal.bind(_assertThisInitialized(_this));
+    _this.closeModal = _this.closeModal.bind(_assertThisInitialized(_this));
+    _this.modalNameChange = _this.modalNameChange.bind(_assertThisInitialized(_this));
+    _this.radioClick = _this.radioClick.bind(_assertThisInitialized(_this));
+    _this.modalClick = _this.modalClick.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(File_Sharing, [{
+    key: "openModal",
+    value: function openModal() {
+      this.setState({
+        modalIsOpen: true
+      });
+    }
+  }, {
+    key: "afterOpenModal",
+    value: function afterOpenModal() {
+      // references are now sync'd and can be accessed.
+      var selectedfile = document.getElementById('selectedfile');
+      selectedfile.style.display = "none";
+    }
+  }, {
+    key: "closeModal",
+    value: function closeModal() {
+      this.setState({
+        modalIsOpen: false
+      });
+    }
+  }, {
+    key: "modalNameChange",
+    value: function modalNameChange(e) {
+      this.setState({
+        modal_name: e.target.value
+      });
+    }
+  }, {
+    key: "radioClick",
+    value: function radioClick() {
+      var check = document.getElementById('modal-form').type;
+      var selectedfolder = document.getElementById('selectedfolder');
+      var selectedfile = document.getElementById('selectedfile');
+
+      if (check.value == 'folder') {
+        selectedfolder.style.display = "";
+        selectedfile.style.display = "none";
+      } else {
+        selectedfolder.style.display = "none";
+        selectedfile.style.display = "";
+      }
+    }
+  }, {
+    key: "modalClick",
+    value: function modalClick() {
+      var check = document.getElementById('modal-form').talktype;
+      var selectedprivate = document.getElementById('selectedprivate');
+      var selectedroom = document.getElementById('selectedroom');
+      var modal_vali1 = document.getElementById('modal-vali1');
+      var modal_vali2 = document.getElementById('modal-vali2');
+      var modal_name_invalid = document.getElementById('modal-name-invalid');
+
+      if (this.state.modal_name == '') {
+        modal_name_invalid.textContent = "トーク名が設定されていません";
+        modal_name_invalid.color = "red";
+      } else if (check.value == 'private') {
+        modal_name_invalid.textContent = "";
+
+        if (selectedprivate.value == "" || selectedprivate.value == 'undifined') {
+          modal_vali1.textContent = "追加したいメンバーを選んでください";
+        } else {
+          axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('http://localhost:8000/api/adduser', {
+            adduser: selectedprivate.value,
+            authuserid: authuser_id,
+            talkname: this.state.modal_name
+          }).then(function (res) {
+            alert("トークが追加されました");
+          })["catch"](function (error) {
+            alert("登録失敗"); // console.log(error, data);
+          });
+        }
+      } else {
+        modal_name_invalid.textContent = "";
+
+        if (selectedroom.value.length <= 0 || selectedroom == 'undifined') {
+          modal_vali2.textContent = "追加したいメンバーを選んでください";
+        } else {
+          var array = [];
+
+          for (var i = 0; i < selectedroom.length; i++) {
+            if (selectedroom[i].selected) {
+              array.push(selectedroom[i].value);
+            }
+          }
+
+          axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('http://localhost:8000/api/addusers', {
+            addusers: array,
+            authuserid: authuser_id,
+            talkname: this.state.modal_name
+          }).then(function (res) {
+            alert("トークが追加されました");
+          })["catch"](function (error) {
+            alert("登録失敗");
+          });
+          modal_vali2.textContent = "";
+        }
+      }
+    }
+  }, {
+    key: "modalNameChange",
+    value: function modalNameChange(e) {
+      this.setState({
+        modal_name: e.target.value
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _React$createElement;
+
+      var customStyles = {
+        content: {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)'
+        },
+        overlay: {
+          backgroundColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      };
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-menu"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -72621,7 +72777,53 @@ var File_Sharing = /*#__PURE__*/function (_Component) {
         placeholder: " \uF002 \u30AD\u30FC\u30EF\u30FC\u30C9\u3092\u5165\u529B"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "folder-list"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "add",
+        onClick: this.openModal
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        "class": "far fa-plus-square"
+      }), "\u8FFD\u52A0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_modal__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        isOpen: this.state.modalIsOpen,
+        onAfterOpen: this.afterOpenModal,
+        onRequestClose: this.closeModal,
+        style: customStyles,
+        contentLabel: "Example Modal",
+        id: "modal-add"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        id: "modal-form"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        name: "type",
+        value: "folder",
+        onClick: this.radioClick,
+        defaultChecked: true
+      }), "\u30D5\u30A9\u30EB\u30C0")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", (_React$createElement = {
+        type: "text",
+        name: "modal-name",
+        id: "modal-name"
+      }, _defineProperty(_React$createElement, "id", "selectedfolder"), _defineProperty(_React$createElement, "onChange", this.modalNameChange), _React$createElement))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "modal-vali",
+        id: "modal-vali1"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "radio",
+        name: "type",
+        value: "file",
+        onClick: this.radioClick
+      }), "\u30D5\u30A1\u30A4\u30EB")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "file",
+        id: "selectedfile"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "modal-vali",
+        id: "modal-vali2"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        id: "modal-form-button",
+        onClick: this.modalClick
+      }, "\u8FFD\u52A0\u3059\u308B")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "modal-button-area"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.closeModal
+      }, "close"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "",
         className: "folder-a"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {

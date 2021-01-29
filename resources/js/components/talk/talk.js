@@ -598,6 +598,7 @@ export default class Talk extends Component {
                 backgroundColor: 'rgba(0, 0, 0, 0.5)',
             }
         };
+        
         return (
 
             <div className="main-menu">

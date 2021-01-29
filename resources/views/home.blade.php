@@ -76,7 +76,7 @@
             height:100%;
             padding-left:10%;
             align-items:center;
-            background-color:red;
+            background-color:#F36B6B;
         }
 
         #user-profile {
@@ -85,7 +85,7 @@
             width:100%;
             height:80px;
             flex-direction:row;
-            background-color:black;
+            background-color:#00697A;
             
         }
 
@@ -167,7 +167,7 @@
             overflow-x:scroll;
             -ms-overflow-style: none;    /* IE, Edge 対応 */
             scrollbar-width: none;       /* Firefox 対応 */
-            
+            color: #00697A;
         }
 
         .folder-list::-webkit-scrollbar,.folder-list > li::-webkit-scrollbar {  /* Chrome, Safari 対応 */
@@ -194,32 +194,52 @@
         #modal-add {
             color:blue;
             height:60%;
+            width:70%;
+            display:flex;
+            flex-flow:column;
         }
 
         #modal-add > h2 {
             position:relative;
             width:100%;
-            height:20%;
+            height:10%;
         }
-        #modal-add > form {
+        #modal-add > #modal-form {
             position:relative;
             width:100%;
-            height:70%;
+            height:80%;
             display:flex;
-            flex-direction:column;
+            flex-flow:column;
             align-items: center;
-
+            justify-content:space-around;
         }
 
-        #modal-add > form > button {
+        #modal-add > #modal-form > button {
             position:relative;
-            width:80%;
+            width:100%;
+            height:20%;
+            cursor:hand;
+            cursor:pointer;
         }
 
         #modal-button-area {
             position:relative;
-            height:10%;
+            height:20%;
+            width:100%;
+            justify-content:center;
+            display:flex;
+            flex-flow:column;
         }
+
+        #modal-button-area > button {
+            position:relative;
+            width:100%;
+            height:60%;
+            background-color:gray;
+            cursor:hand;
+            cursor:pointer;
+        }
+
         .user-icon {
             position:relative;
             height: 100%;
