@@ -13,8 +13,7 @@ export default class Function_Management extends Component {
                     </div>
                     <div className="account-settings">
                         <section className="my-header-items-section">
-                            <a href="" className="circle"><i class="fas fa-sign-out-alt"></i></a>
-                            <p>ログアウト</p>
+                            
                         </section>
                         
                     </div>
