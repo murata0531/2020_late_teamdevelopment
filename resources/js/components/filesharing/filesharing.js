@@ -3,16 +3,7 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import axios from 'axios';
 
-Modal.setAppElement("#app");
 
-const authuser_id = auth_user_id;
-const authuser_name = auth_user_name;
-const authuser_icon = auth_user_icon;
-const authcompany_id = auth_company_id;
-
-const database = firebase.database();
-let storage = firebase.storage();
-let storageRef = firebase.storage().ref();
 
 
 
@@ -44,6 +35,9 @@ export default class File_Sharing extends Component {
 
     }
 
+    componentWillMount() {
+        Modal.setAppElement('body');
+    }
     openModal() {
         this.setState({ modalIsOpen: true });
     }

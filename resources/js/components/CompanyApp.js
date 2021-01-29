@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Function_Management from './functionmanagement/functionmanagement.js'
+import Feature_List from './featurelist/featurelist.js';
+import Function_Management from './functionmanagement/functionmanagement.js';
 
 
 export default class CompanyApp extends Component {
@@ -13,9 +14,8 @@ export default class CompanyApp extends Component {
                 <div>
 
                     <Switch>
-                        <Route path="/home/talk" component={Talk} />
-                        <Route path="/home/file" component={File_Sharing} />
-
+                        <Route path="/company/home" exact component={Feature_List} />
+                        <Route path="/company/home/functionmanagement" exact component={Function_Management} />
                     </Switch>
                 </div>
             </Router>

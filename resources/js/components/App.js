@@ -16,9 +16,9 @@ export default class App extends Component {
 
                     <Switch>
                         <Route path="/home" exact component={Home} />
-                        <Route path="/home/talk" component={Talk} />
-                        <Route path="/home/file" component={File_Sharing} />
-                        <Route path="/home/account" component={Account_Edit} />
+                        <Route path="/home/talk" exact component={Talk} />
+                        <Route path="/home/file" exact component={File_Sharing} />
+                        <Route path="/home/account" exact component={Account_Edit} />
 
                     </Switch>
                 </div>

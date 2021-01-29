@@ -6,16 +6,6 @@ import Modal from 'react-modal';
 import axios from 'axios';
 import { useHistory } from 'react-router'
 
-Modal.setAppElement("#app");
-
-const authuser_id = auth_user_id;
-const authuser_name = auth_user_name;
-const authuser_icon = auth_user_icon;
-const authcompany_id = auth_company_id;
-
-const database = firebase.database();
-let storage = firebase.storage();
-let storageRef = firebase.storage().ref();
 
 
 export default class Talk extends Component {
@@ -47,6 +37,10 @@ export default class Talk extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.sendClick = this.sendClick.bind(this);
 
+    }
+
+    componentWillMount() {
+        Modal.setAppElement('body');
     }
 
     openModal() {
@@ -800,6 +794,6 @@ export default class Talk extends Component {
     }
 }
 
-// if (document.getElementById('talk')) {
-//     ReactDOM.render(<Talk />, document.getElementById('talk'));
-// }
+if (document.getElementById('talk')) {
+    ReactDOM.render(<Talk />, document.getElementById('talk'));
+}

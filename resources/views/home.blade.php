@@ -971,11 +971,14 @@
 
    <script>
         
-        const auth_company_id = @json($user->company_id);
+        const database = firebase.database();
+        let storage = firebase.storage();
+        let storageRef = firebase.storage().ref();
+        const authcompany_id = @json($user->company_id);
 
-        const auth_user_id = @json($user->id);
-        const auth_user_name = @json($user->name);
-        const auth_user_icon = @json($user->icon);
+        const authuser_id = @json($user->id);
+        const authuser_name = @json($user->name);
+        const authuser_icon = @json($user->icon);
 
         function func(current_id){
 
