@@ -73462,6 +73462,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_modal__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
@@ -73492,6 +73493,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 // import React from 'react';
 // import ReactDOM from 'react-dom';
+
 
 
 
@@ -73552,6 +73554,7 @@ var Talk = /*#__PURE__*/function (_Component) {
       this.subtitle.style.color = '#f00';
       var selectedroom = document.getElementById('selectedroom');
       selectedroom.style.display = "none";
+      window.modalfunc();
     }
   }, {
     key: "closeModal",
@@ -73566,6 +73569,15 @@ var Talk = /*#__PURE__*/function (_Component) {
       this.setState({
         modal_name: e.target.value
       });
+      var modal_form_button = document.getElementById("modal-form-button");
+
+      if (e.target.value == '') {
+        modal_form_button.disabled = "disabled";
+        modal_form_button.style.backgroundColor = "gray";
+      } else {
+        modal_form_button.disabled = "";
+        modal_form_button.style.backgroundColor = "#00697A";
+      }
     }
   }, {
     key: "radioClick",
@@ -73607,6 +73619,8 @@ var Talk = /*#__PURE__*/function (_Component) {
             talkname: this.state.modal_name
           }).then(function (res) {
             alert("トークが追加されました");
+            var history = Object(react_router__WEBPACK_IMPORTED_MODULE_5__["useHistory"])();
+            history.go(0);
           })["catch"](function (error) {
             alert("登録失敗"); // console.log(error, data);
           });
@@ -74021,11 +74035,10 @@ var Talk = /*#__PURE__*/function (_Component) {
             }, _callee2);
           })));
         });
-      }.bind(this))["catch"](function (error) {
-        // handle error
-        console.log(error);
+      }.bind(this))["catch"](function (error) {// handle error
       })["finally"](function () {// always executed
       });
+      window.didfunc();
     }
   }, {
     key: "render",

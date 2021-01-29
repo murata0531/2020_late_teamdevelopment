@@ -883,6 +883,23 @@
                 send_button.style.backgroundColor = "gray";
             }
         }
+
+        function didfunc(){
+
+            let send_button = document.getElementById('send-button');
+            
+
+            send_button.disabled = "disabled";
+            send_button.style.backgroundColor = "gray";
+
+        }
+
+        function modalfunc(){
+            let modal_form_button = document.getElementById("modal-form-button");
+
+            modal_form_button.disabled = "disabled";
+            modal_form_button.style.backgroundColor = "gray";
+        }
         
    </script>
 

@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import axios from 'axios';
+import { useHistory } from 'react-router'
 
 Modal.setAppElement("#app");
 
@@ -57,6 +58,7 @@ export default class Talk extends Component {
         this.subtitle.style.color = '#f00';
         const selectedroom = document.getElementById('selectedroom');
         selectedroom.style.display = "none";
+        window.modalfunc();
     }
 
     closeModal() {
@@ -67,6 +69,15 @@ export default class Talk extends Component {
 
         this.setState({ modal_name: e.target.value });
 
+        let modal_form_button = document.getElementById("modal-form-button");
+
+        if(e.target.value == ''){
+            modal_form_button.disabled = "disabled";
+            modal_form_button.style.backgroundColor = "gray";
+        }else {
+            modal_form_button.disabled = "";
+            modal_form_button.style.backgroundColor = "#00697A";
+        }
     }
 
     radioClick() {
@@ -114,6 +125,8 @@ export default class Talk extends Component {
                     })
                     .then(res => {
                         alert("トークが追加されました");
+                        const history = useHistory();
+                        history.go(0);
                     })
                     .catch(error => {
                         alert("登録失敗");
@@ -573,11 +586,13 @@ export default class Talk extends Component {
             }.bind(this))
             .catch(function (error) {
                 // handle error
-                console.log(error);
             })
             .finally(function () {
                 // always executed
             });
+
+            window.didfunc();
+        
 
     }
 
@@ -598,7 +613,7 @@ export default class Talk extends Component {
                 backgroundColor: 'rgba(0, 0, 0, 0.5)',
             }
         };
-        
+
         return (
 
             <div className="main-menu">
