@@ -73403,6 +73403,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -73428,18 +73430,92 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Function_Management = /*#__PURE__*/function (_Component) {
   _inherits(Function_Management, _Component);
 
   var _super = _createSuper(Function_Management);
 
-  function Function_Management() {
+  function Function_Management(props) {
+    var _this;
+
     _classCallCheck(this, Function_Management);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      users: [],
+      managements: [],
+      messages: [],
+      modalIsOpen: false,
+      modal_name: '',
+      talkname: '',
+      talk_id: '',
+      value: ''
+    };
+    _this.convert = _this.convert.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Function_Management, [{
+    key: "convert",
+    value: function convert(e) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post('http://localhost:8000/api/tool', {
+        value: e.target.value,
+        authuserid: auth_user.id
+      }).then(function (res) {})["catch"](function (error) {
+        alert("登録失敗"); // console.log(error, data);
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var taskvalue = document.getElementById('task');
+      var talkvalue = document.getElementById('talk');
+      var notevalue = document.getElementById('note');
+      var filevalue = document.getElementById('file');
+      var reportvalue = document.getElementById('report');
+
+      if (usertool[0].task == 1) {
+        taskvalue.style.backgroundColor = "#F36B6B";
+        taskvalue.innerHTML = '<i class="fas fa-minus"></i>無効にする';
+      } else {
+        taskvalue.style.backgroundColor = "4B8999";
+        taskvalue.innerHTML = '<i class="fas fa-plus"></i>有効にする';
+      }
+
+      if (usertool[0].talk == 1) {
+        talkvalue.style.backgroundColor = "#F36B6B";
+        talkvalue.innerHTML = '<i class="fas fa-minus"></i>無効にする';
+      } else {
+        talkvalue.style.backgroundColor = "4B8999";
+        talkvalue.innerHTML = '<i class="fas fa-plus"></i>有効にする';
+      }
+
+      if (usertool[0].note == 1) {
+        notevalue.style.backgroundColor = "#F36B6B";
+        notevalue.innerHTML = '<i class="fas fa-minus"></i>無効にする';
+      } else {
+        notevalue.style.backgroundColor = "4B8999";
+        notevalue.innerHTML = '<i class="fas fa-plus"></i>有効にする';
+      }
+
+      if (usertool[0].file == 1) {
+        filevalue.style.backgroundColor = "#F36B6B";
+        filevalue.innerHTML = '<i class="fas fa-minus"></i>無効にする';
+      } else {
+        filevalue.style.backgroundColor = "4B8999";
+        filevalue.innerHTML = '<i class="fas fa-plus"></i>有効にする';
+      }
+
+      if (usertool[0].report == 1) {
+        reportvalue.style.backgroundColor = "#F36B6B";
+        reportvalue.innerHTML = '<i class="fas fa-minus"></i>無効にする';
+      } else {
+        reportvalue.style.backgroundColor = "4B8999";
+        reportvalue.innerHTML = '<i class="fas fa-plus"></i>有効にする';
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -73462,40 +73538,55 @@ var Function_Management = /*#__PURE__*/function (_Component) {
         className: "tr-des"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-tasks"
-      }), "\u3000\u30BF\u30B9\u30AF\u7BA1\u7406"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), "\u3000\u30BF\u30B9\u30AF\u7BA1\u7406\u6A5F\u80FD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        name: "action"
+        name: "action",
+        id: "task",
+        value: "task",
+        onClick: this.convert
       }, "\u3000", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         "class": "fas fa-plus"
-      }), "\u8FFD\u52A0\u3000"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }), "\u7121\u52B9\u306B\u3059\u308B\u3000"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "far fa-comment-alt"
-      }), "\u3000\u30C8\u30FC\u30AF\u30C1\u30E3\u30C3\u30C8\u6A5F\u80FD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), "\u3000\u30C8\u30FC\u30AF\u6A5F\u80FD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        name: "action"
+        name: "action",
+        id: "talk",
+        value: "talk",
+        onClick: this.convert
       }, "\u3000", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         "class": "fas fa-plus"
-      }), "\u8FFD\u52A0\u3000"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }), "\u7121\u52B9\u306B\u3059\u308B\u3000"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-book-open"
-      }), "\u3000\u30CE\u30FC\u30C8\u30FBWiki\u6A5F\u80FD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), "\u3000\u30CE\u30FC\u30C8\u6A5F\u80FD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        name: "action"
+        name: "action",
+        id: "note",
+        value: "note",
+        onClick: this.convert
       }, "\u3000", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         "class": "fas fa-plus"
-      }), "\u8FFD\u52A0\u3000"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }), "\u7121\u52B9\u306B\u3059\u308B\u3000"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "far fa-folder"
-      }), "\u3000\u30D5\u30A1\u30A4\u30EB\u5171\u6709"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), "\u3000\u30D5\u30A1\u30A4\u30EB\u5171\u6709\u6A5F\u80FD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        name: "action"
+        name: "action",
+        id: "file",
+        value: "file",
+        onClick: this.convert
       }, "\u3000", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         "class": "fas fa-plus"
-      }), "\u8FFD\u52A0\u3000"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+      }), "\u7121\u52B9\u306B\u3059\u308B\u3000"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-book"
-      }), "\u3000\u96FB\u5B50\u66F8\u7C4D\u30C4\u30FC\u30EB\u6A5F\u80FD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), "\u3000\u30EC\u30DD\u30FC\u30C8\u6A5F\u80FD"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        name: "action"
+        name: "action",
+        id: "report",
+        value: "report",
+        onClick: this.convert
       }, "\u3000", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         "class": "fas fa-plus"
-      }), "\u8FFD\u52A0\u3000"))))))));
+      }), "\u7121\u52B9\u306B\u3059\u308B\u3000"))))))));
     }
   }]);
 

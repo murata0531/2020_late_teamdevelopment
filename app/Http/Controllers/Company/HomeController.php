@@ -23,7 +23,8 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('company.home',compact('user'));
+        $usertool = \DB::select('select * from companyservices where company_id = ?',[$user->id]);
+        return view('company.home',compact('user','usertool'));
 
     }
 

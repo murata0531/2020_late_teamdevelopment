@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\Company;
+use App\Models\Companyservice;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -80,11 +81,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Company::create([
+        
+        $companyregist = Company::create([
             'name' => $data['name'],
             'url' => $data['url'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        Companyservice::create([
+            'company_id' => $companyregist->id,
+        ]);
+
+        return $companyregist;
     }
 }

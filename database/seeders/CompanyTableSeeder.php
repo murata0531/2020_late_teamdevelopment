@@ -24,6 +24,10 @@ class CompanyTableSeeder extends Seeder
                 'password'          => Hash::make('12345678'),
                 'url'               =>'arael' . $i,
             ]);
+
+            \DB::table('companyservices')->insert([
+                'company_id' => $i,
+            ]);
         }
         
     }

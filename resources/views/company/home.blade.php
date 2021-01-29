@@ -325,6 +325,14 @@
         </ul>
     </div>
     <div id="companyapp"></div>
+
+    <script>
+    
+        const auth_user = @json($user);
+        const usertool = @json($usertool);
+
+
+    </script>
     <script src="{{asset('/js/app.js')}}"></script>
    
 </body>
