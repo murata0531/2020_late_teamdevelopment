@@ -30,7 +30,7 @@
             padding: 0;
             margin: 0 auto;
             /* font-size: 4vm; */
-            font-size:17px;
+            font-size:1.3vw;
             font-family: 'Noto Sans JP', sans-serif;
             position: fixed;
         }
@@ -235,18 +235,6 @@
             position: relative; */
         }
 
-        button{
-            background-color: #4B8999;
-            border-style:none;
-            color:#FFFFFF;
-            font-size:16px;
-            padding:10px;
-            margin:20px;
-            /* margin-left:60px; */
-            border-radius: 5px;
-            letter-spacing: 5px;
-        }
-
         table{
             color:#007A7A;
             margin:auto;
@@ -256,10 +244,65 @@
             border-radius: 5px; */
         }
 
-        /* .tr-des{
-            text-align: right;
-            width:30px;
-        } */
+        .management{
+            width: 80vw;
+            text-align: center;
+            position: relative;
+        }
+        button{
+            background-color: #4B8999;
+            border-style:none;
+            color:#FFFFFF;
+            
+            padding:10px;
+            margin:30px;
+            /* margin-left:60px; */
+            border-radius: 5px;
+            letter-spacing: 5px;
+        }
+        .search{
+            width: 80vw;
+            text-align: center;
+        }
+        #sear_box {
+            width:45vw;
+            border-radius: 5px;
+            border:2px solid #E0E0E0;
+            padding:12px;
+        }
+        table{
+            color:#007A7A;
+            text-align: center;
+            margin:auto;
+            width:59vw;
+            border:2px solid #E0E0E0;
+            border-radius: 5px;
+        }
+        th{
+            font-weight:400;
+            color:#7B7B7B;
+        }
+        td > a{
+            position: relative;
+            color:#FFFFFF;
+            letter-spacing: 5px;
+            text-decoration: none;
+        }
+        tr > td{
+            height:60px;
+        }
+        .pass-re{
+            background-color: #E47E7E;
+            margin:10px;
+        }
+        .lock{
+            background-color: #4B8999;
+        }
+
+        button {
+            cursor:hand;
+            cursor:pointer;
+        }
     </style>
 
 </head>
