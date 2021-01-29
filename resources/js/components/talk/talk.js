@@ -712,7 +712,7 @@ export default class Talk extends Component {
                     </div>
                     <div className="account-settings">
                         <section className="my-header-items-section">
-                            <a href="" className="circle"><i className="far fa-user"></i></a>
+                            <a href="/home/account" className="circle"><i className="far fa-user"></i></a>
                             <p>アカウント</p>
                         </section>
                         <section className="my-header-items-section">

@@ -424,7 +424,18 @@
             overflow-y: scroll;
             overflow-x: hidden;
         }
+
+        /* アカウント用領域 */
         
+        .account-main-item {
+            background-color: #FFFFFF;
+            height:100vh;
+            width:82vw;
+            position: absolute;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            text-align:center;
+        }
         .main-item > h2 {
             color:#8AA0A0;
             font-weight: 400;
@@ -807,6 +818,108 @@
             height:30px;
             padding:3px;
             margin:10px;
+        }
+
+        /* アカウント画面 */
+
+        .account-my-header {
+            /* width: 64vw; */
+            width:82vw;
+            height: 80px;
+            background-color: #E9F2F3;
+            color: #8aa0a0;
+            display: flex;
+            display:-webkit-box;
+  	        display:-ms-flexbox;
+            margin-left: 0;
+        }
+        .account-my-header > button {
+            background-color:#00697A;
+            width: 70px;
+            height: 70px;
+            border-radius: 0 5px 5px 0;
+            border:none;
+            margin-top:10px;
+            font-size: 40px;
+            font-weight:400;
+            color:#FFF;
+        }
+
+        .input-edit {
+            display: flex;
+            flex-direction: row;
+        }
+        .input-table{
+            margin:1vw;
+            margin-left:3vw;
+            color:#00697A;
+        }
+        .input-table > tr{
+            text-align: left;
+            width:35px;
+        }
+        .input-table > tr > td {
+            padding:2vw;
+            padding-left:1vw;
+            font-size:1.3vw;
+        }
+        .td-input > input {
+            height: 30px;
+            width:300px;
+            border:2px solid #CCE3E3;
+            border-radius:3px;
+        }
+        .img-edit{
+            margin:1vw;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .img-show{
+            /* width:200px;
+            height:200px; */
+            margin:1vw;
+            width:18vw;
+            height: 18vw;
+            border:1px solid #CCE3E3;
+            /* vertical-align: middle; */
+        }
+        .img-show > .fa-user{
+            font-size: 3vw;
+            color:#00697A;
+            /* text-align:center;
+            justify-content: center; */
+            margin-top: 7vw;
+        }
+        label[for=img-change]{
+            padding:10px;
+            margin:10px;
+            /* margin-right: 3vw; */
+            background-color: #00B7B7;
+            color:#FFF;
+            border-radius: 5px;
+            width:100px;
+        }
+        #img-chage{
+            display:none;
+            
+        }
+        .btn-col{
+            width:20vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .btn-col > button {
+            background-color: #E47E7E;
+            border:none;
+            border-radius: 5px;
+            margin:10px;
+            /* margin-left:1vw; */
+            width:100px;
+            height: 47px;
+            color:#FFF;
+            font-size:16px;
         }
     </style>
 

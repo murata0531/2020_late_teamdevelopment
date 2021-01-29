@@ -70,7 +70,7 @@
             height:100%;
             padding-left:10%;
             align-items:center;
-            background-color:red;
+            background-color:#F36B6B;
         }
 
         #user-profile {
@@ -79,8 +79,8 @@
             width:100%;
             height:80px;
             flex-direction:row;
-            background-color:black;
-            
+            background-color:#00697A;
+
         }
 
         #user-profile > img {
