@@ -119,8 +119,6 @@ export default class Talk extends Component {
                     })
                     .then(res => {
                         alert("トークが追加されました");
-                        const history = useHistory();
-                        history.go(0);
                     })
                     .catch(error => {
                         alert("登録失敗");
@@ -433,7 +431,7 @@ export default class Talk extends Component {
     }
     componentDidMount() {
 
-        const auth_id = auth_company_id;
+        const auth_id = authcompany_id;
         axios.get('http://localhost:8000/api/user', {
             params: {
                 // ここにクエリパラメータを指定する

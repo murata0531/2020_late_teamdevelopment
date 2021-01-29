@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './home/home.js';
 import Talk from './talk/talk.js';
 import File_Sharing from './filesharing/filesharing.js';
+import Account from './accountedit/account.js';
+
 import Account_Edit from './accountedit/accountedit.js'
 
 export default class App extends Component {
@@ -18,7 +20,9 @@ export default class App extends Component {
                         <Route path="/home" exact component={Home} />
                         <Route path="/home/talk" exact component={Talk} />
                         <Route path="/home/file" exact component={File_Sharing} />
-                        <Route path="/home/account" exact component={Account_Edit} />
+                        <Route path="/home/account" exact component={Account} />
+                        <Route path="/home/accountedit" exact component={Account_Edit} />
+
 
                     </Switch>
                 </div>

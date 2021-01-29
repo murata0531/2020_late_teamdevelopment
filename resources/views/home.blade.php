@@ -955,11 +955,21 @@
                 <p>{{ $user->name }}でログイン中</p>
             </li>
             <li><a href="/home" id="home-li"><span><i class="fas fa-home"></i>　　ホーム</span></a></li>
+            @if ($usertool[0]->task == 1)
             <li><a href="/home/task" id="task-li" ><span><i class="fas fa-tasks"></i>　　タスク</span></a></li>
+            @endif
+            @if ($usertool[0]->talk == 1)
             <li><a href="/home/talk" id="talk-li" onClick="func(this.id);"><span><i class="far fa-comment-alt"></i>　　トーク</span></a></li>
+            @endif
+            @if ($usertool[0]->note == 1)
             <li><a href="/home/note" id="note-li" onClick="func(this.id);"><span><i class="fas fa-book-open"></i>　　ノート</span></a></li>
+            @endif
+            @if ($usertool[0]->file == 1)
             <li><a href="/home/file" id="file-li" onClick="func(this.id);"><span><i class="far fa-folder"></i>　　ファイル共有</span></a></li>
+            @endif
+            @if ($usertool[0]->report == 1)
             <li><a href="/home/report" id="report-li" onClick="func(this.id);"><span><i class="far fa-file-alt"></i>　　レポート</span></a></li>
+            @endif
             <form method="post" name="form1" action="{{route('logout')}}">
             @csrf
                 <li><a href="javascript:form1.submit()" class="logout"><i class="fas fa-user-circle p-2">　　ログアウト</i></a></li>
@@ -971,6 +981,7 @@
 
    <script>
         
+        const userinfo = @json($user);
         const database = firebase.database();
         let storage = firebase.storage();
         let storageRef = firebase.storage().ref();
