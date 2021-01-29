@@ -65,6 +65,11 @@ class HomeController extends Controller
         //     dd($message);
 
         $user = Auth::user();
-        return view('home',compact('user'));
+
+        $usertool = \DB::select('select distinct companyservices.company_id, companyservices.* from companyservices,companies,users
+             where companyservices.company_id = companies.id and companies.id = users.company_id
+             and users.company_id = ?',[$user->id]);
+
+        return view('home',compact('user','usertool'));
     }
 }

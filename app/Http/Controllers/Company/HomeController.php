@@ -27,9 +27,6 @@ class HomeController extends Controller
         $user = Auth::user();
         $usertool = \DB::select('select * from companyservices where company_id = ?',[$user->id]);
 
-
-        $updatevalue = \DB::select('select * from companyservices where company_id = ?',[1]);
-
         return view('company.home',compact('user','usertool'));
 
     }
