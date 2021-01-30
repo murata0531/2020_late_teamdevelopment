@@ -74260,7 +74260,7 @@ var Talk = /*#__PURE__*/function (_Component) {
                       str += '<div class="flex-col"><div class="flex-row">';
                       str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
                       str += '<p class="dateTime float-right">' + v.date + '</p></div>';
-                      str += '<div class="message_box m-2">';
+                      str += '<div class="message_box m-2" id="my-message-area">';
                       str += '<div class="message_content p-3">';
                       str += '<div class="message_text">' + v.message + '</div>';
                       str += '</div></div></div>';
@@ -74298,7 +74298,7 @@ var Talk = /*#__PURE__*/function (_Component) {
                       _str += '<div class="flex-col"><div class="flex-row">';
                       _str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
                       _str += '<p class="dateTime float-right">' + v.date + '</p></div>';
-                      _str += '<div class="message_box m-2">';
+                      _str += '<div class="message_box m-2" id="my-message-area">';
                       _str += '<div class="message_content p-3">';
                       _str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div>';
                       _str += '</div></div></div>';

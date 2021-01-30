@@ -206,7 +206,7 @@ export default class Talk extends Component {
                         str += '<div class="flex-col"><div class="flex-row">';
                         str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
                         str += '<p class="dateTime float-right">' + v.date + '</p></div>';
-                        str += '<div class="message_box m-2">';
+                        str += '<div class="message_box m-2" id="my-message-area">';
                         str += '<div class="message_content p-3">';
                         str += '<div class="message_text">' + v.message + '</div>';
                         str += '</div></div></div>';
@@ -252,7 +252,7 @@ export default class Talk extends Component {
                             str += '<div class="flex-col"><div class="flex-row">';
                             str += '<p class="name font-weight-bold m-0">' + v.name + '</p>';
                             str += '<p class="dateTime float-right">' + v.date + '</p></div>';
-                            str += '<div class="message_box m-2">';
+                            str += '<div class="message_box m-2" id="my-message-area">';
                             str += '<div class="message_content p-3">';
                             str += '<div class="message_text"><a href=' + url + '><img src=' + url + ' target="_blank" rel="noopener noreferrer"></a></div>';
                             str += '</div></div></div>';

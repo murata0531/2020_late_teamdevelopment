@@ -298,7 +298,7 @@
                     </div>
                     <button type="button" class="signin"><a id="target">サインイン</a></button>
                 </form>
-                <button class="company"><a href="{{ route('company.login') }}">企業管理ページへ</a></button>
+                <button class="company"><a href="{{ route('companylogin') }}">企業管理ページへ</a></button>
             </div>
         </div>
 
@@ -321,7 +321,7 @@
                 for (let key in url) {
 
                     if(url[key].url == text){
-                        target.href = "http://" + text + ".localhost:8000/";
+                        target.href = text;
                         // alert(target.href);
                         // alert(url[key].url);
                         valid.textContent = "";

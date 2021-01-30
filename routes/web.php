@@ -21,25 +21,25 @@ Route::get('home{any}', [App\Http\Controllers\HomeController::class, 'index'])->
 Route::post('/top',[App\Http\Controllers\TopController::class, 'post'])->name('top');
 
 //ユーザアクセス
-Route::domain('{account}.localhost')->group(function(){
+// Route::domain('{account}.localhost')->group(function(){
 
-    Route::get('/', function($user){
+//     Route::get('/', function($user){
 
-        $company = DB::select('select * from companies where url = ?',[$user]);
-        return view('userwelcome',compact('user','company'));
+//         $company = DB::select('select * from companies where url = ?',[$user]);
+//         return view('userwelcome',compact('user','company'));
 
-    });
+//     });
 
-    Route::get('/user/login', function($user){
-        return view('userlogin',compact('user'));
-    });
+//     Route::get('/user/login', function($user){
+//         return view('userlogin',compact('user'));
+//     });
 
-    Route::get('/user/register', function($user){
-        return view('userregister',compact('user'));
-    });
+//     Route::get('/user/register', function($user){
+//         return view('userregister',compact('user'));
+//     });
 
 
-});
+// });
 
 //ユーザログイン認証
 // Route::prefix('user')->namespace('User')->name('user.')->group(function(){
@@ -59,37 +59,64 @@ Route::domain('{account}.localhost')->group(function(){
 // });
 
 //通常アクセス
-Route::domain('localhost')->group(function(){
+// Route::domain('localhost')->group(function(){
     
-    Route::get('/', function () {
+//     // Route::get('/', function () {
 
-        // $url = Company::all('url');
-        $url = DB::select('select url from companies;');
-        return view('main',compact('url'));
-    });
+//     //     // $url = Company::all('url');
+//     //     $url = DB::select('select url from companies;');
+//     //     return view('main',compact('url'));
+//     // });
 
-    // Route::get('/company/{url}',function ($user) {
-    //     return $user;
-    // });
-});
+//     // Route::get('/company/{url}',function ($user) {
+//     //     return $user;
+//     // });
+// });
 
 
 //企業管理者認証
-Route::prefix('company')->namespace('Company')->name('company.')->group(function(){
-    // Auth::routes();
-    Route::post('login', [App\Http\Controllers\Company\Auth\LoginController::class, 'login']);
-    Route::post('logout',[App\Http\Controllers\Company\Auth\LoginController::class,'logout'])->name('logout');
-    Route::post('register',[App\Http\Controllers\Company\Auth\RegisterController::class,'register']);
-    Route::get('login',[App\Http\Controllers\Company\Auth\LoginController::class,'showLoginForm'])->name('login');
-    Route::get('register',[App\Http\Controllers\Company\Auth\RegisterController::class,'showRegistrationForm'])->name('register');
+// Route::prefix('company')->namespace('Company')->name('company.')->group(function(){
+//     // Auth::routes();
+//     Route::post('login', [App\Http\Controllers\Company\Auth\LoginController::class, 'login']);
+//     Route::post('logout',[App\Http\Controllers\Company\Auth\LoginController::class,'logout'])->name('logout');
+//     Route::post('register',[App\Http\Controllers\Company\Auth\RegisterController::class,'register']);
+//     Route::get('login',[App\Http\Controllers\Company\Auth\LoginController::class,'showLoginForm'])->name('login');
+//     Route::get('register',[App\Http\Controllers\Company\Auth\RegisterController::class,'showRegistrationForm'])->name('register');
 
 
-    //ログイン認証後
-    Route::middleware('auth:company')->group(function () {
-        Route::get('/home{any}',[App\Http\Controllers\Company\HomeController::class,'index'])->where('any','.*')->name('home');
-    });
+//     //ログイン認証後
+//     Route::middleware('auth:company')->group(function () {
+//         Route::get('/home{any}',[App\Http\Controllers\Company\HomeController::class,'index'])->where('any','.*')->name('home');
+//     });
+
+// });
+
+Route::get('/', function () {
+
+    // $url = Company::all('url');
+    $url = DB::select('select url from companies');
+    return view('main',compact('url'));
+});
+
+Route::get('/{accaunt}', function($user){
+
+    $company = DB::select('select * from companies where url = ?',[$user]);
+    return view('userwelcome',compact('user','company'));
 
 });
+
+Route::post('company/login', [App\Http\Controllers\Company\Auth\LoginController::class, 'login']);
+Route::post('company/logout',[App\Http\Controllers\Company\Auth\LoginController::class,'logout'])->name('companylogout');
+Route::post('company/register',[App\Http\Controllers\Company\Auth\RegisterController::class,'register']);
+Route::get('company/login',[App\Http\Controllers\Company\Auth\LoginController::class,'showLoginForm'])->name('companylogin');
+Route::get('company/register',[App\Http\Controllers\Company\Auth\RegisterController::class,'showRegistrationForm'])->name('companyregister');
+
+
+//ログイン認証後
+Route::middleware('auth:company')->group(function () {
+    Route::get('company/home{any}',[App\Http\Controllers\Company\HomeController::class,'index'])->where('any','.*')->name('companyhome');
+});
+
 
 //企業管理者認証
 // Route::namespace('admin')->prefix('admin')->name('admin.')->group(function () {

@@ -317,7 +317,7 @@
             <li><a href="/company/home"><span>基本管理</span></a></li>
             <li><a href="/company/home/usermanagement"><span>ユーザ管理</span></a></li>
             <li><a href="/company/home/functionmanagement"><span>機能管理</span></a></li>
-            <form method="post" name="form1" action="{{route('company.logout')}}">
+            <form method="post" name="form1" action="{{route('companylogout')}}">
             @csrf
                 <li><a href="javascript:form1.submit()" class="logout"><i class="fas fa-user-circle p-2">　　ログアウト</i></a></li>
             </form>

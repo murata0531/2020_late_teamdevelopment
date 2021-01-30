@@ -198,7 +198,7 @@
             <div class="box">
                 <div class="title">企業管理者サインイン</div>
                 <div class="totop"><a href="http://localhost:8000/">トップページへ戻る</a></div>
-                <form method="post" class="login-form" action="{{ route('company.login') }}" enctype="multipart/form-data">
+                <form method="post" class="login-form" action="{{ route('companylogin') }}" enctype="multipart/form-data">
                 @csrf
                     <div class="mail">
                         <div class="mail-text"><i class="far fa-envelope"></i>　メールアドレス</div>
@@ -236,7 +236,7 @@
                         <p>ARAELの新しい仲間ですか？</p>
                         <hr>
                     </div>
-                    <a href="{{ route('company.register') }}">アカウントをお持ちでない方はこちらへ</a>
+                    <a href="{{ route('companyregister') }}">アカウントをお持ちでない方はこちらへ</a>
                 </div>
             </div>
         </div>

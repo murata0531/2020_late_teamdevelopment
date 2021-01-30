@@ -480,13 +480,12 @@
         }
 
         #my-message-area {
-            background-color:#6FD8BB;
+            background-color:#00ff7f;
         }
 
         .opponent .message_box {
-            max-width: 75%;
-            min-width: 20%;
-            font-size: 17px;
+            width:40%;
+            font-size: 1.2vw;
             background: #fff;
             border: 3px solid #007A7A;
             border-radius: 10px;
@@ -567,15 +566,16 @@
             flex-direction: row-reverse;
             justify-content: space-between;
             position:relative;
-            left: 21%;
+            left: 60%;
         }
 
         .my-faceicon > .flex-col > .message_box {
-            max-width:75%;
+            width:40%;
             border: 3px solid #007A7A;
-            left:22%;
+            left:55%;
             position: relative;
             text-align:center;
+
         }
 
         
@@ -939,7 +939,14 @@
             // Your web app's Firebase configuration
             // For Firebase JS SDK v7.20.0 and later, measurementId is optional
             var firebaseConfig = {
-                
+                apiKey: "AIzaSyCov15JIexxNYYD1atR213t_rREKImqCDE",
+                authDomain: "chat-1b8c5.firebaseapp.com",
+                databaseURL: "https://chat-1b8c5.firebaseio.com",
+                projectId: "chat-1b8c5",
+                storageBucket: "chat-1b8c5.appspot.com",
+                messagingSenderId: "671003935191",
+                appId: "1:671003935191:web:1ec022df476d8950c94b92",
+                measurementId: "G-46Q0C6NENN"
             };
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);

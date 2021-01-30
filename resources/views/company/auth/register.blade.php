@@ -199,7 +199,7 @@
             <div class="box">
                 <div class="title">企業アカウント作成</div>
                 <div class="totop"><a href="http://localhost:8000/">トップページへ戻る</a></div>
-                <form method="post" class="login-form" action="{{ route('company.register') }}" enctype="multipart/form-data">
+                <form method="post" class="login-form" action="{{ route('companyregister') }}" enctype="multipart/form-data">
                 @csrf
                     <div class="area">
                         <div class="text"><i class="far fa-user"></i>　企業名　　　　　</div>
@@ -278,7 +278,7 @@
                         <p>すでにアカウントをお持ちですか？</p>
                         <hr>
                     </div>
-                    <a href="{{ route('company.login')}}">アカウントをお持ちの方はこちらへ</a>
+                    <a href="{{ route('companylogin')}}">アカウントをお持ちの方はこちらへ</a>
                 </div>
             </div>
         </div>
