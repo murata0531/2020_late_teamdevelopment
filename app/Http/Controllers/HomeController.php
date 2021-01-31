@@ -70,7 +70,6 @@ class HomeController extends Controller
             where companyservices.company_id = companies.id and companies.id = users.company_id
             and users.company_id = ?',[$user->id]);
 
-
         return view('home',compact('user','usertool'));
     }
 }
