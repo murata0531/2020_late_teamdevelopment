@@ -17,8 +17,11 @@ class CreateTalksTable extends Migration
             $table->id();
             $table->datetime('last_modify')->default(now());
             $table->tinyInteger('type');
+            $table->unsignedBigInteger('user_id');
             $table->string('last_message');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

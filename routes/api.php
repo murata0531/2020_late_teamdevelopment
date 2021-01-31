@@ -67,8 +67,12 @@ Route::get('/user',function (Request $request) {
     //     ',[$authid,$authid,$authid,$authid,$authid,$authid]
     // );
     
-    $management = \DB::select('select * from talks,talk_management where talks.id = talk_management.talk_id
-    and talk_management.user_id = ?',[$authid]);
+    $management = \DB::select('
+    
+    select users.icon,talks.id,namings.talk_name,talks.type,talks.user_id,talks.last_message AS message,DATE_FORMAT(talks.updated_at, \'%Y年%m月%d日\') AS updated_at
+    from users,groupnamings,talk_management,talks
+    where users.id = namings.user_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id and talks.user_id = users.id
+    and talks.user_id = ? and talks.type = 1',[$authid]);
     
     return response()->json(['users' => $users,'management'=> $management]);
 });
@@ -83,6 +87,7 @@ Route::post('/adduser',function (Request $request) {
     
     $newtalk = Talk::create([
         'type' => 1,
+        'user_id' => $id,
         'last_message' => 'トークが作成されました',
     ]);
 
@@ -135,6 +140,7 @@ Route::post('/addusers',function (Request $request) {
 
     $newtalk = Talk::create([
         'type' => 0,
+        'user_id' => $id,
         'last_message' => 'トークが作成されました',
     ]);
 
@@ -193,7 +199,7 @@ Route::post('/addmessage',function (Request $request) {
     $message = $request->input('message');
 
     Talk::where('id', $talkid)
-        ->update(['last_message' => $message]);
+        ->update(['last_message' => $message,'user_id' => $authid]);
 
     $talkmodel = Talk::find($talkid);
 
