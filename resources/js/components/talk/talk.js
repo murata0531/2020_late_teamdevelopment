@@ -690,12 +690,8 @@ export default class Talk extends Component {
                         </div>
                         <div className="my-header-items">
                             <section className="my-header-items-section">
-                                <a href="" className="circle"><i className="fas fa-phone-alt"></i></a>
-                                <p onClick={
-                                    function () {
-
-                                    }
-                                }>通話</p>
+                                <a href="https://takemura-arael.sakura.ne.jp/video.php" target="_blank" className="circle"><i className="fas fa-phone-alt"></i></a>
+                                <p>通話</p>
                             </section>
                             <section className="my-header-items-section">
                                 <a href="" className="circle"><i className="fas fa-video"></i></a>
