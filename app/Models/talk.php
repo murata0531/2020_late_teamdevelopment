@@ -12,5 +12,6 @@ class Talk extends Model
     protected $fillable = [
         'last_modify',
         'type',
+        'last_message',
     ];
 }

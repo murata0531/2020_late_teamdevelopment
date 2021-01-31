@@ -17,6 +17,7 @@ class CreateTalksTable extends Migration
             $table->id();
             $table->datetime('last_modify')->default(now());
             $table->tinyInteger('type');
+            $table->string('last_message');
             $table->timestamps();
         });
     }

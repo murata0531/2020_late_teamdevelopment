@@ -48,38 +48,27 @@ Route::get('/user',function (Request $request) {
     $users = DB::select('select * from users where company_id = ? and id <> ?',[$id,$authid]);
 
     // $management = \DB::select(
-    //     'select users.icon,talks.id,namings.talk_name,talks.type
-    //         from users,namings,talk_management,talks
-    //         where users.id = namings.user_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id
-    //         and talk_management.user_id = ? and talks.type = 1
-    //         union all
-    //         select groupnamings.icon,talks.id,groupnamings.name,talks.type
-    //         from users,groupnamings,talk_management,talks
-    //         where talks.id = groupnamings.talk_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id
-    //         and talk_management.user_id = ? and talks.type = 0
-    //         ',[$authid,$authid]
-    // );
-
-    $management = \DB::select(
-        'select users.icon,talks.id,namings.talk_name,talks.type,talklogs.talk_id,talklogs.user_id,talklogs.message,DATE_FORMAT(talklogs.updated_at, \'%Y年%m月%d日\') AS updated_at
-            from users,namings,talk_management,talks,talklogs
-            where users.id = namings.user_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id and talklogs.talk_id = talks.id
-            and talk_management.user_id = ? and talks.type = 1 and talklogs.user_id = ?
-            and talklogs.updated_at in (select max(talklogs.updated_at) from talklogs where talklogs.user_id = ? group by talklogs.talk_id )
+    //     'select users.icon,talks.id,namings.talk_name,talks.type,talklogs.talk_id,talklogs.user_id,talklogs.message,DATE_FORMAT(talklogs.updated_at, \'%Y年%m月%d日\') AS updated_at
+    //         from users,namings,talk_management,talks,talklogs
+    //         where users.id = namings.user_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id and talklogs.talk_id = talks.id
+    //         and talk_management.user_id = ? and talks.type = 1 and talklogs.user_id = ?
+    //         and talklogs.updated_at in (select max(talklogs.updated_at) from talklogs where talklogs.user_id = ? group by talklogs.talk_id )
             
-        union
+    //     union
             
-            select groupnamings.icon,talks.id,groupnamings.name,talks.type,talklogs.talk_id,talklogs.user_id,talklogs.message,DATE_FORMAT(talklogs.updated_at, \'%Y年%m月%d日\') AS updated_at
-            from users,groupnamings,talk_management,talks,talklogs
-            where talks.id = groupnamings.talk_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id and talklogs.talk_id = talks.id
-            and talk_management.user_id = ? and talks.type = 0 and talklogs.user_id = ?
-            and talklogs.updated_at in (select max(talklogs.updated_at) from talklogs where talklogs.user_id = ? group by talklogs.talk_id )
+    //         select groupnamings.icon,talks.id,groupnamings.name,talks.type,talklogs.talk_id,talklogs.user_id,talklogs.message,DATE_FORMAT(talklogs.updated_at, \'%Y年%m月%d日\') AS updated_at
+    //         from users,groupnamings,talk_management,talks,talklogs
+    //         where talks.id = groupnamings.talk_id and users.id = talk_management.user_id and talk_management.talk_id = talks.id and talklogs.talk_id = talks.id
+    //         and talk_management.user_id = ? and talks.type = 0 and talklogs.user_id = ?
+    //         and talklogs.updated_at in (select max(talklogs.updated_at) from talklogs where talklogs.user_id = ? group by talklogs.talk_id )
         
-        order by updated_at desc
+    //     order by updated_at desc
             
-        ',[$authid,$authid,$authid,$authid,$authid,$authid]
-    );
+    //     ',[$authid,$authid,$authid,$authid,$authid,$authid]
+    // );
     
+    $management = \DB::select('select * from talks,talk_management where talks.id = talk_management.talk_id
+    and talk_management.user_id = ?',[$authid]);
     
     return response()->json(['users' => $users,'management'=> $management]);
 });
@@ -94,6 +83,7 @@ Route::post('/adduser',function (Request $request) {
     
     $newtalk = Talk::create([
         'type' => 1,
+        'last_message' => 'トークが作成されました',
     ]);
 
 
@@ -145,6 +135,7 @@ Route::post('/addusers',function (Request $request) {
 
     $newtalk = Talk::create([
         'type' => 0,
+        'last_message' => 'トークが作成されました',
     ]);
 
     TalkManagement::create([
@@ -200,6 +191,9 @@ Route::post('/addmessage',function (Request $request) {
     $authid = $request->input('authuserid');
     $talkid = $request->input('talkid');
     $message = $request->input('message');
+
+    Talk::where('id', $talkid)
+        ->update(['last_message' => $message]);
 
     $talkmodel = Talk::find($talkid);
 
