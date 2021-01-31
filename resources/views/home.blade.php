@@ -982,7 +982,6 @@
    <script>
         
         const userinfo = @json($user);
-        const database = firebase.database();
         let storage = firebase.storage();
         let storageRef = firebase.storage().ref();
         const authcompany_id = @json($user->company_id);

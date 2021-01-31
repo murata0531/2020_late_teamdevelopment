@@ -74223,8 +74223,10 @@ var Talk = /*#__PURE__*/function (_Component) {
       var userid = authuser_id;
       var output = document.getElementById("output");
       var pathReference = storage.ref();
+      var database = firebase.database();
       var prevTask = Promise.resolve();
-      output.innerHTML = ''; //受信処理
+      output.innerHTML = '';
+      database.ref(authcompany_id).off(); //受信処理
 
       database.ref(authcompany_id + '/' + room).on("child_added", function (data) {
         prevTask = prevTask["finally"]( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -74402,6 +74404,8 @@ var Talk = /*#__PURE__*/function (_Component) {
           authuserid: uid,
           message: sendtext
         }).then(function (res) {
+          var database = firebase.database();
+          database.ref(authcompany_id).off();
           database.ref(authcompany_id + '/' + room).push({
             uid: uid,
             icon: uicon,
@@ -74481,7 +74485,9 @@ var Talk = /*#__PURE__*/function (_Component) {
         var userid = authuser_id;
         var output = document.getElementById("output");
         var pathReference = storage.ref();
-        var prevTask = Promise.resolve(); //受信処理
+        var database = firebase.database();
+        var prevTask = Promise.resolve();
+        database.ref(authcompany_id).off(); //受信処理
 
         database.ref(authcompany_id + '/' + room).on("child_added", function (data) {
           prevTask = prevTask["finally"]( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {

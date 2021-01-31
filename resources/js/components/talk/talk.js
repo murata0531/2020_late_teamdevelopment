@@ -166,13 +166,14 @@ export default class Talk extends Component {
         this.setState({ talk_id: e.target.id });
 
         let room = e.target.id;
-        const userid = authuser_id;
-        const output = document.getElementById("output");
+        let userid = authuser_id;
+        let output = document.getElementById("output");
         let pathReference = storage.ref();
-
+        let database = firebase.database();
         let prevTask = Promise.resolve();
 
         output.innerHTML = '';
+        database.ref(authcompany_id).off();
         //受信処理
         database.ref(authcompany_id + '/' + room).on("child_added", (data) => {
             prevTask = prevTask.finally(async () => {
@@ -343,9 +344,9 @@ export default class Talk extends Component {
     sendClick() {
 
         let room = this.state.talk_id;
-        const uname = authuser_name;
-        const uicon = authuser_icon;
-        const uid = authuser_id;
+        let uname = authuser_name;
+        let uicon = authuser_icon;
+        let uid = authuser_id;
         let send_button = document.getElementById('send-button');
         let btn2 = document.getElementById('btn2');
         let sendarea = document.getElementById("sendarea");
@@ -363,6 +364,9 @@ export default class Talk extends Component {
 
                 })
                 .then(res => {
+
+                    let database = firebase.database();
+                    database.ref(authcompany_id).off();
 
                     database.ref(authcompany_id + '/' + room).push({
                         uid: uid,
@@ -454,12 +458,13 @@ export default class Talk extends Component {
 
 
                 let room = this.state.talk_id;
-                const userid = authuser_id;
-                const output = document.getElementById("output");
+                let userid = authuser_id;
+                let output = document.getElementById("output");
                 let pathReference = storage.ref();
-
+                let database = firebase.database();
                 let prevTask = Promise.resolve();
 
+                database.ref(authcompany_id).off();
                 //受信処理
                 database.ref(authcompany_id + '/' + room).on("child_added", (data) => {
                     prevTask = prevTask.finally(async () => {

@@ -68,7 +68,7 @@ class HomeController extends Controller
 
         $usertool = \DB::select('select distinct companyservices.company_id, companyservices.* from companyservices,companies,users
             where companyservices.company_id = companies.id and companies.id = users.company_id
-            and users.company_id = ?',[$user->id]);
+            and companyservices.company_id = ?',[$user->company_id]);
 
         return view('home',compact('user','usertool'));
     }
