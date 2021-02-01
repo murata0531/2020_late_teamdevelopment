@@ -168,8 +168,6 @@ export default class Talk extends Component {
         let room = e.target.id;
         let userid = authuser_id;
         let output = document.getElementById("output");
-        let pathReference = storage.ref();
-        let database = firebase.database();
         let prevTask = Promise.resolve();
 
         output.innerHTML = '';
@@ -365,7 +363,6 @@ export default class Talk extends Component {
                 })
                 .then(res => {
 
-                    let database = firebase.database();
                     database.ref(authcompany_id).off();
 
                     database.ref(authcompany_id + '/' + room).push({
@@ -460,8 +457,6 @@ export default class Talk extends Component {
                 let room = this.state.talk_id;
                 let userid = authuser_id;
                 let output = document.getElementById("output");
-                let pathReference = storage.ref();
-                let database = firebase.database();
                 let prevTask = Promise.resolve();
 
                 database.ref(authcompany_id).off();

@@ -74222,8 +74222,6 @@ var Talk = /*#__PURE__*/function (_Component) {
       var room = e.target.id;
       var userid = authuser_id;
       var output = document.getElementById("output");
-      var pathReference = storage.ref();
-      var database = firebase.database();
       var prevTask = Promise.resolve();
       output.innerHTML = '';
       database.ref(authcompany_id).off(); //受信処理
@@ -74404,7 +74402,6 @@ var Talk = /*#__PURE__*/function (_Component) {
           authuserid: uid,
           message: sendtext
         }).then(function (res) {
-          var database = firebase.database();
           database.ref(authcompany_id).off();
           database.ref(authcompany_id + '/' + room).push({
             uid: uid,
@@ -74484,8 +74481,6 @@ var Talk = /*#__PURE__*/function (_Component) {
         var room = this.state.talk_id;
         var userid = authuser_id;
         var output = document.getElementById("output");
-        var pathReference = storage.ref();
-        var database = firebase.database();
         var prevTask = Promise.resolve();
         database.ref(authcompany_id).off(); //受信処理
 

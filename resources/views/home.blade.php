@@ -983,10 +983,15 @@
    <script>
         
         const userinfo = @json($user);
-        let storage = firebase.storage();
+        
         let storageRef = firebase.storage().ref();
+        
         const authcompany_id = @json($user->company_id);
 
+        const database = firebase.database();
+        const storage = firebase.storage();
+        const pathReference = storage.ref();
+        
         const authuser_id = @json($user->id);
         const authuser_name = @json($user->name);
         const authuser_icon = @json($user->icon);
