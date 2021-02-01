@@ -10,8 +10,8 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" rel="stylesheet">
-    <link rel="manifest" href="/manifest.json">
     <!-- Styles -->
+    <link rel="manifest" href="/manifest.json">
 
 
     <style>
