@@ -35,37 +35,37 @@ export default class User_Management extends Component {
                                     <th>ユーザロック</th>
                                 </tr>
                                 <tr>
-                                    <td>U000000</td>
-                                    <td>竹村佳希</td>
-                                    <td>test1@arael.com</td>
+                                    <td>U000001</td>
+                                    <td>user1</td>
+                                    <td>user1@example.com</td>
                                     <td className="pass-re"><a href=""><i className="far fa-trash-alt">パスワードをリセットする</i></a></td>
                                     <td className="lock"><a href=""><i className="fas fa-lock"></i>ロック</a></td>
                                 </tr>
                                 <tr>
-                                    <td>U000000</td>
-                                    <td>竹村佳希</td>
-                                    <td>test1@arael.com</td>
+                                    <td>U000002</td>
+                                    <td>user2</td>
+                                    <td>user2@example.com</td>
                                     <td className="pass-re"><a href=""><i className="far fa-trash-alt">パスワードをリセットする</i></a></td>
                                     <td className="lock"><a href=""><i className="fas fa-lock"></i>ロック</a></td>
                                 </tr>
                                 <tr>
-                                    <td>U000000</td>
-                                    <td>竹村佳希</td>
-                                    <td>test1@arael.com</td>
+                                    <td>U000003</td>
+                                    <td>user3</td>
+                                    <td>tuser3@example.com</td>
                                     <td className="pass-re"><a href=""><i className="far fa-trash-alt">パスワードをリセットする</i></a></td>
                                     <td className="lock"><a href=""><i className="fas fa-lock"></i>ロック</a></td>
                                 </tr>
                                 <tr>
-                                    <td>U000000</td>
-                                    <td>竹村佳希</td>
-                                    <td>test1@arael.com</td>
+                                    <td>U000004</td>
+                                    <td>user4</td>
+                                    <td>user4@example.com</td>
                                     <td className="pass-re"><a href=""><i className="far fa-trash-alt">パスワードをリセットする</i></a></td>
                                     <td className="lock"><a href=""><i className="fas fa-lock"></i>ロック</a></td>
                                 </tr>
                                 <tr>
-                                    <td>U000000</td>
-                                    <td>竹村佳希</td>
-                                    <td>test1@arael.com</td>
+                                    <td>U000005</td>
+                                    <td>user5</td>
+                                    <td>user5@example.com</td>
                                     <td className="pass-re"><a href=""><i className="far fa-trash-alt">パスワードをリセットする</i></a></td>
                                     <td className="lock"><a href=""><i className="fas fa-lock"></i>ロック</a></td>
                                 </tr>
