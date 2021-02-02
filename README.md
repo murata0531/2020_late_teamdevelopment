@@ -24,7 +24,7 @@ npm install
 
 firebase apiキー各自取得
 
-resources/views/home.blade.php内の「firebaseconfig=」の中に張り付ける
+resources/views/home.blade.php内の「firebaseconfig=」の中に貼り付ける
 
 ___________________________________________________
 
