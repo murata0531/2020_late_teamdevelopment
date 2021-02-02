@@ -21,6 +21,8 @@ npm install
 
 firebase apiキー各自取得
 
+resources/views/home.blade.php内の「firebaseconfig=」の中に張り付ける
+
 ___________________________________________________
 
 デバッグ用
