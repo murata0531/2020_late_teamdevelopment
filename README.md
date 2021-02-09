@@ -12,7 +12,7 @@ ___________________________________________________
 
 構築
 
-'''
+```
 cp .env.example .env
 
 
@@ -21,8 +21,7 @@ php artisan key:generate
 composer install
 
 npm install
-
-'''
+```
 firebase apiキー各自取得
 
 resources/views/home.blade.php内の「firebaseconfig=」の中に貼り付ける
