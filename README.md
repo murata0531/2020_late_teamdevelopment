@@ -13,14 +13,14 @@ ___________________________________________________
 構築
 
 ```
-cp .env.example .env
+$ cp .env.example .env
 
 
-php artisan key:generate
+$ php artisan key:generate
 
-composer install
+$ composer install
 
-npm install
+$ npm install
 ```
 firebase apiキー各自取得
 
@@ -30,10 +30,12 @@ ___________________________________________________
 
 デバッグ用
 
+```
 データベースを再設計
 
-php artisan migrate:fresh
+$ php artisan migrate:fresh
 
 データベースにテストデータを作成
 
-php artisan db:seed
+$ php artisan db:seed
+```
